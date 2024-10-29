@@ -2,26 +2,161 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*::selection {
+  background-color: theme('colors.black');
+  color: theme('colors.white');
+}
+
+.dark *::selection {
+  background-color: theme('colors.white');
+  color: theme('colors.black');
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: theme('colors.white');
+  font-family: Satoshi;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.dark body {
+  background-color: theme('colors.black');
+}
+
+.dark .dark-fill {
+  filter: invert(1) grayscale(100%) brightness(1.5);
+}
+
+/**
+* @license
+* Font Family: Satoshi
+* Designed by: Deni Anggara
+* URL: https://www.fontshare.com/fonts/satoshi
+* © 2024 Indian Type Foundry
+* Satoshi Variable (Variable font)
+*/
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Variable.woff') format('woff'),
+    url('/fonts/satoshi/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Antonio';
+  src: url('/fonts/antonio/Antonio-Variable.ttf') format('truetype');
+  font-weight: 125 950;
+  font-display: auto;
+}
+
+.antonio {
+  font-family: Antonio;
+}
+
+.satoshi {
+  font-family: Satoshi;
+}
+
+h1 {
+  font-size: clamp(3rem, 5vw, 6rem);
+  font-weight: bold;
+}
+h2 {
+  font-size: clamp(1rem, 1vw, 1rem);
+}
+h3 {
+  font-size: clamp(2rem, 2vw, 2rem);
+  font-weight: 700;
+}
+h4 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* h1,
+h2,
+h3,
+h4,
+p,
+a,
+span {
+  color: theme('colors.black');
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark p,
+.dark a,
+.dark span {
+  color: theme('colors.white');
+} */
+
+.abs-center {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.word {
+  display: block;
+  height: 100%;
+  animation: spin_words 8s infinite;
+}
+
+@keyframes spin_words {
+  0% {
+    transform: translateY(0);
+  }
+
+  10% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(-100%);
+  }
+
+  30% {
+    transform: translateY(-100%);
+  }
+
+  40% {
+    transform: translateY(-200%);
+  }
+
+  50% {
+    transform: translateY(-200%);
+  }
+
+  60% {
+    transform: translateY(-300%);
+  }
+
+  70% {
+    transform: translateY(-300%);
+  }
+
+  80% {
+    transform: translateY(-400%);
+  }
+
+  90% {
+    transform: translateY(-400%);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
