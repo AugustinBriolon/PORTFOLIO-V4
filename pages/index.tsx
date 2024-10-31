@@ -1,3 +1,4 @@
+import Section from '@/components/Section';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
@@ -80,7 +81,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section className='h-fit md:h-[90vh] max-w-screen-4xl mx-auto w-full flex flex-col gap-12 items-start justify-between p-2 md:px-4 text-black dark:text-white'>
+    <Section className='h-fit md:h-[90vh] justify-between'>
       <div className='w-full flex flex-col items-center justify-start h-[50vh] md:h-1/2'>
         <div className='overflow-hidden'>
           <h1 className='title-anim uppercase text-center font-extrabold'>
@@ -151,6 +152,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

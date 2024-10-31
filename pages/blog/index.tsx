@@ -1,7 +1,7 @@
-import Link from "next/link";
+import Section from '@/components/Section';
+import Link from 'next/link';
 
 export default function Blogs() {
-
   // const posts = [
   //   {
   //     slug: 'comment-jai-appris-a-coder',
@@ -10,10 +10,10 @@ export default function Blogs() {
   // ];
 
   return (
-    <section className='min-h-[90vh] max-h-fit max-w-screen-xl mx-auto w-full flex flex-col items-center px-2'>
+    <Section>
       <Link href='/blog/comment-jai-appris-a-coder'>
         Comment j&apos;ai appris à coder
       </Link>
-    </section>
+    </Section>
   );
 }

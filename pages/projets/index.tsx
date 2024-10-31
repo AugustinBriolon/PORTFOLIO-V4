@@ -1,32 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import Section from '@/components/Section';
+import data from '@/data/data.json';
+import { Project } from '@/data/types';
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Projets() {
-  const data = [
-    {
-      title: 'Ceci est un test',
-      description: 'Description assrez longue pour voir si ça fonctionne',
-      image: '/images/img.png',
-      url: '/projets/ceci-est-un-test',
-      tags: ["Nuxt.js", "TypeScript", "Tailwind CSS", "GSAP"],
-    },
-    {
-      title: 'Ceci est un test',
-      description: 'Description assrez longue pour voir si ça fonctionne',
-      image: '/images/img.png',
-      url: '/projets/ceci-est-un-test',
-      tags: ["Nuxt.js", "TypeScript", "Tailwind CSS", "GSAP"],
-    },
-    {
-      title: 'Ceci est un test',
-      description: 'Description assrez longue pour voir si ça fonctionne',
-      image: '/images/img.png',
-      url: '/projets/ceci-est-un-test',
-      tags: ["Nuxt.js", "TypeScript", "Tailwind CSS", "GSAP"],
-    },
-  ];
+  const projects = data.projects;
 
   const animateIn = () => {
     const tl = gsap.timeline();
@@ -37,87 +20,93 @@ export default function Projets() {
       ease: 'power2.out',
     });
     tl.from(
-      '.project-img-anim',
+      '.project-title-anim',
       {
-        y: 50,
-        opacity: 0,
+        xPercent: -100,
         stagger: 0.1,
         duration: 1,
         ease: 'power2.out',
       },
       '-=0.5'
     );
-    tl.from(
-      '.project-title-anim',
-      {
-        y: -100,
-        stagger: 0.1,
-        duration: 1,
-        ease: 'power2.out',
-      },
-      '-=1'
-    );
-    tl.from(
-      '.project-describ-anim',
-      {
-        y: -100,
-        stagger: 0.1,
-        duration: 1,
-        ease: 'power2.out',
-      },
-      '-=1'
+  };
+
+  const scrollTriggerAnimation = () => {
+    gsap.set('.projet-text-scroll', { y: -100, opacity: 0 });
+
+    (gsap.utils.toArray('.projet-text-scroll') as HTMLElement[]).forEach(
+      (el) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 50%',
+          onEnter: () => {
+            gsap.to(el, {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: 'power2.out',
+            });
+          },
+        });
+      }
     );
   };
 
   useGSAP(() => {
     animateIn();
+    scrollTriggerAnimation();
   }, []);
 
   return (
-    <section className='min-h-[90vh] max-h-fit max-w-screen-4xl mx-auto w-full flex flex-col items-center px-2 pb-4 gap-8'>
+    <Section className='gap-8'>
       <div className='overflow-hidden'>
         <h1 className='title-anim uppercase text-center font-extrabold dark:text-white'>
           MES PROJETS
         </h1>
       </div>
 
-      <div className='w-full grid md:grid-cols-2 gap-4 p-4 overflow-hidden border border-black/20 dark:border-white/20 rounded-xl'>
-        {data.map((project, index) => (
-          <div key={index} className='overflow-hidden'>
-            <Link href={project.url}>
-              <div className='relative group rounded-md overflow-hidden'>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  className='object-contain w-full group-hover:scale-105 project-img-anim'
-                  width={1920}
-                  height={1440}
-                />
-                <div className='absolute w-full bottom-0 right-0 flex items-center justify-end gap-2 p-2 opacity-0 group-hover:opacity-100 '>
-                  {project.tags.map((tag, index) => (
-                    <div
-                      key={index}
-                      className='backdrop-blur-md bg-white/80 p-1 px-2 rounded-md'
-                    >
-                      <p className='dark:text-black'>{tag}</p>
-                    </div>
-                  ))}
+      <div className='w-full flex flex-col gap-8'>
+        {projects.map((project: Project, index: number) => (
+          <Link
+            key={index}
+            href={`/projets/` + project.slug}
+            className='border-t-2 border-black pt-8 group'
+          >
+            <div className='flex items-center justify-between'>
+              <div className='flex gap-4 items-center justify-center'>
+                <div className='overflow-hidden rounded-xl'>
+                  <Image
+                    src={project.img}
+                    alt='project'
+                    width={1920}
+                    height={1080}
+                    className='max-w-72 select-none group-hover:scale-105 transition-transform duration-500'
+                  />
+                </div>
+                <div>
+                  <div className='overflow-hidden py-1'>
+                    <h4 className='font-bold text-4xl project-title-anim'>
+                      {project.title}
+                    </h4>
+                  </div>
+                  <div className='overflow-hidden'>
+                    <p className='font-medium projet-text-scroll'>
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className='overflow-hidden'>
-                <p className='text-xl dark:text-white project-title-anim'>
-                  {project.title}
+                <p className='projet-text-scroll'>
+                  {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </p>
               </div>
-              <div className='overflow-hidden'>
-                <p className='text-md text-black/50 dark:text-white/50 project-describ-anim'>
-                  {project.description}
-                </p>
-              </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
-    </section>
+
+      <div className='h-96'></div>
+    </Section>
   );
 }

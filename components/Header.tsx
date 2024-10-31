@@ -58,7 +58,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className='h-[10vh] relative w-full max-w-screen-4xl mx-auto flex sm:grid sm:grid-cols-header justify-between items-center gap-4 px-2 md:px-4 text-black dark:text-white'>
+    <header className='h-[10vh] relative w-11/12 mx-auto flex sm:grid sm:grid-cols-header justify-between items-center gap-4 px-2 md:px-4 text-black dark:text-white'>
       <Link href='/' className='overflow-hidden'>
         <h1 className='text-header-anim text-xl font-bold'>AUGUSTIN BRIOLON</h1>
       </Link>
@@ -75,7 +75,7 @@ export default function Header() {
           <div
             className={clsx(
               path?.split('/').pop() === 'projets' && '!w-5',
-              'abs-center h-[4px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
+              'abs-center h-[3px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
             )}
           ></div>
         </Link>
@@ -88,7 +88,7 @@ export default function Header() {
           <div
             className={clsx(
               path?.split('/').pop() === 'blog' && '!w-5',
-              'abs-center h-[4px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
+              'abs-center h-[3px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
             )}
           ></div>
         </Link>
