@@ -58,7 +58,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className='h-[10vh] relative w-full max-w-screen-xl mx-auto flex sm:grid sm:grid-cols-header justify-between items-center gap-4 px-2 md:px-4 text-black dark:text-white'>
+    <header className='h-[10vh] relative w-full max-w-screen-4xl mx-auto flex sm:grid sm:grid-cols-header justify-between items-center gap-4 px-2 md:px-4 text-black dark:text-white'>
       <Link href='/' className='overflow-hidden'>
         <h1 className='text-header-anim text-xl font-bold'>AUGUSTIN BRIOLON</h1>
       </Link>
@@ -68,7 +68,10 @@ export default function Header() {
           scroll={false}
           className='overflow-hidden group relative'
         >
-          <p className='text-header-anim text-center font-medium'>PROJETS</p>
+          <p className='text-header-anim text-center font-medium'>
+            PROJETS
+            <span className='ml-1 text-[8px]'>4</span>
+            </p>
           <div
             className={clsx(
               path?.split('/').pop() === 'projets' && '!w-5',

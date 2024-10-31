@@ -29,7 +29,10 @@ export default function Home() {
     });
   };
 
-  const aboutText ="Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end. Je transforme vos projets en sites performants.".split(' ');
+  const aboutText =
+    "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end. Je transforme vos projets en sites performants.".split(
+      ' '
+    );
 
   const timelineProjectAnim = () => {
     const tl = gsap.timeline();
@@ -85,7 +88,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section className='h-fit md:h-[90vh] max-w-screen-xl mx-auto w-full flex flex-col gap-12 items-start justify-between p-2 md:px-4 text-black dark:text-white'>
+    <section className='h-fit md:h-[90vh] max-w-screen-4xl mx-auto w-full flex flex-col gap-12 items-start justify-between p-2 md:px-4 text-black dark:text-white'>
       <div className='w-full flex flex-col items-center justify-start h-[50vh] md:h-1/2'>
         <div className='overflow-hidden'>
           <h1 className='title-anim uppercase text-center font-extrabold'>
@@ -100,82 +103,60 @@ export default function Home() {
         <p className='anim-opacity font-semibold'>(2019 - {curretDateYear})</p>
       </div>
 
-      <div className='w-full flex flex-col-reverse md:flex-row justify-between items-start gap-8 h-1/2'>
-        <div className='w-full md:w-1/2 h-full flex flex-col gap-8 justify-between'>
-          <div className='w-full h-1/2 flex flex-col gap-4'>
-            <div className='overflow-hidden'>
-              <h2 className='subtitle-anim uppercase font-bold text-2xl'>
-                À propos
-              </h2>
-            </div>
-            {/* <p className='about-text'></p> */}
-            <p className='about-text overflow-hidden '>
-              {aboutText.map((word, index) => (
-                <span key={index} className='inline-block overflow-hidden'>
-                  <span className='anim-text inline-block'>
-                    {word}
-                    {index !== aboutText.length - 1 && '\u00A0'}
-                  </span>
-                </span>
-              ))}
-            </p>
-          </div>
-          <div className='w-full h-1/2 flex items-end justify-start gap-4'>
-            <div>
-              <div className='overflow-hidden'>
-                <p className='text-sm bottom-anim'>Status</p>
-              </div>
-              <div className='overflow-hidden'>
-                <p className='uppercase font-medium bottom-anim'>
-                  Disponible pour un projet
-                </p>
-              </div>
-            </div>
-            <div>
-              <div className='overflow-hidden'>
-                <p className='about- text-sm bottom-anim'>Contact</p>
-              </div>
-              <div className='flex gap-2 overflow-hidden'>
-                <p className='uppercase font-medium bottom-anim'>
-                  Envoyez un{' '}
-                  <a
-                    href='mailto:augustin.briolon@gmail.com'
-                    className='underline'
-                  >
-                    mail
-                  </a>{' '}
-                  ou prenez{' '}
-                  <a
-                    href='https://calendly.com/augustinbriolon'
-                    className='underline'
-                  >
-                    rendez-vous
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className='w-full md:w-1/2 h-full flex flex-col items-start justify-between gap-4'>
+      <div className='w-full flex flex-col gap-8 justify-between'>
+        <div className='w-full h-1/2 flex flex-col gap-4'>
           <div className='overflow-hidden'>
             <h2 className='subtitle-anim uppercase font-bold text-2xl'>
-              Dernier projet
+              À propos
             </h2>
           </div>
-          <div className='project-line-anim h-px w-full bg-black dark:bg-white'></div>
-          <div className='overflow-hidden'>
-            <h2 className='project-title-anim uppercase font-semibold text-center text-xl'>
-              {projects.title}
-            </h2>
+          {/* <p className='about-text'></p> */}
+          <p className='about-text overflow-hidden '>
+            {aboutText.map((word, index) => (
+              <span key={index} className='inline-block overflow-hidden'>
+                <span className='anim-text inline-block'>
+                  {word}
+                  {index !== aboutText.length - 1 && '\u00A0'}
+                </span>
+              </span>
+            ))}
+          </p>
+        </div>
+        <div className='w-full h-1/2 flex items-end justify-between gap-4'>
+          <div>
+            <div className='overflow-hidden'>
+              <p className='text-sm bottom-anim'>Status</p>
+            </div>
+            <div className='overflow-hidden'>
+              <p className='uppercase font-medium bottom-anim'>
+                Disponible pour un projet
+              </p>
+            </div>
           </div>
-          <Image
-            src={projects.mainImage}
-            alt={projects.title}
-            width={2400}
-            height={1260}
-            className='bottom-anim'
-          />
+          <div>
+            <div className='overflow-hidden'>
+              <p className='about- text-sm bottom-anim'>Contact</p>
+            </div>
+            <div className='flex gap-2 overflow-hidden'>
+              <p className='uppercase font-medium bottom-anim'>
+                Envoyez un{' '}
+                <a
+                  href='mailto:augustin.briolon@gmail.com'
+                  className='underline'
+                >
+                  mail
+                </a>{' '}
+                ou prenez{' '}
+                <a
+                  href='https://calendly.com/augustin-briolon/presentation-de-votre-projet'
+                  target='_blank'
+                  className='underline'
+                >
+                  rendez-vous
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

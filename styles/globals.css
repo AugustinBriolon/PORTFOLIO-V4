@@ -18,7 +18,7 @@
   color: theme('colors.black');
 }
 
-.no-scrollbar::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }
 
@@ -82,26 +82,6 @@ h3 {
 h4 {
   font-size: clamp(1.5rem, 3vw, 2rem);
 }
-
-/* h1,
-h2,
-h3,
-h4,
-p,
-a,
-span {
-  color: theme('colors.black');
-}
-
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4,
-.dark p,
-.dark a,
-.dark span {
-  color: theme('colors.white');
-} */
 
 .abs-center {
   position: absolute;
