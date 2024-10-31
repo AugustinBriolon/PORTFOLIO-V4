@@ -70,11 +70,11 @@ export default function Projets() {
           <Link
             key={index}
             href={`/projets/` + project.slug}
-            className='border-t-2 border-black pt-8 group'
+            className='border-t-2 border-black dark:border-white pt-8 group'
           >
-            <div className='flex items-center justify-between'>
-              <div className='flex gap-4 items-center justify-center'>
-                <div className='overflow-hidden rounded-xl'>
+            <div className='flex items-start md:items-center justify-between'>
+              <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-center'>
+                <div className='overflow-hidden rounded-xl border border-black/20 dark:border-white/20'>
                   <Image
                     src={project.img}
                     alt='project'
@@ -96,8 +96,8 @@ export default function Projets() {
                   </div>
                 </div>
               </div>
-              <div className='overflow-hidden'>
-                <p className='projet-text-scroll'>
+              <div className='overflow-hidden w-fit'>
+                <p className='projet-text-scroll w-10'>
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </p>
               </div>

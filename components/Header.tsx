@@ -1,17 +1,19 @@
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import { useAppContext } from '@/utils/contexts';
-import { useState } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
+import { useAppContext } from '@/utils/contexts';
+import data from '@/data/data.json';
 
 export default function Header() {
   const path = usePathname();
   const { isDarkMode, setIsDarkMode } = useAppContext();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const projects = data.projects
 
   const handleDarkMode = () => {
     const htmlElement = document.querySelector('html');
@@ -62,6 +64,7 @@ export default function Header() {
       <Link href='/' className='overflow-hidden'>
         <h1 className='text-header-anim text-xl font-bold'>AUGUSTIN BRIOLON</h1>
       </Link>
+
       <div className='hidden sm:flex gap-4'>
         <Link
           href='/projets'
@@ -70,8 +73,8 @@ export default function Header() {
         >
           <p className='text-header-anim text-center font-medium'>
             PROJETS
-            <span className='ml-1 text-[8px]'>4</span>
-            </p>
+            <span className='ml-1 text-[8px]'>{projects.length}</span>
+          </p>
           <div
             className={clsx(
               path?.split('/').pop() === 'projets' && '!w-5',
@@ -93,6 +96,7 @@ export default function Header() {
           ></div>
         </Link>
       </div>
+
       <div className='flex items-center justify-evenly gap-2'>
         <div
           className='cursor-pointer block p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full aspect-square'
@@ -157,7 +161,7 @@ export default function Header() {
         </a>
       </div>
 
-      <div className='menu-burger absolute w-full h-screen top-[-1000%] right-0 z-20 bg-white dark:bg-black flex flex-col items-center justify-center gap-8'>
+      <div className='menu-burger absolute w-screen h-screen top-[-1000%] right-0 z-20 bg-white dark:bg-black flex flex-col items-center justify-center gap-8'>
         <div className='flex flex-col items-center justify-center gap-4 h-full'>
           <Link
             href='/projets'
@@ -225,6 +229,6 @@ export default function Header() {
           </a>
         </div>
       </div>
-    </header>
+    </header> 
   );
 }

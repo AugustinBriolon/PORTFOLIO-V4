@@ -4,7 +4,7 @@
       "title": "zLawyer",
       "slug": "zlawyer",
       "description" : "Site vitrine pour l'entreprise zLawyer, logiciel de facturation de cabinets d'avocats.",
-      "story": "zLawyer est un logiciel de facturation pour cabinets d'avocats. Je leur ai proposé une maquette pour leur site vitrine, et elle a beaucoup plu. Suite à cette validation enthousiaste, j'ai commencé à développer le site avec Nuxt.js. C'était ma première mission en freelance, ce qui m'a permis de mettre en pratique mes compétences, de l'UI/UX au développement, tout en collaborant avec un client réactif et enthousiaste. Designé et développé avec Matteo Courquin.",
+      "story": "zLawyer est un logiciel de facturation pour les cabinets d'avocats. Je leur ai proposé une maquette pour leur site vitrine, qui a beaucoup plu. Suite à cette validation enthousiaste, j'ai commencé à développer le site avec Nuxt.js. C'était ma première mission en freelance, ce qui m'a permis de mettre en pratique mes compétences, de l'UI/UX au développement, tout en collaborant avec un client réactif et enthousiaste. Designé et développé avec Matteo Courquin.",
       "img": "/images/zlawyer.webp",
       "link": "https://www.zlawyer.fr/logiciel-avocats/",
       "tags": [
@@ -18,7 +18,7 @@
       "title": "BEL",
       "slug": "bel",
       "description" : "Site vitrine pour l'entreprise Bureau d'Études Legavre.",
-      "story": "Créer une présence en ligne à partir de zéro, c’est toujours un défi passionnant ! Avec Matteo Courquin, nous avons eu l’opportunité de collaborer avec Franck Legavre et son équipe pour bâtir le site du Bureau d'Études Legavre, et ce fut une belle aventure. L’objectif était clair : offrir à cette entreprise une vitrine digitale percutante, tout en leur laissant la main sur la gestion du contenu. Contentful a été un choix parfait pour permettre à l’équipe de gérer facilement leur site de manière autonome. En utilisant la génération de site statique (SSG), nous avons également optimisé les performances, rendant le site plus rapide et réduisant les appels API.",
+      "story": "Créer une présence en ligne à partir de zéro, est toujours un défi passionnant ! Avec Matteo Courquin, nous avons eu l’opportunité de collaborer avec Franck Legavre et son équipe pour bâtir le site du Bureau d'Études Legavre, et ce fut une belle aventure. L’objectif était clair : offrir à cette entreprise une vitrine digitale percutante, tout en leur laissant la main sur la gestion du contenu. Contentful a été un choix parfait pour permettre à l’équipe de gérer facilement leur site de manière autonome. En utilisant la génération de site statique (SSG), nous avons également optimisé les performances, rendant le site plus rapide et réduisant les appels API.",
       "img": "/images/bel.webp",
       "link": "https://www.be-legavre.com/",
       "tags": [

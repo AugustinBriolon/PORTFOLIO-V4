@@ -114,7 +114,7 @@ export default function Page({ project }: ProjectPageProps) {
 
   return (
     <Section className='progress-container gap-20 pb-16'>
-      <div className='fixed right-2 top-1/2 h-32 w-[5px] rounded-full bg-white dark:bg-black border border-black dark:border-white overflow-hidden fill-anim'>
+      <div className='fixed z-30 right-2 top-1/2 h-32 w-[5px] rounded-full bg-white dark:bg-black border border-black dark:border-white overflow-hidden fill-anim'>
         <div className='w-full bg-black dark:bg-white fill-bar'></div>
       </div>
 
@@ -135,7 +135,7 @@ export default function Page({ project }: ProjectPageProps) {
             </h2>
           </div>
           <div className='overflow-hidden md:w-1/2'>
-            <div className='flex flex-wrap gap-3 items-center md:justify-end pb-3'>
+            <div className='flex flex-wrap gap-3 items-center justify-end pb-3'>
               {project.tags.map((tag, index) => (
                 <span
                   key={index}
@@ -159,7 +159,7 @@ export default function Page({ project }: ProjectPageProps) {
         <h3 className='text-2xl font-bold uppercase dark:text-white'>
           Description
         </h3>
-        <p className='dark:text-white flex flex-col'>
+        <p className='dark:text-white flex flex-col gap-2'>
           {formatStory(project.story)}
         </p>
       </div>
@@ -183,25 +183,30 @@ export default function Page({ project }: ProjectPageProps) {
         <h3 className='text-2xl font-bold uppercase dark:text-white'>
           À voir aussi
         </h3>
-        <div className='grid grid-cols-2 justify-start items-center gap-2'>
+        <div className='grid md:grid-cols-2 justify-start items-center gap-2'>
           {projects
             .filter((p) => p.slug !== project.slug)
             .map((filteredProject, index) => (
               <Link
                 key={index}
                 href={filteredProject.slug}
-                className='flex flex-col border border-black/20'
+                scroll={true}
+                className='flex flex-col border border-black/20 dark:border-white/20 group'
               >
-                <Image
-                  src={filteredProject.img}
-                  alt={filteredProject.title}
-                  width={1920}
-                  height={1080}
-                />
+                <div className='overflow-hidden'>
+                  <Image
+                    src={filteredProject.img}
+                    alt={filteredProject.title}
+                    className='group-hover:scale-105 transition-transform duration-500'
+                    width={1920}
+                    height={1080}
+                  />
+                </div>
                 <div className='flex justify-between items-center'>
                   <h4 className='text-xl p-2'>{filteredProject.title}</h4>
                   <Image
                     src='/icons/arrow-up-right.svg'
+                    className='dark-fill'
                     alt='arrow'
                     width={24}
                     height={24}
@@ -227,7 +232,9 @@ interface Params extends ParsedUrlQuery {
   slug: string;
 }
 
-export const getStaticProps: GetStaticProps<ProjectPageProps, Params> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<ProjectPageProps, Params> = async ({
+  params,
+}) => {
   const projects = data.projects as Project[];
   const project = projects.find((p) => p.slug === params?.projet);
 
