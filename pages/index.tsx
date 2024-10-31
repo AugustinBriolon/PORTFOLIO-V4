@@ -1,16 +1,8 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import Image from 'next/image';
 
 export default function Home() {
   const curretDateYear = new Date().getFullYear();
-  const projects = {
-    title: "Bureau d'Études Legavre",
-    slug: 'projet-1',
-    description: 'Description du projet 1',
-    tags: ['tag1', 'tag2'],
-    mainImage: '/images/ogimage.png',
-  };
 
   const animateIn = () => {
     gsap.from('.title-anim', {
