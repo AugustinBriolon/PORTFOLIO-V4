@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Projets() {
   const projects = data.projects;
 
-  const animateIn = () => {
+  const timelineAnimation = () => {
     const tl = gsap.timeline();
     tl.from('.title-anim', {
       y: 100,
@@ -20,6 +20,15 @@ export default function Projets() {
       ease: 'power2.out',
     });
     tl.from(
+      '.line-top-anim',
+      {
+        width: 0,
+        duration: 1,
+        ease: 'power2.out',
+      },
+      '-=0.5'
+    );
+    tl.from(
       '.project-title-anim',
       {
         xPercent: -100,
@@ -27,7 +36,7 @@ export default function Projets() {
         duration: 1,
         ease: 'power2.out',
       },
-      '-=0.5'
+      '-=1'
     );
   };
 
@@ -42,6 +51,8 @@ export default function Projets() {
           onEnter: () => {
             gsap.to(el, {
               y: 0,
+              delay: 0.5,
+              markers: true,
               opacity: 1,
               duration: 1,
               ease: 'power2.out',
@@ -53,7 +64,7 @@ export default function Projets() {
   };
 
   useGSAP(() => {
-    animateIn();
+    timelineAnimation();
     scrollTriggerAnimation();
   }, []);
 
@@ -70,9 +81,10 @@ export default function Projets() {
           <Link
             key={index}
             href={`/projets/` + project.slug}
-            className='border-t-2 border-black dark:border-white pt-8 group'
+            className='group'
           >
-            <div className='flex items-start md:items-center justify-between'>
+            <div className='line-top-anim h-[3px] bg-black dark:bg-white rounded-full'></div>
+            <div className='flex items-start md:items-center justify-between pt-8'>
               <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-center'>
                 <div className='overflow-hidden rounded-xl border border-black/20 dark:border-white/20'>
                   <Image

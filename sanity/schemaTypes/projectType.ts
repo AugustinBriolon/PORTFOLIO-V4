@@ -42,5 +42,10 @@ export const projectType = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'author',
+      type: 'reference',
+      to: {type: 'author'},
+    }),
   ],
 })

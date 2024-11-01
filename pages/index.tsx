@@ -9,6 +9,11 @@ export default function Home() {
       ' '
     );
 
+  const playHoverSound = () => {
+    const audio = new Audio('/sounds/hover.mp3');
+    audio.play();
+  };
+
   const timelineProjectAnim = () => {
     const tl = gsap.timeline();
     tl.from('.title-anim', {
@@ -47,13 +52,17 @@ export default function Home() {
       },
       '-=.5'
     );
-    
-    tl.from('.anim-opacity', {
-      opacity: 0,
-      delay: 1,
-      duration: 0.75,
-      ease: 'power2.out',
-    }, '-=1');
+
+    tl.from(
+      '.anim-opacity',
+      {
+        opacity: 0,
+        delay: 1,
+        duration: 0.75,
+        ease: 'power2.out',
+      },
+      '-=1'
+    );
   };
 
   useGSAP(() => {
@@ -114,7 +123,7 @@ export default function Home() {
                 Envoyez un{' '}
                 <a
                   href='mailto:augustin.briolon@gmail.com'
-                  className='underline'
+                  className='underline' onMouseEnter={playHoverSound}
                 >
                   mail
                 </a>{' '}
@@ -123,6 +132,7 @@ export default function Home() {
                   href='https://calendly.com/augustin-briolon/presentation-de-votre-projet'
                   target='_blank'
                   className='underline'
+                  onMouseEnter={playHoverSound}
                 >
                   rendez-vous
                 </a>
