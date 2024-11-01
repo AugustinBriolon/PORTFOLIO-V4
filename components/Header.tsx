@@ -60,12 +60,12 @@ export default function Header() {
   }, []);
 
   return (
-    <header className='h-[10vh] relative w-11/12 mx-auto flex sm:grid sm:grid-cols-header justify-between items-center gap-4 px-2 md:px-4 text-black dark:text-white'>
+    <header className='h-[10vh] relative w-full md:w-11/12 mx-auto flex md:grid md:grid-cols-header justify-between items-center gap-4 px-2 md:px-4 text-black dark:text-white'>
       <Link href='/' className='overflow-hidden'>
         <h1 className='text-header-anim text-xl font-bold'>AUGUSTIN BRIOLON</h1>
       </Link>
 
-      <div className='hidden sm:flex gap-4'>
+      <div className='hidden md:flex gap-4'>
         <Link
           href='/projets'
           scroll={false}
@@ -99,7 +99,7 @@ export default function Header() {
 
       <div className='flex items-center justify-evenly gap-2'>
         <div
-          className='cursor-pointer block p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full aspect-square'
+          className='cursor-pointer block p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square'
           onClick={handleDarkMode}
         >
           <Image
@@ -111,7 +111,7 @@ export default function Header() {
           />
         </div>
         <div
-          className='text-header-anim z-30 cursor-pointer sm:hidden p-4 hover:bg-black/5  dark:hover:bg-white/20 sm:bg-transparent rounded-full aspect-square flex flex-col items-center justify-center gap-1'
+          className='text-header-anim z-30 cursor-pointer md:hidden p-4 hover:bg-black/5  dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square flex flex-col items-center justify-center gap-1'
           onClick={handleMenuBurger}
         >
           <div className='h-px w-5 bg-black dark:bg-white'></div>
@@ -121,7 +121,7 @@ export default function Header() {
           href='https://www.linkedin.com/in/augustin-briolon/'
           target='_blank'
           title="Lien vers Linkedin d'Augustin Briolon"
-          className='hidden sm:block p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full aspect-square cursor-arrow'
+          className='hidden md:block p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square cursor-arrow'
         >
           <Image
             src='/icons/linkedin.svg'
@@ -135,7 +135,7 @@ export default function Header() {
           href='https://github.com/AugustinBriolon'
           target='_blank'
           title="Lien vers Github d'Augustin Briolon"
-          className='hidden sm:block p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full  aspect-square cursor-arrow'
+          className='hidden md:block p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full  aspect-square cursor-arrow'
         >
           <Image
             src='/icons/github.svg'
@@ -149,7 +149,7 @@ export default function Header() {
           href='https://twitter.com/AugustinBriolon'
           target='_blank'
           title="Lien vers Twitter d'Augustin Briolon"
-          className='hidden sm:block p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full  aspect-square cursor-arrow'
+          className='hidden md:block p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full  aspect-square cursor-arrow'
         >
           <Image
             src='/icons/twitter.svg'
@@ -161,7 +161,7 @@ export default function Header() {
         </a>
       </div>
 
-      <div className='menu-burger absolute w-screen h-screen top-[-1000%] right-0 z-20 bg-white dark:bg-black flex flex-col items-center justify-center gap-8'>
+      <div className='menu-burger absolute w-screen h-[100dvh] top-[-1000%] right-0 z-20 bg-white dark:bg-black flex flex-col items-center justify-center gap-8'>
         <div className='flex flex-col items-center justify-center gap-4 h-full'>
           <Link
             href='/projets'
@@ -189,7 +189,7 @@ export default function Header() {
             href='https://www.linkedin.com/in/augustin-briolon/'
             target='_blank'
             title="Lien vers Linkedin d'Augustin Briolon"
-            className='p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full aspect-square cursor-arrow'
+            className='p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square cursor-arrow'
           >
             <Image
               src='/icons/linkedin.svg'
@@ -203,7 +203,7 @@ export default function Header() {
             href='https://github.com/AugustinBriolon'
             target='_blank'
             title="Lien vers Github d'Augustin Briolon"
-            className='p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full  aspect-square cursor-arrow'
+            className='p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full  aspect-square cursor-arrow'
           >
             <Image
               src='/icons/github.svg'
@@ -217,7 +217,7 @@ export default function Header() {
             href='https://twitter.com/AugustinBriolon'
             target='_blank'
             title="Lien vers Twitter d'Augustin Briolon"
-            className='p-4 hover:bg-black/5 dark:hover:bg-white/20 sm:bg-transparent rounded-full  aspect-square cursor-arrow'
+            className='p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full  aspect-square cursor-arrow'
           >
             <Image
               src='/icons/twitter.svg'
