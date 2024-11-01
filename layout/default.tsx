@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className='max-w-screen-2xl mx-auto'>
+      <div className='max-w-screen-2xl mx-auto overflow-hidden'>
         <Header />
         {children}
         {pathname !== '/' && <Footer />}

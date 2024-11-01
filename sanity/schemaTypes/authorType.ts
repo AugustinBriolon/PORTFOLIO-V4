@@ -18,6 +18,12 @@ export const authorType = defineType({
         source: 'name',
       },
     }),
+    defineField({
+      name: 'websiteUrl',
+      title: 'Link to Website',
+      type: 'url',
+      validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
+    }),
   ],
   preview: {
     select: {

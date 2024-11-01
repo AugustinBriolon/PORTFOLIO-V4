@@ -4,13 +4,16 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Section from '@/components/Section';
-import data from '@/data/data.json';
-import { Project } from '@/data/types';
+import { TypeProject } from '@/data/types';
+import { fetchProjects } from '@/services/projects.sevices';
+import { urlFor } from '@/sanity/lib/image';
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Projets() {
-  const projects = data.projects;
-
+export default function Projects({
+  projects,
+}: {
+  projects: TypeProject[];
+}) {  
   const timelineAnimation = () => {
     const tl = gsap.timeline();
     tl.from('.title-anim', {
@@ -29,6 +32,15 @@ export default function Projets() {
       '-=0.5'
     );
     tl.from(
+      '.project-img-anim',
+      {
+        yPercent: 100,
+        duration: 1,
+        ease: 'power2.out',
+      },
+      '-=1'
+    );
+    tl.from(
       '.project-title-anim',
       {
         xPercent: -100,
@@ -40,19 +52,33 @@ export default function Projets() {
     );
   };
 
+  const animateHoverShow = (index: number) => {
+    gsap.to(`.project-img-anim-${index}`, {
+      scale: 1.1,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+  }
+
+  const animateHoverHide = (index: number) => {
+    gsap.to(`.project-img-anim-${index}`, {
+      scale: 1,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+  }
+
   const scrollTriggerAnimation = () => {
-    gsap.set('.projet-text-scroll', { y: -100, opacity: 0 });
+    gsap.set('.projet-text-scroll', { y: 100 });
 
     (gsap.utils.toArray('.projet-text-scroll') as HTMLElement[]).forEach(
       (el) => {
         ScrollTrigger.create({
           trigger: el,
-          start: 'top 50%',
+          start: 'top 70%',
           onEnter: () => {
             gsap.to(el, {
               y: 0,
-              delay: 0.5,
-              markers: true,
               opacity: 1,
               duration: 1,
               ease: 'power2.out',
@@ -77,22 +103,25 @@ export default function Projets() {
       </div>
 
       <div className='w-full flex flex-col gap-8'>
-        {projects.map((project: Project, index: number) => (
+        {projects.map((project: TypeProject, index: number) => (
           <Link
             key={index}
-            href={`/projets/` + project.slug}
-            className='group'
+            href={`/projets/` + project.slug.current}
+            className='project-container'
+            onMouseEnter={() => animateHoverShow(index)}
+            onMouseLeave={() => animateHoverHide(index)}
+
           >
             <div className='line-top-anim h-[3px] bg-black dark:bg-white rounded-full'></div>
-            <div className='flex items-start md:items-center justify-between pt-8'>
+            <div className='flex items-start md:items-center justify-between px-2 pt-8'>
               <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-center'>
                 <div className='overflow-hidden rounded-xl border border-black/20 dark:border-white/20'>
                   <Image
-                    src={project.img}
+                    src={urlFor(project.mainImage).toString()}
                     alt='project'
                     width={1920}
                     height={1080}
-                    className='max-w-72 select-none group-hover:scale-105 transition-transform duration-500'
+                    className={`project-img-anim project-img-anim-${index} max-w-72 select-none`}
                   />
                 </div>
                 <div>
@@ -121,4 +150,14 @@ export default function Projets() {
       <div className='h-96'></div>
     </Section>
   );
+}
+
+export async function getStaticProps() {
+  const projects = await fetchProjects();
+
+  return {
+    props: {
+      projects,
+    },
+  };
 }

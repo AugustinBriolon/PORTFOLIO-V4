@@ -4,17 +4,21 @@ import { ParsedUrlQuery } from 'querystring';
 export const fetchProject = async (params: ParsedUrlQuery | undefined) => {
   const query = `
     *[_type == "projects" && slug.current == $project][0] {
-      projectIndex,
       title,
       slug,
-      ogImage,
-      mainImage,
+      projectIndex,
+      publishedAt,
       description,
-      websiteUrl,
+      story,
+      mainImage,
       gallery,
+      websiteUrl,
       "authors": authors[]->{
         name,
         websiteUrl
+      },
+      "types": types[]->{
+        title
       },
     }
   `;

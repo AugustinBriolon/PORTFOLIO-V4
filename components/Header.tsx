@@ -6,14 +6,11 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import { useAppContext } from '@/utils/contexts';
-import data from '@/data/data.json';
 
 export default function Header() {
   const path = usePathname();
   const { isDarkMode, setIsDarkMode } = useAppContext();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const projects = data.projects
 
   const handleDarkMode = () => {
     const htmlElement = document.querySelector('html');
@@ -29,19 +26,22 @@ export default function Header() {
   const tl = gsap.timeline();
 
   const handleMenuBurger = () => {
+    const audio = new Audio('/sounds/menu.wav');
     setIsMenuOpen(!isMenuOpen);
-    if (isMenuOpen) {
+    if (!isMenuOpen) {
       tl.to('.menu-burger', {
-        top: '0',
+        right: '0',
         duration: 0.5,
         ease: 'power2.out',
       });
+      audio.play();
     } else {
       tl.to('.menu-burger', {
-        top: '-1000%',
+        right: '-100%',
         duration: 0.5,
         ease: 'power2.out',
       });
+      audio.play();
     }
   };
 
@@ -73,7 +73,6 @@ export default function Header() {
         >
           <p className='text-header-anim text-center font-medium'>
             PROJETS
-            <span className='ml-1 text-[8px]'>{projects.length}</span>
           </p>
           <div
             className={clsx(
@@ -111,11 +110,13 @@ export default function Header() {
           />
         </div>
         <div
-          className='text-header-anim z-30 cursor-pointer md:hidden p-4 hover:bg-black/5  dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square flex flex-col items-center justify-center gap-1'
+          className='text-header-anim relative z-30 cursor-pointer md:hidden p-4 bg-black/5  dark:bg-white/20 md:bg-transparent rounded-full aspect-square flex flex-col items-center justify-center gap-1'
           onClick={handleMenuBurger}
         >
-          <div className='h-px w-5 bg-black dark:bg-white'></div>
-          <div className='h-px w-5 bg-black dark:bg-white'></div>
+          <div className={clsx(isMenuOpen ? "translate-y-1 opacity-0" : "",'h-px w-5 bg-black dark:bg-white transition-all')}></div>
+          <div className="h-px w-5 bg-black dark:bg-white"></div>
+          <div className={clsx(isMenuOpen ? "w-px h-4" : "h-0", "abs-center top-1/2 bg-black dark:bg-white transition-all")}></div>
+          <div className={clsx(isMenuOpen ? "-translate-y-1 opacity-0" : "",'h-px w-5 bg-black dark:bg-white transition-all')}></div>
         </div>
         <a
           href='https://www.linkedin.com/in/augustin-briolon/'
@@ -161,7 +162,7 @@ export default function Header() {
         </a>
       </div>
 
-      <div className='menu-burger absolute w-screen h-[100dvh] top-[-1000%] right-0 z-20 bg-white dark:bg-black flex flex-col items-center justify-center gap-8'>
+      <div className='menu-burger md:hidden absolute w-screen h-[100dvh] -right-full top-0 z-20 bg-white dark:bg-black flex flex-col items-center justify-center gap-8'>
         <div className='flex flex-col items-center justify-center gap-4 h-full'>
           <Link
             href='/projets'
@@ -229,6 +230,6 @@ export default function Header() {
           </a>
         </div>
       </div>
-    </header> 
+    </header>
   );
 }

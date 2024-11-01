@@ -1,37 +1,27 @@
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Section from '@/components/Section';
-import data from '@/data/data.json';
-import Link from 'next/link';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { Project } from '@/data/types';
-import { ParsedUrlQuery } from 'querystring';
+import { GetStaticPropsContext } from 'next';
+import { TypeProject, TypePaths } from '@/data/types';
+import { fetchPaths } from '@/services/path.services';
+import { fetchProject } from '@/services/project.sevices';
+import { useGSAP } from '@gsap/react';
+import { urlFor } from '@/sanity/lib/image';
+import RichText from '@/components/RichText';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface ProjectPageProps {
-  project: Project;
-}
+export default function Page({
+  project,
+}: {
+  project: TypeProject;
+  paths: TypePaths[];
+}) {
+  // if (!project) {
+  //   return <div>Projet non trouvé.</div>;
+  // }
 
-export default function Page({ project }: ProjectPageProps) {
-  const pathname = usePathname();
-
-  useGSAP(() => {
-    timelineProjectAnim();
-    scrollTriggerAnimation();
-  }, []);
-
-  if (!pathname) {
-    return <div>Chargement...</div>;
-  }
-
-  // const project = data.projects.filter(
-  //   (project) => project.slug === pathname.split('/')[2]
-  // )[0];
-  const projects = data.projects as Project[];
   const words = project.title.split(' ');
 
   const timelineProjectAnim = () => {
@@ -102,15 +92,10 @@ export default function Page({ project }: ProjectPageProps) {
     });
   };
 
-  const formatStory = (story: string) => {
-    return story.split(/(?<=[.!?])\s+/).map((sentence, index) => {
-      return (
-        <span key={index} className='dark:text-white'>
-          {sentence}
-        </span>
-      );
-    });
-  };
+  useGSAP(() => {
+    timelineProjectAnim();
+    scrollTriggerAnimation();
+  }, []);
 
   return (
     <Section className='progress-container gap-20 pb-16'>
@@ -136,19 +121,19 @@ export default function Page({ project }: ProjectPageProps) {
           </div>
           <div className='overflow-hidden md:w-1/2'>
             <div className='flex flex-wrap gap-3 items-center justify-end pb-3'>
-              {project.tags.map((tag, index) => (
+              {project.types.map((type, index) => (
                 <span
                   key={index}
                   className='project-tags-anim dark:text-white text-lg font-medium uppercase border border-black/20 dark:border-white/20 rounded-full px-4 py-1'
                 >
-                  {tag}
+                  {type.title}
                 </span>
               ))}
             </div>
           </div>
         </div>
         <Image
-          src={project.img}
+          src={urlFor(project.mainImage).toString()}
           alt={project.title}
           width={1920}
           height={1080}
@@ -156,12 +141,7 @@ export default function Page({ project }: ProjectPageProps) {
       </div>
 
       <div className='w-full h-1/2 flex flex-col items-start justify-center gap-4 px-2'>
-        <h3 className='text-2xl font-bold uppercase dark:text-white'>
-          Description
-        </h3>
-        <p className='dark:text-white flex flex-col gap-2'>
-          {formatStory(project.story)}
-        </p>
+        <RichText value={project.story} className='text-black dark:text-white' />
       </div>
 
       <div className='relative h-28 w-full'>
@@ -179,7 +159,7 @@ export default function Page({ project }: ProjectPageProps) {
         </div>
       </div>
 
-      <div className='w-full flex flex-col gap-4 px-2'>
+      {/* <div className='w-full flex flex-col gap-4 px-2'>
         <h3 className='text-2xl font-bold uppercase dark:text-white'>
           À voir aussi
         </h3>
@@ -215,32 +195,34 @@ export default function Page({ project }: ProjectPageProps) {
               </Link>
             ))}
         </div>
-      </div>
+      </div> */}
     </Section>
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = data.projects as Project[];
-  const paths = projects.map((project) => ({
-    params: { projet: project.slug },
-  }));
-  return { paths, fallback: false };
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const { params } = context;
+
+  const paths = await fetchPaths();
+  const project = await fetchProject(params);
+
+  return {
+    props: {
+      paths,
+      project: project || null,
+    },
+  };
 };
 
-interface Params extends ParsedUrlQuery {
-  slug: string;
-}
+export const getStaticPaths = async () => {
+  const paths = (await fetchPaths()).map((project: TypeProject) => ({
+    params: { project: project.slug.toString() },
+  }));
 
-export const getStaticProps: GetStaticProps<ProjectPageProps, Params> = async ({
-  params,
-}) => {
-  const projects = data.projects as Project[];
-  const project = projects.find((p) => p.slug === params?.projet);
+  console.log("Paths générés par getStaticPaths :", paths);
 
-  if (!project) {
-    return { notFound: true };
-  }
-
-  return { props: { project } };
+  return {
+    paths,
+    fallback: false,
+  };
 };
