@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <Section className="!min-h-24 justify-end border-t border-black/20 dark:border-white/20 pt-2">
+    <Section className="!min-h-24 justify-end mt-12">
       <footer className="w-full flex flex-col items-center justify-center gap-2">
         <div className="w-full flex flex-col md:flex-row justify-between md:items-center gap-2">
           <div>
@@ -26,7 +26,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-black/50 dark:text-white/50">Connexion</p>
+            <p className="text-black/50 dark:text-white/50">Social</p>
             <ul className="flex flex-wrap gap-1">
               <li>
                 <a href="https://www.linkedin.com/in/augustin-briolon/" target="_blank" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Linkedin,</a>

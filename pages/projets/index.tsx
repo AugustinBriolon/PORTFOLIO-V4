@@ -3,17 +3,13 @@ import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import Section from '@/components/Section';
-import { TypeProject } from '@/data/types';
-import { fetchProjects } from '@/services/projects.sevices';
 import { urlFor } from '@/sanity/lib/image';
+import Section from '@/components/Section';
+import { fetchProjects } from '@/services/projects.sevices';
+import { TypeProject } from '@/data/types';
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Projects({
-  projects,
-}: {
-  projects: TypeProject[];
-}) {  
+export default function Projects({ projects }: { projects: TypeProject[] }) {
   const timelineAnimation = () => {
     const tl = gsap.timeline();
     tl.from('.title-anim', {
@@ -34,7 +30,7 @@ export default function Projects({
     tl.from(
       '.project-img-anim',
       {
-        yPercent: 100,
+        yPercent: 150,
         duration: 1,
         ease: 'power2.out',
       },
@@ -58,7 +54,7 @@ export default function Projects({
       duration: 0.5,
       ease: 'power2.out',
     });
-  }
+  };
 
   const animateHoverHide = (index: number) => {
     gsap.to(`.project-img-anim-${index}`, {
@@ -66,7 +62,7 @@ export default function Projects({
       duration: 0.5,
       ease: 'power2.out',
     });
-  }
+  };
 
   const scrollTriggerAnimation = () => {
     gsap.set('.projet-text-scroll', { y: 100 });
@@ -110,19 +106,22 @@ export default function Projects({
             className='project-container'
             onMouseEnter={() => animateHoverShow(index)}
             onMouseLeave={() => animateHoverHide(index)}
-
           >
             <div className='line-top-anim h-[3px] bg-black dark:bg-white rounded-full'></div>
             <div className='flex items-start md:items-center justify-between px-2 pt-8'>
               <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-center'>
-                <div className='overflow-hidden rounded-xl border border-black/20 dark:border-white/20'>
-                  <Image
-                    src={urlFor(project.mainImage).toString()}
-                    alt='project'
-                    width={1920}
-                    height={1080}
-                    className={`project-img-anim project-img-anim-${index} max-w-72 select-none`}
-                  />
+                <div className='overflow-hidden rounded-xl'>
+                  <div
+                    className={`project-img-anim project-img-anim-${index} overflow-hidden rounded-xl border border-black/20 dark:border-white/20`}
+                  >
+                    <Image
+                      src={urlFor(project.mainImage).toString()}
+                      alt='project'
+                      width={1920}
+                      height={1080}
+                      className='max-w-72 select-none'
+                    />
+                  </div>
                 </div>
                 <div>
                   <div className='overflow-hidden py-1'>

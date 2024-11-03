@@ -1,14 +1,15 @@
-import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import { useAppContext } from '@/utils/contexts';
 
-export default function Header() {
+export default function Header() {  
   const path = usePathname();
+  
   const { isDarkMode, setIsDarkMode } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

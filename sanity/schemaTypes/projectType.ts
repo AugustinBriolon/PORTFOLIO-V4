@@ -1,11 +1,11 @@
-import { DocumentTextIcon } from '@sanity/icons'
-import {defineField, defineType} from 'sanity'
+import { ProjectsIcon } from '@sanity/icons';
+import { defineField, defineType } from 'sanity';
 
 export const projectType = defineType({
   name: 'projects',
   title: 'Project',
   type: 'document',
-  icon: DocumentTextIcon,
+  icon: ProjectsIcon,
   fields: [
     defineField({
       name: 'title',
@@ -14,7 +14,9 @@ export const projectType = defineType({
         Rule.required()
           .min(1)
           .max(100)
-          .error('The title is required and should be between 5 and 100 characters.'),
+          .error(
+            'The title is required and should be between 5 and 100 characters.'
+          ),
     }),
     defineField({
       name: 'slug',
@@ -45,6 +47,18 @@ export const projectType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'websiteUrl',
+      title: 'Link to Website',
+      type: 'url',
+      validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
+    }),
+    defineField({
+      name: 'repoUrl',
+      title: 'Link to Repository',
+      type: 'url',
+      validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
@@ -72,13 +86,6 @@ export const projectType = defineType({
       },
     }),
     defineField({
-      name: 'websiteUrl',
-      title: 'Link to Website',
-      type: 'url',
-      validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
-    }),
-
-    defineField({
       name: 'authors',
       title: 'Authors',
       type: 'array',
@@ -90,5 +97,12 @@ export const projectType = defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'category' }] }],
     }),
+    defineField({
+      name: 'language',
+      title: 'Languages',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'language' }] }],
+    }),
+
   ],
-})
+});

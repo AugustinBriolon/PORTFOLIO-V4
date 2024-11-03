@@ -2,13 +2,15 @@ import { PortableText } from 'next-sanity';
 import { TypedObject } from 'sanity';
 
 const RichText = ({ value, className }: { value: TypedObject[]; className?: string }) => {
+  
   return (
     <div className={className}>
       <PortableText
         value={value}
         components={{
           block: {
-            normal: ({ children }) => <p className="mb-2">{children}</p>,
+            h4: ({ children }) => <h4 className='text-lg font-bold uppercase'>{children}</h4>,
+            normal: ({ children }) => <p>{children}</p>,
           },
           marks: {
             strong: ({ children }) => (

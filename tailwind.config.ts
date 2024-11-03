@@ -16,6 +16,7 @@ const config: Config = {
       },
       gridTemplateColumns: {
         header: "250px 1fr 250px",
+        "project-info": "100px 1fr",
       },
       cursor: {
         arrow: "url('/icons/arrow-cursor.svg'), auto",

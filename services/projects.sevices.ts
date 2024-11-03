@@ -2,7 +2,7 @@ import { client } from '@/sanity/lib/client';
 
 export const fetchProjects = async () => {
   const query = `
-    *[_type == "projects"] | order(projectIndex asc) {
+    *[_type == "projects"] | order(projectIndex desc) {
       projectIndex,
       title,
       slug,

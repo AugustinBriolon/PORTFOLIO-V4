@@ -12,13 +12,15 @@ export type TypeProject = {
   slug: Slug;
   projectIndex: number;
   publishedAt: string;
+  websiteUrl: string;
+  repoUrl: string;
   description: string;
   story: TypedObject[];
   mainImage: Image;
   gallery: Image[];
-  websiteUrl: string;
   authors: TypeAuthor[];
   types: TypeTypes[];
+  language: TypeLanguage[];
 };
 
 export type TypePaths = {
@@ -33,6 +35,11 @@ export type TypeTypes = {
 export type TypeAuthor = {
   name: string;
   websiteUrl: string;
+};
+
+export type TypeLanguage = {
+  title: string;
+  url: string;
 };
 
 export type TypeTestimonial = {

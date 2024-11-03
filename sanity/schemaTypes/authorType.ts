@@ -12,13 +12,6 @@ export const authorType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-      },
-    }),
-    defineField({
       name: 'websiteUrl',
       title: 'Link to Website',
       type: 'url',

@@ -20,6 +20,10 @@ export const fetchProject = async (params: ParsedUrlQuery | undefined) => {
       "types": types[]->{
         title
       },
+      "language": language[]->{
+        title,
+        url
+      },
     }
   `;
 
