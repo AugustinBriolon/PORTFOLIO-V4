@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <Section className='h-[90dvh] justify-between'>
-      <div className='w-full flex flex-col items-center justify-start md:h-[50vh] md:h-1/2'>
+      <div className='w-full flex flex-col items-center justify-start md:h-1/2'>
         <div className='overflow-hidden'>
           <h1 className='title-anim uppercase text-center font-extrabold'>
             DÉVELOPPEUR WEB

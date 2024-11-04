@@ -4,8 +4,8 @@ export const fetchTestimonials = async () => {
   const query = `
   *[_type == "testimonials"] {
     author,
-    entity,
-    testimonial,
+    role,
+    quote
   }`;
 
   const testimonials = await client.fetch(query);

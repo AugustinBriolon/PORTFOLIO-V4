@@ -24,6 +24,11 @@ export const fetchProject = async (params: ParsedUrlQuery | undefined) => {
         title,
         url
       },
+      "testimonial": testimonial[]->{
+        author,
+        role,
+        quote
+      },
     }
   `;
 

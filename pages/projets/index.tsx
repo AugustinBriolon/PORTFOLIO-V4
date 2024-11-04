@@ -22,29 +22,30 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
       '.line-top-anim',
       {
         width: 0,
-        duration: 1,
+        stagger: 0.2,
+        duration: 2,
         ease: 'power2.out',
       },
       '-=0.5'
     );
     tl.from(
-      '.project-img-anim',
-      {
-        yPercent: 150,
-        duration: 1,
-        ease: 'power2.out',
-      },
-      '-=1'
-    );
-    tl.from(
       '.project-title-anim',
       {
         xPercent: -100,
-        stagger: 0.1,
+        stagger: .2,
         duration: 1,
         ease: 'power2.out',
       },
-      '-=1'
+      '-=3'
+    );
+    tl.from(
+      '.project-img-anim',
+      {
+        yPercent: 100,
+        duration: 1,
+        ease: 'power1.out',
+      },
+      '-=3'
     );
   };
 
@@ -65,16 +66,16 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
   };
 
   const scrollTriggerAnimation = () => {
-    gsap.set('.projet-text-scroll', { y: 100 });
+    gsap.set('.projet-text-scroll', { yPercent: 100 });
 
     (gsap.utils.toArray('.projet-text-scroll') as HTMLElement[]).forEach(
       (el) => {
         ScrollTrigger.create({
           trigger: el,
-          start: 'top 70%',
+          start: 'top 80%',
           onEnter: () => {
             gsap.to(el, {
-              y: 0,
+              yPercent: 0,
               opacity: 1,
               duration: 1,
               ease: 'power2.out',
@@ -108,11 +109,11 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
             onMouseLeave={() => animateHoverHide(index)}
           >
             <div className='line-top-anim h-[3px] bg-black dark:bg-white rounded-full'></div>
-            <div className='flex items-start md:items-center justify-between px-2 pt-8'>
+            <div className='flex items-start md:items-center justify-between px-2 pt-8 gap-8'>
               <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-center'>
-                <div className='overflow-hidden rounded-xl'>
+                <div className='overflow-hidden rounded-xl min-w-fit'>
                   <div
-                    className={`project-img-anim project-img-anim-${index} overflow-hidden rounded-xl border border-black/20 dark:border-white/20`}
+                    className={`project-img-anim project-img-anim-${index} min-w-fit overflow-hidden rounded-xl border border-black/20 dark:border-white/20`}
                   >
                     <Image
                       src={urlFor(project.mainImage).toString()}
@@ -137,7 +138,7 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
                 </div>
               </div>
               <div className='overflow-hidden w-fit'>
-                <p className='projet-text-scroll w-10'>
+                <p className='w-10'>
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </p>
               </div>
@@ -145,8 +146,6 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
           </Link>
         ))}
       </div>
-
-      <div className='h-96'></div>
     </Section>
   );
 }

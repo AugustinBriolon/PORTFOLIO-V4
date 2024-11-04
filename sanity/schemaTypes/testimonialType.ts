@@ -13,15 +13,14 @@ export const testimonialType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'role',
+      title: 'Rôle',
+      type: 'string',
+    }),
+    defineField({
       name: 'quote',
       title: 'Quote',
       type: 'text',
     }),
-    defineField({
-      name: 'project',
-      title: 'Project',
-      type: 'reference',
-      to: { type: 'projects' },
-    })
   ],
 });

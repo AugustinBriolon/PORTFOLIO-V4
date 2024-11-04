@@ -15,13 +15,13 @@ export default function Footer() {
             <p className="text-black/50 dark:text-white/50">Sitemap</p>
             <ul className="flex flex-wrap gap-1">
               <li>
-                <Link href="/" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Index,</Link>
+                <Link href="/" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Index,</Link>
               </li>
               <li>
-                <Link href="/projets" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Projets,</Link>
+                <Link href="/projets" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Projets,</Link>
               </li>
               <li>
-                <Link href="/contact" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Blog</Link>
+                <Link href="/contact" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Blog</Link>
               </li>
             </ul>
           </div>
@@ -29,19 +29,19 @@ export default function Footer() {
             <p className="text-black/50 dark:text-white/50">Social</p>
             <ul className="flex flex-wrap gap-1">
               <li>
-                <a href="https://www.linkedin.com/in/augustin-briolon/" target="_blank" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Linkedin,</a>
+                <a href="https://www.linkedin.com/in/augustin-briolon/" target="_blank" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Linkedin,</a>
               </li>
               <li>
-                <a href="https://www.github.com/AugustinBriolon/" target="_blank" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Github,</a>
+                <a href="https://www.github.com/AugustinBriolon/" target="_blank" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Github,</a>
               </li>
               <li>
-                <a href="https://www.twitter.com/AugustinBriolon/" target="_blank" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Twitter,</a>
+                <a href="https://www.twitter.com/AugustinBriolon/" target="_blank" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Twitter,</a>
               </li>
               <li>
-                <a href="mailto:augustin.briolon@gmail.com" className="uppercase hover:underline" onMouseEnter={playHoverSound}>Email,</a>
+                <a href="mailto:augustin.briolon@gmail.com" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Email,</a>
               </li>
               <li>
-                <a href="" className="uppercase hover:underline">Cv</a>
+                <a href="" className="uppercase font-semibold hover:underline">Cv</a>
               </li>
             </ul>
           </div>

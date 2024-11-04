@@ -8,6 +8,7 @@ export const fetchProjects = async () => {
       slug,
       mainImage,
       description,
+      publishedAt,
       "types": types[]->{
         title,
       },

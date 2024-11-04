@@ -21,6 +21,7 @@ export type TypeProject = {
   authors: TypeAuthor[];
   types: TypeTypes[];
   language: TypeLanguage[];
+  testimonial: TypeTestimonial[];
 };
 
 export type TypePaths = {
@@ -44,7 +45,6 @@ export type TypeLanguage = {
 
 export type TypeTestimonial = {
   author: string;
-  entity: string;
-  testimonialFr: TypedObject[];
-  testimonialEn: TypedObject[];
+  role: string;
+  quote: string;
 };
