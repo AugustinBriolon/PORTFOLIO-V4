@@ -5,7 +5,6 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { urlFor } from '@/sanity/lib/image';
-import { motion } from 'framer-motion';
 import Section from '@/components/Section';
 import { TypeProject, TypePaths } from '@/data/types';
 import { fetchPaths } from '@/services/path.services';
@@ -172,16 +171,13 @@ export default function Page({
             </div>
           </div>
         </div>
-        <motion.figure layoutId='image'>
-          <Image
-            src={urlFor(project.mainImage).toString()}
-            className='w-full'
-            alt={project.title}
-            layout='responsive'
-            width={1920}
-            height={1080}
-          />
-        </motion.figure>
+        <Image
+          src={urlFor(project.mainImage).toString()}
+          className='w-full'
+          alt={project.title}
+          width={1920}
+          height={1080}
+        />
       </div>
 
       <div className='w-full flex flex-col md:flex-row justify-between items-start px-4 md:px-8 gap-8'>
@@ -340,19 +336,16 @@ export default function Page({
               className='flex flex-col group'
             >
               <div className='overflow-hidden'>
-                {/* <motion.figure layoutId='image'> */}
-                  <Image
-                    src={urlFor(filteredProject.mainImage).toString()}
-                    alt={filteredProject.title}
-                    className='group-hover:scale-105 transition-transform duration-500'
-                    // layout='responsive'
-                    width={1920}
-                    height={1080}
-                  />
-                {/* </motion.figure> */}
+                <Image
+                  src={urlFor(filteredProject.mainImage).toString()}
+                  alt={filteredProject.title}
+                  className='group-hover:scale-105 transition-transform duration-500'
+                  width={1920}
+                  height={1080}
+                />
               </div>
               <div className='flex justify-between items-center gap-2'>
-                <div className='flex  flex-col sm:flex-row items-center gap-1 md:gap-10'>
+                <div className='flex flex-col sm:flex-row md:items-center gap-1 md:gap-10'>
                   <p className='text-xl font-bold'>{filteredProject.title}</p>
                   <p className='text-md font-semibold'>
                     {filteredProject.description}
