@@ -1,16 +1,17 @@
+import { GetStaticPropsContext } from 'next';
+import Link from 'next/link';
 import Image from 'next/image';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { urlFor } from '@/sanity/lib/image';
+import { motion } from 'framer-motion';
 import Section from '@/components/Section';
-import { GetStaticPropsContext } from 'next';
 import { TypeProject, TypePaths } from '@/data/types';
 import { fetchPaths } from '@/services/path.services';
 import { fetchProject } from '@/services/project.sevices';
-import { useGSAP } from '@gsap/react';
-import { urlFor } from '@/sanity/lib/image';
 import RichText from '@/components/RichText';
 import { fetchProjects } from '@/services/projects.sevices';
-import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -171,23 +172,28 @@ export default function Page({
             </div>
           </div>
         </div>
-        <Image
-          src={urlFor(project.mainImage).toString()}
-          className='w-full'
-          alt={project.title}
-          width={1920}
-          height={1080}
-        />
+        <motion.figure layoutId='image'>
+          <Image
+            src={urlFor(project.mainImage).toString()}
+            className='w-full'
+            alt={project.title}
+            layout='responsive'
+            width={1920}
+            height={1080}
+          />
+        </motion.figure>
       </div>
 
       <div className='w-full flex flex-col md:flex-row justify-between items-start px-4 md:px-8 gap-8'>
-        <div className='overflow-hidden md:w-1/2'>
+        <div
+          className={`${project.story ? 'block' : 'hidden'} overflow-hidden w-full`}
+        >
           <RichText
             value={project.story}
             className='w-full text-black dark:text-white project-description-anim'
           />
         </div>
-        <div className='w-full md:w-1/2 flex flex-col gap-8'>
+        <div className='w-full flex flex-col gap-8'>
           <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
             <p>Date</p>
             <p className='font-bold capitalize text-lg justify-self-end project-info-anim'>
@@ -334,21 +340,24 @@ export default function Page({
               className='flex flex-col group'
             >
               <div className='overflow-hidden'>
-                <Image
-                  src={urlFor(filteredProject.mainImage).toString()}
-                  alt={filteredProject.title}
-                  className='group-hover:scale-105 transition-transform duration-500'
-                  width={1920}
-                  height={1080}
-                />
+                {/* <motion.figure layoutId='image'> */}
+                  <Image
+                    src={urlFor(filteredProject.mainImage).toString()}
+                    alt={filteredProject.title}
+                    className='group-hover:scale-105 transition-transform duration-500'
+                    // layout='responsive'
+                    width={1920}
+                    height={1080}
+                  />
+                {/* </motion.figure> */}
               </div>
-              <div className='flex justify-between items-center'>
-                <p className='text-xl py-2 font-bold'>
-                  {filteredProject.title}
-                </p>
-                <p className='text-md py-2 font-semibold'>
-                  {filteredProject.description}
-                </p>
+              <div className='flex justify-between items-center gap-2'>
+                <div className='flex  flex-col sm:flex-row items-center gap-1 md:gap-10'>
+                  <p className='text-xl font-bold'>{filteredProject.title}</p>
+                  <p className='text-md font-semibold'>
+                    {filteredProject.description}
+                  </p>
+                </div>
                 <Image
                   src='/icons/arrow-up-right.svg'
                   className='dark-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105'

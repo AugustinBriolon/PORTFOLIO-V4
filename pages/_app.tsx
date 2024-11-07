@@ -1,9 +1,10 @@
+import { usePathname } from 'next/navigation';
+import type { AppProps } from 'next/app';
 import Layout from '@/layout/default';
 import SmoothScrolling from '@/layout/lenis';
-import '@/styles/globals.css';
 import { AppProvider } from '@/utils/contexts';
-import type { AppProps } from 'next/app';
-import { usePathname } from 'next/navigation';
+import '@/styles/globals.css';
+import { LayoutGroup } from 'framer-motion';
 
 export default function App({ Component, pageProps }: AppProps) {
   const pathname = usePathname();
@@ -16,7 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <AppProvider>
           <Layout>
             <SmoothScrolling>
-              <Component {...pageProps} />
+              <LayoutGroup>
+                <Component {...pageProps} />
+              </LayoutGroup>
             </SmoothScrolling>
           </Layout>
         </AppProvider>

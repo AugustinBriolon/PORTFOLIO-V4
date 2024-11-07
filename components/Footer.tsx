@@ -21,7 +21,7 @@ export default function Footer() {
                 <Link href="/projets" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Projets,</Link>
               </li>
               <li>
-                <Link href="/contact" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Blog</Link>
+                <Link href="/blog" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Blog</Link>
               </li>
             </ul>
           </div>

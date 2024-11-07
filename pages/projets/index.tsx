@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { urlFor } from '@/sanity/lib/image';
+import { motion } from 'framer-motion';
 import Section from '@/components/Section';
 import { fetchProjects } from '@/services/projects.sevices';
 import { TypeProject } from '@/data/types';
@@ -23,8 +24,8 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
       {
         width: 0,
         stagger: 0.2,
-        duration: 2,
-        ease: 'power2.out',
+        duration: 1,
+        ease: 'power1.out',
       },
       '-=0.5'
     );
@@ -32,7 +33,7 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
       '.project-title-anim',
       {
         xPercent: -100,
-        stagger: .2,
+        stagger: 0.2,
         duration: 1,
         ease: 'power2.out',
       },
@@ -111,24 +112,30 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
             <div className='line-top-anim h-[3px] bg-black dark:bg-white rounded-full'></div>
             <div className='flex items-start md:items-center justify-between px-2 pt-8 gap-8'>
               <div className='flex flex-col md:flex-row gap-4 items-start md:items-center justify-center'>
-                <div className='overflow-hidden rounded-xl min-w-fit'>
+                <div className='overflow-hidden rounded-xl w-full md:w-fit min-w-fit'>
                   <div
-                    className={`project-img-anim project-img-anim-${index} min-w-fit overflow-hidden rounded-xl border border-black/20 dark:border-white/20`}
+                    className={`project-img-anim project-img-anim-${index} w-full min-w-fit overflow-hidden rounded-xl border border-black/20 dark:border-white/20`}
                   >
-                    <Image
-                      src={urlFor(project.mainImage).toString()}
-                      alt='project'
-                      width={1920}
-                      height={1080}
-                      className='max-w-72 select-none'
-                    />
+                    <motion.figure layoutId='image'>
+                      <Image
+                        src={urlFor(project.mainImage).toString()}
+                        alt='project'
+                        layout="responsive"
+                        width={1920}
+                        height={1080}
+                        className='md:max-w-72 select-none'
+                      />
+                    </motion.figure>
                   </div>
                 </div>
-                <div>
-                  <div className='overflow-hidden py-1'>
+                <div className='w-full'>
+                  <div className='overflow-hidden py-1 flex justify-between w-full md:w-fit'>
                     <h4 className='font-bold text-4xl project-title-anim'>
                       {project.title}
                     </h4>
+                    <p className='w-10 md:hidden'>
+                      {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                    </p>
                   </div>
                   <div className='overflow-hidden'>
                     <p className='font-medium projet-text-scroll'>
@@ -137,7 +144,7 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
                   </div>
                 </div>
               </div>
-              <div className='overflow-hidden w-fit'>
+              <div className='overflow-hidden hidden md:block w-fit'>
                 <p className='w-10'>
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </p>
