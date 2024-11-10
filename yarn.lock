@@ -1554,6 +1554,13 @@
   resolved "https://registry.yarnpkg.com/@nolyfill/is-core-module/-/is-core-module-1.0.39.tgz#3dc35ba0f1e66b403c00b39344f870298ebb1c8e"
   integrity sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==
 
+"@number-flow/react@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@number-flow/react/-/react-0.3.0.tgz#94ed868241f23ac0d11e31343d715b8c4b38f4e3"
+  integrity sha512-UExgUckxyeR1R36NfoD1An/6ZKe3VuzSxiVZgEYQmnjfeg/BVFjITi5MohnNzNt6RNAEKjDbQBpmSYUA/LO2lw==
+  dependencies:
+    number-flow "0.3.5"
+
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
@@ -5848,6 +5855,11 @@ nth-check@^2.0.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
+
+number-flow@0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/number-flow/-/number-flow-0.3.5.tgz#5e463101b00fde796db3032af1e7b4511dc0b998"
+  integrity sha512-PJ5SNbPcMmtIRZpV7Qbp2VjJ4ekT54QFo7sheTmAaJfz+t6T+rcNNEzVJaNtb87+AqkZu+SndXJ6AnnJqWnOeQ==
 
 object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"

@@ -4,7 +4,7 @@ import Layout from '@/layout/default';
 import SmoothScrolling from '@/layout/lenis';
 import { AppProvider } from '@/utils/contexts';
 import '@/styles/globals.css';
-import { LayoutGroup } from 'framer-motion';
+import PageTransition from '@/components/PageTransitions';
 
 export default function App({ Component, pageProps }: AppProps) {
   const pathname = usePathname();
@@ -17,9 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <AppProvider>
           <Layout>
             <SmoothScrolling>
-              <LayoutGroup>
+              <PageTransition>
                 <Component {...pageProps} />
-              </LayoutGroup>
+              </PageTransition>
             </SmoothScrolling>
           </Layout>
         </AppProvider>

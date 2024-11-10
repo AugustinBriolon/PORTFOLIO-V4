@@ -65,16 +65,6 @@ body {
   font-display: swap;
   font-style: normal;
 }
-@font-face {
-  font-family: 'Antonio';
-  src: url('/fonts/antonio/Antonio-Variable.ttf') format('truetype');
-  font-weight: 125 950;
-  font-display: auto;
-}
-
-.antonio {
-  font-family: Antonio;
-}
 
 .satoshi {
   font-family: Satoshi;

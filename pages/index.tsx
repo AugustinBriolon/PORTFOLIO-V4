@@ -3,7 +3,6 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 export default function Home() {
-  const curretDateYear = new Date().getFullYear();
   const aboutText =
     "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end. Je transforme vos projets en sites performants.".split(
       ' '
@@ -82,7 +81,9 @@ export default function Home() {
             FRONT-END©
           </h1>
         </div>
-        <p className='anim-opacity font-semibold'>(2019 - {curretDateYear})</p>
+        <div className='overflow-hidden'>
+          <p className='anim-opacity font-semibold'>Depuis 2019</p>
+        </div>
       </div>
 
       <div className='w-full flex flex-col gap-8 justify-between'>
@@ -123,7 +124,8 @@ export default function Home() {
                 Envoyez un{' '}
                 <a
                   href='mailto:augustin.briolon@gmail.com'
-                  className='underline' onMouseEnter={playHoverSound}
+                  className='underline'
+                  onMouseEnter={playHoverSound}
                 >
                   mail
                 </a>{' '}

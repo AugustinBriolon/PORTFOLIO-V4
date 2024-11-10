@@ -5,11 +5,14 @@ import gsap from 'gsap';
 import { urlFor } from '@/sanity/lib/image';
 import { TypeProject } from '@/data/types';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 interface ProjectCardProps {
   project: TypeProject;
   index: number;
 }
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -17,22 +20,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const imageRef = useRef<HTMLImageElement>(null);
 
   const desciprionWords = project.description.split(' ');
-
-  const animateHoverShow = () => {
-    gsap.to(imageRef, {
-      scale: 1.1,
-      duration: 0.5,
-      ease: 'power2.out',
-    });
-  };
-
-  const animateHoverHide = () => {
-    gsap.to(imageRef, {
-      scale: 1,
-      duration: 0.5,
-      ease: 'power2.out',
-    });
-  };
 
   useGSAP(() => {
     if (!targetRef.current || !triggerRef.current) return;
@@ -142,40 +129,37 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     <div
       key={project.slug.current}
       ref={triggerRef}
-      onMouseEnter={() => animateHoverShow()}
-      onMouseLeave={() => animateHoverHide()}
     >
-      <Link href={`/projets/${project.slug.current}`}>
+      <Link href={`/projets/${project.slug.current}`} className='group'>
         <div className='w-full h-fit flex flex-col md:flex-row gap-4 items-start md:items-center justify-center px-2 pb-4 md:pb-8'>
-          <div className='w-full md:w-fit min-w-fit'>
-            <div className='project-img-anim w-full min-w-fit'>
+          <div className='w-full md:w-fit min-w-fit overflow-hidden'>
+            <div className='project-img-anim w-full min-w-fit' ref={imageRef}>
               <Image
                 src={urlFor(project.mainImage).toString()}
-                ref={imageRef}
                 alt='project'
-                width={1920}
-                height={1080}
-                className='md:max-w-72 select-none'
+                width={5760}
+                height={4320}
+                className='md:max-w-72 select-none group-hover:scale-105 transition-transform ease-out duration-300'
               />
             </div>
           </div>
           <div className='w-full h-full flex flex-col gap-4'>
             <div className='flex items-center justify-between w-full'>
-              <div className='overflow-hidden py-1 flex justify-between w-full md:w-fit'>
+              <div className='overflow-hidden py-1 flex justify-between w-3/4 md:w-fit'>
                 <h4 className='font-bold text-4xl project-title-anim'>
                   {project.title}
                 </h4>
               </div>
               <div className='overflow-hidden'>
                 <p className='font-bold project-index-anim'>
-                  {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                  {index + 1 < 10 ? `0${index + 1}` : index + 1}/
                 </p>
               </div>
             </div>
             <div className='w-3/4' ref={targetRef}>
               {desciprionWords.map((word: string, index: number) => (
                 <span key={index} className='inline-block overflow-hidden'>
-                  <span className='project-text-anim inline-block text-black/50 dark:tetx-white/50'>
+                  <span className='project-text-anim inline-block text-black/50 dark:text-white/50'>
                     {word}
                     {index !== desciprionWords.length - 1 && '\u00A0'}
                   </span>

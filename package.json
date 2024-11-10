@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@number-flow/react": "^0.3.0",
     "@sanity/icons": "^3.4.0",
     "@sanity/image-url": "1",
     "@sanity/vision": "3",

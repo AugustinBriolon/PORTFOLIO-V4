@@ -36,7 +36,6 @@ export default function Page({
   const timelineProjectAnim = () => {
     const tl = gsap.timeline();
     tl.from('.project-info-container', {
-      // height: "90vh",
       yPercent: 100,
       duration: 1,
       ease: 'power2.out',
@@ -99,19 +98,21 @@ export default function Page({
         });
       },
     });
-    gsap.set('.project-description-anim p', { yPercent: 25, opacity: 0 });
-    ScrollTrigger.create({
-      trigger: '.project-description-anim',
-      start: 'top 90%',
-      onEnter: () => {
-        gsap.to('.project-description-anim p', {
-          yPercent: 0,
-          opacity: 1,
-          duration: 1.5,
-          ease: 'power2.out',
-        });
-      },
-    });
+    if (project.story) {
+      gsap.set('.project-description-anim p', { yPercent: 25, opacity: 0 });
+      ScrollTrigger.create({
+        trigger: '.project-description-anim',
+        start: 'top 90%',
+        onEnter: () => {
+          gsap.to('.project-description-anim p', {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1.5,
+            ease: 'power2.out',
+          });
+        },
+      });
+    }
     gsap.set('.project-info-anim', { yPercent: 100 });
     (gsap.utils.toArray('.project-info-anim') as HTMLElement[]).forEach(
       (el) => {
@@ -145,7 +146,7 @@ export default function Page({
       <div className='w-full'>
         <div className='project-info-container h-[35vh] min-h-96 w-full flex flex-col md:flex-row justify-end md:justify-between items-end z-10 bg-white dark:bg-black'>
           <div className='overflow-hidden md:w-1/2'>
-            <h2 className='text-6xl font-bold uppercase text-left dark:text-white'>
+            <h2 className='text-4xl md:text-6xl font-bold uppercase text-right  md:text-left dark:text-white'>
               {words.map((word, wordIndex) => (
                 <span key={wordIndex} className='inline-block overflow-hidden'>
                   {Array.from(word).map((letter, letterIndex) => (
@@ -175,8 +176,8 @@ export default function Page({
           src={urlFor(project.mainImage).toString()}
           className='w-full'
           alt={project.title}
-          width={1920}
-          height={1080}
+          width={5760}
+          height={4320}
         />
       </div>
 
@@ -191,14 +192,14 @@ export default function Page({
         </div>
         <div className='w-full flex flex-col gap-8'>
           <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
-            <p>Date</p>
+            <p className='self-end'>Date</p>
             <p className='font-bold capitalize text-lg justify-self-end project-info-anim'>
               {formatDate(project.publishedAt)}
             </p>
           </div>
 
           <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
-            <p>Langages</p>
+            <p className='self-end'>Langages</p>
             <div className='flex flex-wrap justify-end gap-1 justify-self-end project-info-anim'>
               {project.language.map((language, index) => (
                 <a
@@ -216,7 +217,7 @@ export default function Page({
           </div>
 
           <div className='grid grid-cols-project-info items-end md:items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
-            <p>Réalisé par</p>
+            <p className='self-end'>Réalisé par</p>
             <div className='flex flex-wrap gap-1 justify-end justify-self-end project-info-anim'>
               {project.authors.map((author, index) => (
                 <a
@@ -235,7 +236,7 @@ export default function Page({
 
           {project.testimonial && (
             <div className='grid grid-cols-project-info items-center gap-12  border-b border-black dark:border-white overflow-hidden'>
-              <p>Client</p>
+              <p className='self-end'>Client</p>
               <p className='font-bold text-lg  justify-self-end project-info-anim'>
                 {project.title}
               </p>
@@ -285,7 +286,7 @@ export default function Page({
           <h3 className='text-2xl font-bold uppercase dark:text-white'>
             Témoignage
           </h3>
-          <div className='w-full flex flex-col gap-4'>
+          <div className='md:w-3/4 flex flex-col gap-4'>
             {project.testimonial.map((testimonial, index) => (
               <div className='' key={index}>
                 <Image
@@ -295,7 +296,7 @@ export default function Page({
                   height={64}
                   className='dark-fill float-left w-10 h-10 mr-4'
                 />
-                <p className='text-lg'>{testimonial.quote}</p>
+                <p className='text-lg text-balance'>{testimonial.quote}</p>
                 <div className='pt-4 flex items-center justify-start gap-2'>
                   <div className='h-px w-20 bg-black dark:bg-white'></div>
                   <p>
@@ -309,12 +310,12 @@ export default function Page({
       )}
 
       <div className='relative h-28 w-full'>
-        <div className='bg-black dark:bg-white w-screen h-28 overflow-hidden flex items-center absolute abs-center top-1/2 before:absolute before:top-0 before:left-0 before:h-full before:w-10 before:bg-gradient-to-r before:from-black dark:before:from-white before:to-transparent before:content-[""] before:z-10 after:absolute after:top-0 after:right-0 after:h-full after:w-10 after:bg-gradient-to-l after:from-black dark:after:from-white after:to-transparent after:content-[""] after:z-10'>
-          <div className='title-container-anim absolute right-0 flex gap-8'>
+        <div className='bg-black dark:bg-white w-screen h-20 md:h-28 overflow-hidden flex items-center absolute abs-center top-1/2 before:absolute before:top-0 before:left-0 before:h-full before:w-10 before:bg-gradient-to-r before:from-black dark:before:from-white before:to-transparent before:content-[""] before:z-10 after:absolute after:top-0 after:right-0 after:h-full after:w-10 after:bg-gradient-to-l after:from-black dark:after:from-white after:to-transparent after:content-[""] after:z-10'>
+          <div className='title-container-anim absolute right-0 flex gap-4 md:gap-8'>
             {Array.from({ length: 100 }).map((_, index) => (
               <h2
                 key={index}
-                className='text-white dark:text-black text-5xl text-nowrap uppercase font-bold antonio'
+                className='text-white dark:text-black text-xl md:text-5xl text-nowrap uppercase font-bold'
               >
                 {project.title}
               </h2>
@@ -324,40 +325,37 @@ export default function Page({
       </div>
 
       <div className='w-full flex flex-col gap-4'>
-        <h3 className='text-2xl font-bold uppercase dark:text-white'>
-          Projet Suivant
-        </h3>
-        <div className=' justify-start items-center gap-2'>
+        <div className='flex justify-between items-center gap-2 w-full'>
           {projects.map((filteredProject, index) => (
             <Link
               key={index}
               href={`/projets/` + filteredProject.slug.current}
               scroll={true}
-              className='flex flex-col group'
+              className='flex flex-col group w-fit border border-black/20 dark:border-white/20'
             >
-              <div className='overflow-hidden'>
-                <Image
-                  src={urlFor(filteredProject.mainImage).toString()}
-                  alt={filteredProject.title}
-                  className='group-hover:scale-105 transition-transform duration-500'
-                  width={1920}
-                  height={1080}
-                />
-              </div>
-              <div className='flex justify-between items-center gap-2'>
-                <div className='flex flex-col sm:flex-row md:items-center gap-1 md:gap-10'>
-                  <p className='text-xl font-bold'>{filteredProject.title}</p>
-                  <p className='text-md font-semibold'>
-                    {filteredProject.description}
+              <Image
+                src={urlFor(filteredProject.mainImage).toString()}
+                alt={filteredProject.title}
+                width={5760}
+                height={4320}
+              />
+              <div className='flex flex-col justify-between'>
+                <div
+                  className='flex justify-between items-center gap-2 p-2'
+                >
+                  <p
+                    className='text-xl font-bold'
+                  >
+                    {filteredProject.title}
                   </p>
+                  <Image
+                    src='/icons/arrow-up-right.svg'
+                    className='dark-fill group-hover:-translate-y-1 group-hover:translate-x-1 transition-all'
+                    alt='arrow'
+                    width={24}
+                    height={24}
+                  />
                 </div>
-                <Image
-                  src='/icons/arrow-up-right.svg'
-                  className='dark-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105'
-                  alt='arrow'
-                  width={24}
-                  height={24}
-                />
               </div>
             </Link>
           ))}
@@ -377,10 +375,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const projectIndex = projects.findIndex(
     (p: TypeProject) => p.slug.current === project.slug.current
   );
-  const filteredProjects =
-    projectIndex < projects.length - 1
-      ? [projects[projectIndex + 1]]
-      : [projects[0]];
+  const filteredProjects = [
+    projects[(projectIndex + 1) % projects.length],
+    projects[(projectIndex - 1 + projects.length) % projects.length],
+  ];
 
   return {
     props: {

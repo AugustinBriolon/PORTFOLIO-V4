@@ -3,7 +3,9 @@ import Section from '@/components/Section';
 import { TypeProject } from '@/data/types';
 import { fetchProjects } from '@/services/projects.sevices';
 import { useGSAP } from '@gsap/react';
+import NumberFlow from '@number-flow/react';
 import gsap from 'gsap';
+import { useEffect, useState } from 'react';
 
 export default function Projects({ projects }: { projects: TypeProject[] }) {
   const timelineAnimation = () => {
@@ -14,7 +16,27 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
       duration: 1,
       ease: 'power2.out',
     });
+    tl.from(
+      '.project-lenght',
+      {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power2.out',
+      },
+      '<'
+    );
   };
+
+  const [length, setLength] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLength(projects.length);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [projects.length]);
 
   useGSAP(() => {
     timelineAnimation();
@@ -22,16 +44,29 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
 
   return (
     <>
-      <Section className='!min-h-[50vh] gap-12 !flex-row items-center justify-between'>
-        <div className='overflow-hidden w-1/2'>
+      <Section className='!min-h-[50vh] md:gap-12 !flex-row items-center justify-between'>
+        <div className='overflow-hidden w-full'>
           <h1 className='title-anim uppercase text-start font-extrabold dark:text-white'>
             MES PROJETS
           </h1>
         </div>
-        <div className='w-1/2 flex items-center justify-end'>
+        <div className='w-fit flex items-center justify-end'>
           <div>
-            <p className='font-bold text-5xl text-end'>{projects.length}</p>
-            <p>Projects</p>
+            <div className='overflow-hidden'>
+              <NumberFlow
+              value={length}
+              format={{ notation: 'compact' }}
+              locales='fr-FR'
+              transformTiming={{ 
+                duration: 700, 
+                easing: 'cubic-bezier(.17,.67,.14,.98)' 
+              }}
+              className='font-bold text-5xl text-end project-lenght'
+              />
+            </div>
+            <div className='overflow-hidden hidden md:block'>
+              <p className='title-anim'>Projects</p>
+            </div>
           </div>
         </div>
       </Section>
