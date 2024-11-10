@@ -1,5 +1,6 @@
 import ProjectCard from '@/components/ProjectCard';
 import Section from '@/components/Section';
+import SEO from '@/components/SEO';
 import { TypeProject } from '@/data/types';
 import { fetchProjects } from '@/services/projects.sevices';
 import { useGSAP } from '@gsap/react';
@@ -44,6 +45,7 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
 
   return (
     <>
+      <SEO title="Projets • Augustin Briolon • Portfolio Développeur Web Front-End 🚀" url='https://august1.dev/projets' />
       <Section className='!min-h-[50vh] md:gap-12 !flex-row items-center justify-between'>
         <div className='overflow-hidden w-full'>
           <h1 className='title-anim uppercase text-start font-extrabold dark:text-white'>
@@ -54,14 +56,14 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
           <div>
             <div className='overflow-hidden'>
               <NumberFlow
-              value={length}
-              format={{ notation: 'compact' }}
-              locales='fr-FR'
-              transformTiming={{ 
-                duration: 700, 
-                easing: 'cubic-bezier(.17,.67,.14,.98)' 
-              }}
-              className='font-bold text-5xl text-end project-lenght'
+                value={length}
+                format={{ notation: 'compact' }}
+                locales='fr-FR'
+                transformTiming={{
+                  duration: 700,
+                  easing: 'cubic-bezier(.17,.67,.14,.98)',
+                }}
+                className='font-bold text-5xl text-end project-lenght'
               />
             </div>
             <div className='overflow-hidden hidden md:block'>
