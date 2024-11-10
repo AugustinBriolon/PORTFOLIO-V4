@@ -1,8 +1,10 @@
+import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { usePathname } from 'next/navigation';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
@@ -15,6 +17,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
         {children}
         {pathname !== '/' && <Footer />}
       </div>
+      <Analytics />
+      <SpeedInsights />
     </QueryClientProvider>
   );
 };
