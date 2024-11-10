@@ -46,7 +46,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <p className="text-sm text-gray-400">©2024 - All rights reserved</p>
+        <p className="text-sm text-black/50">©2024 - All rights reserved</p>
       </footer>
     </Section>
   )
