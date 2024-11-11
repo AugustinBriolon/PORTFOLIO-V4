@@ -41,7 +41,7 @@ export default function Footer() {
                 <a href="mailto:augustin.briolon@gmail.com" className="uppercase font-semibold hover:underline" onMouseEnter={playHoverSound}>Email,</a>
               </li>
               <li>
-                <a href="" className="uppercase font-semibold hover:underline">Cv</a>
+                <a href="/CV.pdf" className="uppercase font-semibold hover:underline">Cv</a>
               </li>
             </ul>
           </div>
