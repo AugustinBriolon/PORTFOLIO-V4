@@ -70,7 +70,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <main>
       <SEO />
       <Section className='h-[90dvh] justify-between'>
         <div className='w-full flex flex-col items-center justify-start md:h-1/2'>
@@ -147,6 +147,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }

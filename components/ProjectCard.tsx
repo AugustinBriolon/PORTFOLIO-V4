@@ -147,9 +147,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <div className='w-full h-full flex flex-col gap-4'>
             <div className='flex items-center justify-between w-full'>
               <div className='overflow-hidden py-1 flex justify-between w-3/4 md:w-fit'>
-                <h4 className='font-bold text-4xl project-title-anim'>
+                <h2 className='font-bold text-4xl project-title-anim'>
                   {project.title}
-                </h4>
+                </h2>
               </div>
               <div className='overflow-hidden'>
                 <p className='font-bold project-index-anim'>
@@ -160,7 +160,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <div className='w-3/4' ref={targetRef}>
               {desciprionWords.map((word: string, index: number) => (
                 <span key={index} className='inline-block overflow-hidden'>
-                  <span className='project-text-anim inline-block text-black/50 dark:text-white/50'>
+                  <span className='project-text-anim inline-block text-black/80 dark:text-white/80'>
                     {word}
                     {index !== desciprionWords.length - 1 && '\u00A0'}
                   </span>

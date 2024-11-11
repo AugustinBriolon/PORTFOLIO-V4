@@ -44,7 +44,7 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
   }, []);
 
   return (
-    <>
+    <main>
       <SEO title="Projets • Augustin Briolon • Portfolio Développeur Web Front-End 🚀" url='https://august1.dev/projets' />
       <Section className='!min-h-[50vh] md:gap-12 !flex-row items-center justify-between'>
         <div className='overflow-hidden w-full'>
@@ -79,7 +79,7 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
           ))}
         </div>
       </Section>
-    </>
+    </main>
   );
 }
 

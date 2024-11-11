@@ -144,7 +144,7 @@ export default function Page({
   }, [paths]);
 
   return (
-    <>
+    <main>
       <SEO
         title={`${project.title} • Augustin Briolon • Portfolio Développeur Web Front-End 🚀`}
         description={project.description}
@@ -194,7 +194,7 @@ export default function Page({
             src={urlFor(project.mainImage).toString()}
             priority
             className='w-full'
-            alt={project.title}
+            alt={`Image principale du projet ${project.title}`}
             width={5760}
             height={4320}
           />
@@ -269,7 +269,7 @@ export default function Page({
                   href={project.websiteUrl}
                   rel='noopener noreferrer'
                   target='_blank'
-                  className='group  justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
+                  className='group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
                 >
                   Visiter
                   <Image
@@ -292,7 +292,7 @@ export default function Page({
                 key={index}
                 priority
                 src={urlFor(image).toString()}
-                alt={project.title}
+                alt={`Image numéro ${index +1} du projet ${project.title}`}
                 className={`${index === 0 || index === 5 ? 'col-span-2 ' : 'col-span-1 '} object-cover`}
                 width={3418}
                 height={2120}
@@ -355,7 +355,7 @@ export default function Page({
               >
                 <Image
                   src={urlFor(filteredProject.mainImage).toString()}
-                  alt={filteredProject.title}
+                  alt={`Image du projet ${filteredProject.title}`}
                   priority
                   width={5760}
                   height={4320}
@@ -379,7 +379,7 @@ export default function Page({
           </div>
         </div>
       </Section>
-    </>
+    </main>
   );
 }
 

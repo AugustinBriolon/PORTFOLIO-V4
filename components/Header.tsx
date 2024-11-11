@@ -61,7 +61,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className='h-[10dvh] relative w-full md:w-11/12 mx-auto flex md:grid md:grid-cols-header justify-between items-center gap-4 px-2 md:px-0 text-black dark:text-white'>
+    <header role="banner" className='h-[10dvh] relative w-full md:w-11/12 mx-auto flex md:grid md:grid-cols-header justify-between items-center gap-4 px-2 md:px-0 text-black dark:text-white'>
       <Link href='/' className='overflow-hidden'>
         <h1 className='text-header-anim text-xl font-bold'>AUGUSTIN BRIOLON</h1>
       </Link>
