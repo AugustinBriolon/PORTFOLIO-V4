@@ -57,10 +57,7 @@ body {
 */
 @font-face {
   font-family: 'Satoshi';
-  src:
-    url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
-    url('/fonts/satoshi/Satoshi-Variable.woff') format('woff'),
-    url('/fonts/satoshi/Satoshi-Variable.ttf') format('truetype');
+  src: url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2');
   font-weight: 300 900;
   font-display: swap;
   font-style: normal;
@@ -89,56 +86,4 @@ h4 {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.word {
-  display: block;
-  height: 100%;
-  animation: spin_words 8s infinite;
-}
-
-@keyframes spin_words {
-  0% {
-    transform: translateY(0);
-  }
-
-  10% {
-    transform: translateY(0);
-  }
-
-  20% {
-    transform: translateY(-100%);
-  }
-
-  30% {
-    transform: translateY(-100%);
-  }
-
-  40% {
-    transform: translateY(-200%);
-  }
-
-  50% {
-    transform: translateY(-200%);
-  }
-
-  60% {
-    transform: translateY(-300%);
-  }
-
-  70% {
-    transform: translateY(-300%);
-  }
-
-  80% {
-    transform: translateY(-400%);
-  }
-
-  90% {
-    transform: translateY(-400%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
 }

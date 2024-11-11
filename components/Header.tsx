@@ -82,19 +82,6 @@ export default function Header() {
             )}
           ></div>
         </Link>
-        <Link
-          href='/blog'
-          scroll={false}
-          className='overflow-hidden group relative'
-        >
-          <p className='text-header-anim text-center font-medium'>BLOG</p>
-          <div
-            className={clsx(
-              path?.split('/').pop() === 'blog' && '!w-5',
-              'abs-center h-[3px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
-            )}
-          ></div>
-        </Link>
       </div>
 
       <div className='flex items-center justify-evenly gap-2'>
@@ -165,6 +152,16 @@ export default function Header() {
 
       <div className='menu-burger md:hidden absolute w-screen h-[100dvh] -right-full top-0 z-20 bg-white dark:bg-black flex flex-col items-center justify-center gap-8'>
         <div className='flex flex-col items-center justify-center gap-4 h-full'>
+        <Link
+            href='/'
+            onClick={handleMenuBurger}
+            scroll={false}
+            className='overflow-hidden group relative'
+          >
+            <p className='text-header-anim text-center font-bold text-4xl'>
+              HOME
+            </p>
+          </Link>
           <Link
             href='/projets'
             onClick={handleMenuBurger}
@@ -175,18 +172,8 @@ export default function Header() {
               PROJETS
             </p>
           </Link>
-          <Link
-            href='/blog'
-            onClick={handleMenuBurger}
-            scroll={false}
-            className='overflow-hidden group relative'
-          >
-            <p className='text-header-anim text-center font-bold text-4xl'>
-              BLOG
-            </p>
-          </Link>
         </div>
-        <div className='flex overflow-hidden'>
+        <div className='flex overflow-hidden min-h-20'>
           <a
             href='https://www.linkedin.com/in/augustin-briolon/'
             target='_blank'

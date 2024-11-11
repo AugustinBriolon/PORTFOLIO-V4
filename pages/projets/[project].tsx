@@ -12,6 +12,7 @@ import { fetchProject } from '@/services/project.sevices';
 import RichText from '@/components/RichText';
 import { fetchProjects } from '@/services/projects.sevices';
 import SEO from '@/components/SEO';
+import { useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +25,9 @@ export default function Page({
   projects: TypeProject[];
   paths: TypePaths[];
 }) {
+  const infoRef = useRef<HTMLDivElement>(null);
+  const words = project.title.split(' ');
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('fr-FR', {
@@ -31,8 +35,6 @@ export default function Page({
       year: 'numeric',
     }).format(date);
   };
-
-  const words = project.title.split(' ');
 
   const timelineProjectAnim = () => {
     const tl = gsap.timeline();
@@ -73,6 +75,25 @@ export default function Page({
   };
 
   const scrollTriggerAnimation = () => {
+    if (!infoRef.current) return;
+    const projectAnim = infoRef.current.querySelectorAll('.project-info-anim');
+
+    gsap.fromTo(
+      projectAnim,
+      {
+        yPercent: 100,
+      },
+      {
+        yPercent: 0,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: infoRef.current,
+          start: 'top 85%',
+        },
+      }
+    );
+
     ScrollTrigger.create({
       trigger: document.documentElement,
       start: 'top top',
@@ -86,6 +107,7 @@ export default function Page({
         });
       },
     });
+
     ScrollTrigger.create({
       trigger: document.documentElement,
       start: 'top top',
@@ -114,23 +136,6 @@ export default function Page({
         },
       });
     }
-    gsap.set('.project-info-anim', { yPercent: 100 });
-    (gsap.utils.toArray('.project-info-anim') as HTMLElement[]).forEach(
-      (el) => {
-        ScrollTrigger.create({
-          trigger: el,
-          start: 'top 90%',
-          onEnter: () => {
-            gsap.to(el, {
-              yPercent: 0,
-              opacity: 1,
-              duration: 1,
-              ease: 'power2.out',
-            });
-          },
-        });
-      }
-    );
   };
 
   useGSAP(() => {
@@ -187,6 +192,7 @@ export default function Page({
           </div>
           <Image
             src={urlFor(project.mainImage).toString()}
+            priority
             className='w-full'
             alt={project.title}
             width={5760}
@@ -203,7 +209,7 @@ export default function Page({
               className='w-full text-black dark:text-white project-description-anim'
             />
           </div>
-          <div className='w-full flex flex-col gap-8'>
+          <div className='w-full flex flex-col gap-8' ref={infoRef}>
             <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
               <p className='self-end'>Date</p>
               <p className='font-bold capitalize text-lg justify-self-end project-info-anim'>
@@ -284,6 +290,7 @@ export default function Page({
             {project.gallery.map((image, index) => (
               <Image
                 key={index}
+                priority
                 src={urlFor(image).toString()}
                 alt={project.title}
                 className={`${index === 0 || index === 5 ? 'col-span-2 ' : 'col-span-1 '} object-cover`}
@@ -349,6 +356,7 @@ export default function Page({
                 <Image
                   src={urlFor(filteredProject.mainImage).toString()}
                   alt={filteredProject.title}
+                  priority
                   width={5760}
                   height={4320}
                 />

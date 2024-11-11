@@ -9,6 +9,8 @@ import gsap from 'gsap';
 import { useEffect, useState } from 'react';
 
 export default function Projects({ projects }: { projects: TypeProject[] }) {
+  const [length, setLength] = useState(0);
+
   const timelineAnimation = () => {
     const tl = gsap.timeline();
     tl.from('.title-anim', {
@@ -29,12 +31,10 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
     );
   };
 
-  const [length, setLength] = useState(0);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setLength(projects.length);
-    }, 200);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [projects.length]);

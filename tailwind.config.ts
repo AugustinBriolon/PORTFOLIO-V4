@@ -11,8 +11,6 @@ const config: Config = {
       colors: { 
         white: "#f1f1f1",
         black: "#1a1a1a",
-        'blue-default': '#415AC1',
-        'blue-dark': '#2F80EC'
       },
       gridTemplateColumns: {
         header: "250px 1fr 250px",

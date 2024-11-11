@@ -21,6 +21,7 @@ const SEO = ({
       />
       <meta name='google' content='notranslate' />
 
+      {/* OGTAGS */}
       <meta
         property='og:site_name'
         content='Augustin Briolon - Portfolio Développeur Web Front-End'
@@ -32,6 +33,7 @@ const SEO = ({
       <meta property='og:url' content={url} />
       <meta property='og:bsite' />
 
+      {/* TWITTER CARDS  */}
       <meta property='twitter:card' content='summary_large_image' />
       <meta property='twitter:creator' content='@AugustinBriolon' />
       <meta
@@ -44,25 +46,16 @@ const SEO = ({
       <meta property='twitter:site' content='@AugustinBriolon' />
       <meta property='twitter:domain' content='august1.dev' />
 
+      {/* FONT */}
       <link
         rel='preload'
         as='font'
         href='/fonts/satoshi/Satoshi-Variable.woff2'
-        crossOrigin='anonymous'
-      />
-      <link
-        rel='preload'
-        as='font'
-        href='/fonts/satoshi/Satoshi-Variable.woff'
-        crossOrigin='anonymous'
-      />
-      <link
-        rel='preload'
-        as='font'
-        href='/fonts/satoshi/Satoshi-Variable.ttf'
+        type='font/woff2'
         crossOrigin='anonymous'
       />
 
+      {/* FAVICON */}
       <link
         rel='icon'
         type='image/png'
@@ -76,9 +69,9 @@ const SEO = ({
         sizes='180x180'
         href='/favicon/apple-touch-icon.png'
       />
-      
       <link rel='manifest' href='/favicon/site.webmanifest' />
 
+      {/* SEO */}
       <link rel='canonical' href={url} />
     </Head>
   );

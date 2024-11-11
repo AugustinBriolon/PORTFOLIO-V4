@@ -136,6 +136,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <div className='project-img-anim w-full min-w-fit' ref={imageRef}>
               <Image
                 src={urlFor(project.mainImage).toString()}
+                priority
                 alt='project'
                 width={5760}
                 height={4320}
