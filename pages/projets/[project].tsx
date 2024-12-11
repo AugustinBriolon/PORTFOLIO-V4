@@ -292,7 +292,7 @@ export default function Page({
                 key={index}
                 priority
                 src={urlFor(image).toString()}
-                alt={`Image numéro ${index +1} du projet ${project.title}`}
+                alt={`Image numéro ${index + 1} du projet ${project.title}`}
                 className={`${index === 0 || index === 5 ? 'col-span-2 ' : 'col-span-1 '} object-cover`}
                 width={3418}
                 height={2120}
@@ -344,39 +344,38 @@ export default function Page({
           </div>
         </div>
 
-        <div className='w-full flex flex-col gap-4'>
-          <div className='flex justify-between items-center gap-2 w-full'>
-            {projects.map((filteredProject, index) => (
-              <Link
-                key={index}
-                href={`/projets/` + filteredProject.slug.current}
-                scroll={true}
-                className='flex flex-col group w-fit border border-black/20 dark:border-white/20'
-              >
-                <Image
-                  src={urlFor(filteredProject.mainImage).toString()}
-                  alt={`Image du projet ${filteredProject.title}`}
-                  priority
-                  width={5760}
-                  height={4320}
-                />
-                <div className='flex flex-col justify-between'>
-                  <div className='flex justify-between items-center gap-2 p-2'>
-                    <p className='text-xl font-bold truncate'>
-                      {filteredProject.title}
-                    </p>
-                    <Image
-                      src='/icons/arrow-up-right.svg'
-                      className='dark-fill group-hover:-translate-y-1 group-hover:translate-x-1 transition-all'
-                      alt='arrow'
-                      width={24}
-                      height={24}
-                    />
-                  </div>
+        <div className='w-full flex flex-col md:flex-row justify-between items-center gap-2'>
+          <h4 className='text-left w-full font-bold'>Voir aussi</h4>
+          {projects.map((filteredProject, index) => (
+            <Link
+              key={index}
+              href={`/projets/` + filteredProject.slug.current}
+              scroll={true}
+              className='flex flex-col group w-fit border border-black/20 dark:border-white/20'
+            >
+              <Image
+                src={urlFor(filteredProject.mainImage).toString()}
+                alt={`Image du projet ${filteredProject.title}`}
+                priority
+                width={5760}
+                height={4320}
+              />
+              <div className='flex flex-col justify-between'>
+                <div className='flex justify-between items-center gap-2 p-2'>
+                  <p className='text-xl font-bold truncate'>
+                    {filteredProject.title}
+                  </p>
+                  <Image
+                    src='/icons/arrow-up-right.svg'
+                    className='dark-fill group-hover:-translate-y-1 group-hover:translate-x-1 transition-all'
+                    alt='arrow'
+                    width={24}
+                    height={24}
+                  />
                 </div>
-              </Link>
-            ))}
-          </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </Section>
     </main>

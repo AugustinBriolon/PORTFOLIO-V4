@@ -47,7 +47,16 @@ export default function Home() {
       },
       '-=.5'
     );
-
+    tl.from(
+      '.ping-point',
+      {
+        opacity: 0,
+        scale: 0,
+        duration: 1,
+        ease: 'power2.out',
+      },
+      '+=1'
+    );
     tl.from(
       '.anim-opacity',
       {
@@ -56,7 +65,7 @@ export default function Home() {
         duration: 0.75,
         ease: 'power2.out',
       },
-      '-=1'
+      '-=2'
     );
   };
 
@@ -102,14 +111,18 @@ export default function Home() {
               ))}
             </p>
           </div>
-          <div className='w-full flex items-end justify-between gap-4'>
+          <div className='w-full flex items-start justify-between gap-4'>
             <div>
-              <div className='overflow-hidden'>
+              <div className='overflow-hidden flex items-center gap-2'>
                 <p className='text-sm bottom-anim'>Status</p>
+                <span className='relative flex h-2 w-2 ping-point'>
+                  <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-green-pulse opacity-75'></span>
+                  <span className='relative inline-flex rounded-full h-2 w-2 bg-green-pulse'></span>
+                </span>
               </div>
               <div className='overflow-hidden'>
-                <p className='uppercase font-medium bottom-anim'>
-                  Disponible pour un projet
+                <p className='uppercase font-medium bottom-anim flex items-center gap-2'>
+                  Disponible
                 </p>
               </div>
             </div>

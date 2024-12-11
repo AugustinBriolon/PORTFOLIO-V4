@@ -14,6 +14,7 @@ const SEO = ({
       <meta name='theme-color' content='#f1f1f1' />
       <title>{title}</title>
       <meta name='apple-mobile-web-app-title' content={title} />
+      <meta name="mobile-web-app-capable" content="yes"/>
       <meta name="apple-mobile-web-app-capable" content="yes"/>
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
       <meta name='description' content={description} />

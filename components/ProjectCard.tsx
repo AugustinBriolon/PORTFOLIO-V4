@@ -94,13 +94,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       .fromTo(
         imageAnim,
         {
-          opacity: 0,
-          scale: 0.8,
+          scaleY: 1,
         },
         {
-          opacity: 1,
-          scale: 1,
-          duration: 0.4,
+          scaleY: 0,
+          duration: 0.8,
           ease: 'power2.out',
         },
         '<'
@@ -133,7 +131,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <Link href={`/projets/${project.slug.current}`} className='group'>
         <div className='w-full h-fit flex flex-col md:flex-row gap-4 items-start md:items-center justify-center px-2 pb-4 md:pb-8'>
           <div className='w-full md:w-fit min-w-fit overflow-hidden'>
-            <div className='project-img-anim w-full min-w-fit' ref={imageRef}>
+            <div className='w-full min-w-fit relative'>
               <Image
                 src={urlFor(project.mainImage).toString()}
                 priority
@@ -142,6 +140,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 height={4320}
                 className='md:max-w-72 select-none group-hover:scale-105 transition-transform ease-out duration-300'
               />
+              <div className='project-img-anim origin-top absolute w-full h-full inset-0 bg-white' ref={imageRef}></div>
             </div>
           </div>
           <div className='w-full h-full flex flex-col gap-4'>

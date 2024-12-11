@@ -11,6 +11,7 @@ const config: Config = {
       colors: { 
         white: "#f1f1f1",
         black: "#1a1a1a",
+        'green-pulse' : '#629460',
       },
       gridTemplateColumns: {
         header: "250px 1fr 250px",
@@ -22,6 +23,6 @@ const config: Config = {
     },
   },
   plugins: [],
-  darkMode: 'selector',
+  darkMode: 'class',
 };
 export default config;

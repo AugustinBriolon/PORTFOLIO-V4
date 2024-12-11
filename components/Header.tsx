@@ -10,19 +10,8 @@ import { useAppContext } from '@/utils/contexts';
 export default function Header() {  
   const path = usePathname();
   
-  const { isDarkMode, setIsDarkMode } = useAppContext();
+  const { isDarkMode, toggleDarkMode } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleDarkMode = () => {
-    const htmlElement = document.querySelector('html');
-    htmlElement?.classList.toggle('dark');
-
-    localStorage.setItem(
-      'darkMode',
-      htmlElement?.classList.contains('dark') ? 'true' : 'false'
-    );
-    setIsDarkMode(htmlElement?.classList.contains('dark') ? true : false);
-  };
 
   const tl = gsap.timeline();
 
@@ -84,7 +73,7 @@ export default function Header() {
       <div className='flex items-center justify-evenly gap-2'>
         <div
           className='cursor-pointer block p-4 hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square'
-          onClick={handleDarkMode}
+          onClick={toggleDarkMode}
         >
           <Image
             src={isDarkMode ? '/icons/sun.svg' : '/icons/moon.svg'}
