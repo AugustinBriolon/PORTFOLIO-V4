@@ -27,7 +27,6 @@ export default function Header() {
   const tl = gsap.timeline();
 
   const handleMenuBurger = () => {
-    const audio = new Audio('/sounds/menu.wav');
     setIsMenuOpen(!isMenuOpen);
     if (!isMenuOpen) {
       tl.to('.menu-burger', {
@@ -35,14 +34,12 @@ export default function Header() {
         duration: 0.5,
         ease: 'power2.out',
       });
-      audio.play();
     } else {
       tl.to('.menu-burger', {
         right: '-100%',
         duration: 0.5,
         ease: 'power2.out',
       });
-      audio.play();
     }
   };
 
