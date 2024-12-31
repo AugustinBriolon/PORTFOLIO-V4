@@ -77,14 +77,30 @@ export const projectType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'gallery',
-      title: 'Gallery',
-      type: 'array',
-      of: [{ type: 'image' }],
-      options: {
-        layout: 'grid',
-      },
-    }),
+      name: 'video',
+      title: 'Video',
+      type: 'object',
+      fields: [
+        {
+          name: 'mp4',
+          title: 'MP4 Video',
+          type: 'file',
+          options: {
+            accept: 'video/mp4',
+          },
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'webm',
+          title: 'WebM Video',
+          type: 'file',
+          options: {
+            accept: 'video/webm',
+          },
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+    }),    
     defineField({
       name: 'authors',
       title: 'Authors',

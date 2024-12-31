@@ -13,10 +13,7 @@ export default function Footer() {
                 <Link href="/" className="uppercase font-semibold hover:underline">Index,</Link>
               </li>
               <li>
-                <Link href="/projets" className="uppercase font-semibold hover:underline">Projets,</Link>
-              </li>
-              <li>
-                <Link href="/blog" className="uppercase font-semibold hover:underline">Blog</Link>
+                <Link href="/projets" className="uppercase font-semibold hover:underline">Projets</Link>
               </li>
             </ul>
           </div>

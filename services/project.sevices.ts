@@ -11,7 +11,10 @@ export const fetchProject = async (params: ParsedUrlQuery | undefined) => {
       description,
       story,
       mainImage,
-      gallery,
+      video{
+        "mp4Url": mp4.asset->url,
+        "webmUrl": webm.asset->url
+      },
       websiteUrl,
       "authors": authors[]->{
         name,

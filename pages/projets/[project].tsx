@@ -223,10 +223,10 @@ export default function Page({
                 {project.language.map((language, index) => (
                   <a
                     key={index}
-                    className='font-bold capitalize text-lg'
                     href={language.url}
                     target='_blank'
                     rel='noopener noreferrer'
+                    className='font-bold capitalize text-lg'
                   >
                     {language.title}
                     {index < project.language.length - 1 && ','}
@@ -243,7 +243,7 @@ export default function Page({
                     key={index}
                     href={author.websiteUrl}
                     target='_blank'
-                    rel='noopener noreferrer'
+                    rel='noopener'
                     className='font-bold capitalize text-lg'
                   >
                     {author.name}
@@ -285,20 +285,24 @@ export default function Page({
           </div>
         </div>
 
-        {project.gallery && (
-          <div className='w-full grid grid-cols-2 gap-2'>
-            {project.gallery.map((image, index) => (
-              <Image
-                key={index}
-                priority
-                src={urlFor(image).toString()}
-                alt={`Image numéro ${index + 1} du projet ${project.title}`}
-                className={`${index === 0 || index === 5 ? 'col-span-2 ' : 'col-span-1 '} object-cover`}
-                width={3418}
-                height={2120}
-              />
-            ))}
-          </div>
+        {project.video && (
+          <a
+            href={project.websiteUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='w-full select-none'
+          >
+            <video
+              className='w-full h-auto z-10 relative min-h-[150px] sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]'
+              autoPlay
+              playsInline
+              loop
+              muted
+            >
+              <source src={project.video.webmUrl} type='video/webm' />
+              <source src={project.video.mp4Url} type='video/mp4' />
+            </video>
+          </a>
         )}
 
         {project.testimonial && (

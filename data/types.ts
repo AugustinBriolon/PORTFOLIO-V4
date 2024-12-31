@@ -17,7 +17,7 @@ export type TypeProject = {
   description: string;
   story: TypedObject[];
   mainImage: Image;
-  gallery: Image[];
+  video: TypeProjectVideo;
   authors: TypeAuthor[];
   types: TypeTypes[];
   language: TypeLanguage[];
@@ -47,4 +47,9 @@ export type TypeTestimonial = {
   author: string;
   role: string;
   quote: string;
+};
+
+export type TypeProjectVideo = {
+  mp4Url: string;
+  webmUrl: string;
 };
