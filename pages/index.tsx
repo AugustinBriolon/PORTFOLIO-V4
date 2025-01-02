@@ -5,7 +5,7 @@ import gsap from 'gsap';
 
 export default function Home() {
   const aboutText =
-    "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end. Je transforme vos projets en sites performants.".split(
+    "Portfolio d'Augustin Briolon. Développeur web spécialisé en front-end. Je transforme vos projets en sites performants.".split(
       ' '
     );
 
@@ -17,16 +17,6 @@ export default function Home() {
       duration: 1,
       ease: 'power2.out',
     });
-    tl.from(
-      '.subtitle-anim',
-      {
-        yPercent: 100,
-        duration: 1,
-        ease: 'power2.out',
-      },
-      '-=1'
-    );
-
     tl.from(
       '.anim-text',
       {
@@ -65,7 +55,7 @@ export default function Home() {
         duration: 0.75,
         ease: 'power2.out',
       },
-      '-=2'
+      '-=3'
     );
   };
 
@@ -80,12 +70,12 @@ export default function Home() {
         <div className='w-full flex flex-col items-center justify-start md:h-1/2'>
           <div className='overflow-hidden'>
             <h1 className='title-anim uppercase text-center font-extrabold'>
-              DÉVELOPPEUR WEB
+              CRÉATIVE 
             </h1>
           </div>
           <div className='overflow-hidden'>
             <h1 className='title-anim uppercase text-center font-extrabold'>
-              FRONT-END©
+              DÉVELOPPEUR©
             </h1>
           </div>
           <div className='overflow-hidden'>
@@ -94,23 +84,16 @@ export default function Home() {
         </div>
 
         <div className='w-full flex flex-col gap-8 justify-between'>
-          <div className='w-full flex flex-col'>
-            <div className='overflow-hidden'>
-              <h2 className='subtitle-anim uppercase font-bold text-2xl'>
-                À propos
-              </h2>
-            </div>
-            <p className='about-text overflow-hidden'>
-              {aboutText.map((word, index) => (
-                <span key={index} className='inline-block overflow-hidden'>
-                  <span className='anim-text inline-block'>
-                    {word}
-                    {index !== aboutText.length - 1 && '\u00A0'}
-                  </span>
+          <p className='about-text overflow-hidden'>
+            {aboutText.map((word, index) => (
+              <span key={index} className='inline-block overflow-hidden'>
+                <span className='anim-text inline-block'>
+                  {word}
+                  {index !== aboutText.length - 1 && '\u00A0'}
                 </span>
-              ))}
-            </p>
-          </div>
+              </span>
+            ))}
+          </p>
           <div className='w-full flex items-start justify-between gap-4'>
             <div>
               <div className='overflow-hidden flex items-center gap-2'>

@@ -52,7 +52,7 @@ export default function Header() {
         <h1 className='text-header-anim text-xl font-bold'>AUGUSTIN BRIOLON</h1>
       </Link>
 
-      <div className='hidden md:flex gap-4'>
+      <div className='hidden md:flex gap-8'>
         <Link
           href='/projets'
           scroll={false}
@@ -68,6 +68,21 @@ export default function Header() {
             )}
           ></div>
         </Link>
+        {/* <Link
+          href='/playgrounds'
+          scroll={false}
+          className='overflow-hidden group relative'
+        >
+          <p className='text-header-anim text-center font-medium'>
+            PLAYGROUNDS
+          </p>
+          <div
+            className={clsx(
+              path?.split('/').pop() === 'playgrounds' && '!w-5',
+              'abs-center h-[3px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
+            )}
+          ></div>
+        </Link> */}
       </div>
 
       <div className='flex items-center justify-evenly gap-2'>
@@ -158,6 +173,16 @@ export default function Header() {
               PROJETS
             </p>
           </Link>
+          {/* <Link
+            href='/playgrounds'
+            onClick={handleMenuBurger}
+            scroll={false}
+            className='overflow-hidden group relative'
+          >
+            <p className='text-header-anim text-center font-bold text-4xl'>
+              PLAYGROUNDS
+            </p>
+          </Link> */}
         </div>
         <div className='flex overflow-hidden min-h-20'>
           <a
