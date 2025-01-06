@@ -55,7 +55,6 @@ export default function Header() {
       <div className='hidden md:flex gap-8'>
         <Link
           href='/projets'
-          scroll={false}
           className='overflow-hidden group relative'
         >
           <p className='text-header-anim text-center font-medium'>
@@ -156,7 +155,6 @@ export default function Header() {
         <Link
             href='/'
             onClick={handleMenuBurger}
-            scroll={false}
             className='overflow-hidden group relative'
           >
             <p className='text-header-anim text-center font-bold text-4xl'>
@@ -166,7 +164,6 @@ export default function Header() {
           <Link
             href='/projets'
             onClick={handleMenuBurger}
-            scroll={false}
             className='overflow-hidden group relative'
           >
             <p className='text-header-anim text-center font-bold text-4xl'>

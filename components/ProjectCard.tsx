@@ -128,7 +128,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       key={project.slug.current}
       ref={triggerRef}
     >
-      <Link href={`/projets/${project.slug.current}`} className='group'>
+      <Link href={`/projets/${project.slug.current}`} className='group' scroll={true}>
         <div className='w-full h-fit flex flex-col md:flex-row gap-4 items-start md:items-center justify-center px-2 pb-4 md:pb-8'>
           <div className='w-full md:w-fit min-w-fit overflow-hidden'>
             <div className='w-full min-w-fit relative'>

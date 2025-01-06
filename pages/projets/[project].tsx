@@ -226,10 +226,13 @@ export default function Page({
                     href={language.url}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='font-bold capitalize text-lg'
+                    className='font-bold capitalize text-lg relative group'
                   >
-                    {language.title}
-                    {index < project.language.length - 1 && ','}
+                    <span className='relative z-10 group-hover:text-white'>
+                      {language.title}
+                      {index < project.language.length - 1 && ','}
+                    </span>
+                    <span className='absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full'></span>
                   </a>
                 ))}
               </div>
@@ -244,10 +247,13 @@ export default function Page({
                     href={author.websiteUrl}
                     target='_blank'
                     rel='noopener'
-                    className='font-bold capitalize text-lg'
+                    className='font-bold capitalize text-lg relative group'
                   >
-                    {author.name}
-                    {index < project.authors.length - 1 && ','}
+                    <span className='relative z-10 group-hover:text-white'>
+                      {author.name}
+                      {index < project.authors.length - 1 && ','}
+                    </span>
+                    <span className='absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full'></span>
                   </a>
                 ))}
               </div>
