@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 mode='wait'
                 onExitComplete={() => window.scrollTo(0, 0)}
               >
-                <PageTransition key={pathname}>
+                <PageTransition>
                   <Component {...pageProps} />
                 </PageTransition>
               </AnimatePresence>
