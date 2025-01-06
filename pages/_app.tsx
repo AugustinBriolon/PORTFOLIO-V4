@@ -5,6 +5,7 @@ import SmoothScrolling from '@/layout/lenis';
 import { AppProvider } from '@/utils/contexts';
 import '@/styles/globals.css';
 import PageTransition from '@/components/PageTransitions';
+import { AnimatePresence } from 'framer-motion';
 
 export default function App({ Component, pageProps }: AppProps) {
   const pathname = usePathname();
@@ -17,9 +18,14 @@ export default function App({ Component, pageProps }: AppProps) {
         <AppProvider>
           <Layout>
             <SmoothScrolling>
-              <PageTransition>
-                <Component {...pageProps} />
-              </PageTransition>
+              <AnimatePresence
+                mode='wait'
+                onExitComplete={() => window.scrollTo(0, 0)}
+              >
+                <PageTransition key={pathname}>
+                  <Component {...pageProps} />
+                </PageTransition>
+              </AnimatePresence>
             </SmoothScrolling>
           </Layout>
         </AppProvider>

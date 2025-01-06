@@ -354,7 +354,7 @@ export default function Page({
             <Link
               key={index}
               href={`/projets/` + filteredProject.slug.current}
-              scroll={true}
+              scroll={false}
               className='flex flex-col group w-fit border border-black/20 dark:border-white/20'
             >
               <Image
