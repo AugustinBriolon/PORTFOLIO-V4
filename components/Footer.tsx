@@ -15,9 +15,6 @@ export default function Footer() {
               <li>
                 <Link href="/projets" className="uppercase font-semibold hover:underline">Projets</Link>
               </li>
-              <li>
-                <Link href="/about" className="uppercase font-semibold hover:underline">About</Link>
-              </li>
             </ul>
           </div>
           <div>

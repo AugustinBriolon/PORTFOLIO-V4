@@ -339,7 +339,7 @@ export default function Page({
               {Array.from({ length: 100 }).map((_, index) => (
                 <h2
                   key={index}
-                  className='text-white dark:text-black text-xl md:text-5xl text-nowrap uppercase font-bold'
+                  className='text-white dark:text-black text-3xl md:text-5xl text-nowrap uppercase font-bold'
                 >
                   {project.title}
                 </h2>
