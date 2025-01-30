@@ -70,12 +70,12 @@ export default function Home() {
         <div className='w-full flex flex-col items-center justify-start md:h-1/2'>
           <div className='overflow-hidden'>
             <h1 className='title-anim uppercase text-center font-extrabold'>
-              CRÉATIVE 
+            DÉVELOPPEUR 
             </h1>
           </div>
           <div className='overflow-hidden'>
             <h1 className='title-anim uppercase text-center font-extrabold'>
-              DÉVELOPPEUR©
+              CRÉATIF©
             </h1>
           </div>
           <div className='overflow-hidden'>
