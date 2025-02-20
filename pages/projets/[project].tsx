@@ -13,6 +13,7 @@ import RichText from '@/components/RichText';
 import { fetchProjects } from '@/services/projects.sevices';
 import SEO from '@/components/SEO';
 import { useRef } from 'react';
+import InfiniteScrollTitle from '@/components/InfiniteScrollTitle';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,19 +109,6 @@ export default function Page({
       },
     });
 
-    ScrollTrigger.create({
-      trigger: document.documentElement,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: true,
-      onUpdate: (self) => {
-        const progress = self.progress * 2;
-        gsap.to('.title-container-anim', {
-          x: `${progress}%`,
-          ease: 'linear',
-        });
-      },
-    });
     if (project.story) {
       gsap.set('.project-description-anim p', { yPercent: 25, opacity: 0 });
       ScrollTrigger.create({
@@ -339,20 +327,7 @@ export default function Page({
           </div>
         )}
 
-        <div className='relative h-28 w-full'>
-          <div className='bg-black dark:bg-white w-screen h-20 md:h-28 overflow-hidden flex items-center absolute abs-center top-1/2 before:absolute before:top-0 before:left-0 before:h-full before:w-10 before:bg-gradient-to-r before:from-black dark:before:from-white before:to-transparent before:content-[""] before:z-10 after:absolute after:top-0 after:right-0 after:h-full after:w-10 after:bg-gradient-to-l after:from-black dark:after:from-white after:to-transparent after:content-[""] after:z-10'>
-            <div className='title-container-anim absolute right-0 flex gap-4 md:gap-8'>
-              {Array.from({ length: 100 }).map((_, index) => (
-                <h2
-                  key={index}
-                  className='text-white dark:text-black text-3xl md:text-5xl text-nowrap uppercase font-bold'
-                >
-                  {project.title}
-                </h2>
-              ))}
-            </div>
-          </div>
-        </div>
+        <InfiniteScrollTitle title={project.title} />
 
         <div className='w-full flex flex-col md:flex-row justify-between items-center gap-2'>
           <h4 className='text-left w-full font-bold'>Voir aussi</h4>
@@ -360,7 +335,6 @@ export default function Page({
             <Link
               key={index}
               href={`/projets/` + filteredProject.slug.current}
-              // scroll={false}
               className='flex flex-col group w-fit border border-black/20 dark:border-white/20'
             >
               <Image

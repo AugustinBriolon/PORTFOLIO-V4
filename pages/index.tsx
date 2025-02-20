@@ -1,13 +1,19 @@
+import CursorImages from '@/components/CursorImages';
 import Section from '@/components/Section';
 import SEO from '@/components/SEO';
+import { TypeProject } from '@/data/types';
+import { fetchProjects } from '@/services/projects.sevices';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-export default function Home() {
+export default function Home({ projects }: { projects: TypeProject[] }) {
   const aboutText =
-    "Portfolio d'Augustin Briolon. Développeur web spécialisé en front-end. Je transforme vos projets en sites performants.".split(
+    "Portfolio d'Augustin Briolon. Développeur web spécialisé en front-end. Je transforme vos projets en sites créatifs et performants.".split(
       ' '
     );
+
+  const imagesArray= projects.map((project) => project.mainImage);
+  
 
   const timelineProjectAnim = () => {
     const tl = gsap.timeline();
@@ -67,7 +73,7 @@ export default function Home() {
     <main>
       <SEO />
       <Section className='h-[90dvh] justify-between'>
-        <div className='w-full flex flex-col items-center justify-start md:h-1/2'>
+        <div className='w-full flex flex-col items-center justify-start md:h-1/2  z-20'>
           <div className='overflow-hidden'>
             <h1 className='title-anim uppercase text-center font-extrabold'>
             DÉVELOPPEUR 
@@ -83,7 +89,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='w-full flex flex-col gap-8 justify-between'>
+        <div className='w-full flex flex-col gap-8 justify-between  z-20'>
           <p className='about-text overflow-hidden'>
             {aboutText.map((word, index) => (
               <span key={index} className='inline-block overflow-hidden'>
@@ -135,7 +141,18 @@ export default function Home() {
             </div>
           </div>
         </div>
+      <CursorImages images={imagesArray} />
       </Section>
     </main>
   );
+}
+
+export async function getStaticProps() {
+  const projects = await fetchProjects();
+
+  return {
+    props: {
+      projects,
+    },
+  };
 }
