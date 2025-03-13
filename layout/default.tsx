@@ -5,14 +5,15 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { TypeProject } from '@/data/types';
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ projects, children }: { projects: TypeProject[]; children: ReactNode }) => {
   const pathname = usePathname();
 
   return (
     <>
       <div className='max-w-screen-2xl mx-auto overflow-hidden'>
-        <Header />
+        <Header projects={projects} />
         {children}
         {pathname !== '/' && <Footer />}
       </div>

@@ -6,8 +6,16 @@ import { AppProvider } from '@/utils/contexts';
 import '@/styles/globals.css';
 import PageTransition from '@/components/PageTransitions';
 import { AnimatePresence } from 'framer-motion';
+import { fetchProjects } from '@/services/projects.sevices';
+import { TypeProject } from '@/data/types';
 
-export default function App({ Component, pageProps }: AppProps) {
+interface CustomAppProps extends AppProps {
+  globalProps: {
+    projects: TypeProject[];
+  };
+}
+
+function App({ Component, pageProps, globalProps }: CustomAppProps) {
   const pathname = usePathname();
 
   return (
@@ -16,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       ) : (
         <AppProvider>
-          <Layout>
+          <Layout projects={globalProps.projects}>
             <SmoothScrolling>
               <AnimatePresence
                 mode='wait'
@@ -33,3 +41,15 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+App.getInitialProps = async () => {
+  const projects = await fetchProjects();
+
+  return {
+    globalProps: {
+      projects,
+    },
+  };
+};
+
+export default App;

@@ -37,7 +37,7 @@ const HeaderButton: FC<HeaderButtonProps> = ({
         target='_blank'
         rel='noopener noreferrer'
         title={title}
-        className={baseClassName + ' cursor-arrow'}
+        className={baseClassName + ' cursor-arrow z-20'}
       >
         <Image alt={`Logo ${title}`} {...imageProps} />
       </a>
@@ -45,7 +45,7 @@ const HeaderButton: FC<HeaderButtonProps> = ({
   }
 
   return (
-    <div className={baseClassName} onClick={onClick}>
+    <div className={baseClassName + 'cursor-pointer z-50'} onClick={onClick}>
       <Image alt={`Logo ${title}`} {...imageProps} />
     </div>
   );

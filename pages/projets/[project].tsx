@@ -54,16 +54,7 @@ export default function Page({
       },
       '-=1'
     );
-    tl.from(
-      '.project-tags-anim',
-      {
-        yPercent: 400,
-        stagger: 0.05,
-        duration: 1,
-        ease: 'power2.out',
-      },
-      '-=1'
-    );
+
     tl.from(
       '.fill-anim',
       {
@@ -144,8 +135,8 @@ export default function Page({
         </div>
 
         <div className='w-full'>
-          <div className='project-info-container h-[35vh] min-h-96 w-full flex flex-col md:flex-row justify-end md:justify-between items-end z-10 bg-white dark:bg-black'>
-            <div className='overflow-hidden md:w-1/2'>
+          <div className='project-info-container h-[35vh] min-h-96 w-full flex flex-col md:flex-row justify-end md:justify-between items-end gap-8 z-10 bg-white dark:bg-black'>
+            <div className='overflow-hidden md:w-full'>
               <h2 className='text-4xl md:text-6xl font-bold uppercase text-right  md:text-left dark:text-white'>
                 {words.map((word, wordIndex) => (
                   <span
@@ -165,19 +156,25 @@ export default function Page({
                 ))}
               </h2>
             </div>
-            <div className='overflow-hidden md:w-1/2'>
-              <div className='flex flex-wrap gap-3 items-center justify-end pb-3'>
-                {project.types.map((type, index) => (
-                  <span
-                    key={index}
-                    className='project-tags-anim dark:text-white text-lg font-medium uppercase border border-black/20 dark:border-white/20 rounded-full px-4 py-1'
-                  >
-                    {type.title}
-                  </span>
-                ))}
-              </div>
+            <div className='overflow-hidden md:w-fit mb-2'>
+              <a
+                href={project.websiteUrl}
+                rel='noopener noreferrer'
+                target='_blank'
+                className='project-url-anim group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
+              >
+                Visiter
+                <Image
+                  src='/icons/arrow-up-right.svg'
+                  className='light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105'
+                  alt='arrow'
+                  width={24}
+                  height={24}
+                />
+              </a>
             </div>
           </div>
+
           <Image
             src={urlFor(project.mainImage).toString()}
             priority
@@ -198,13 +195,12 @@ export default function Page({
             />
           </div>
           <div className='w-full flex flex-col gap-8' ref={infoRef}>
-            <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
+          <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
               <p className='self-end'>Date</p>
               <p className='font-bold capitalize text-lg justify-self-end project-info-anim'>
                 {formatDate(project.publishedAt)}
               </p>
             </div>
-
             <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
               <p className='self-end'>Langages</p>
               <div className='flex flex-wrap justify-end gap-1 justify-self-end project-info-anim'>
@@ -250,32 +246,11 @@ export default function Page({
             {project.testimonial && (
               <div className='grid grid-cols-project-info items-center gap-12  border-b border-black dark:border-white overflow-hidden'>
                 <p className='self-end'>Client</p>
-                <p className='font-bold text-lg  justify-self-end project-info-anim'>
+                <p className='font-bold text-lg text-right justify-self-end project-info-anim'>
                   {project.title}
                 </p>
               </div>
             )}
-
-            <div>
-              <div className='grid grid-cols-project-info items-center gap-12 '>
-                <p>Website</p>
-                <a
-                  href={project.websiteUrl}
-                  rel='noopener noreferrer'
-                  target='_blank'
-                  className='group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
-                >
-                  Visiter
-                  <Image
-                    src='/icons/arrow-up-right.svg'
-                    className='light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105'
-                    alt='arrow'
-                    width={24}
-                    height={24}
-                  />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
 
