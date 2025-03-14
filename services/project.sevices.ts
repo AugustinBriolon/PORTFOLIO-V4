@@ -6,7 +6,6 @@ export const fetchProject = async (params: ParsedUrlQuery | undefined) => {
     *[_type == "projects" && slug.current == $project][0] {
       title,
       slug,
-      projectIndex,
       publishedAt,
       description,
       story,

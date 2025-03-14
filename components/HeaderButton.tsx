@@ -45,9 +45,9 @@ const HeaderButton: FC<HeaderButtonProps> = ({
   }
 
   return (
-    <div className={baseClassName + 'cursor-pointer z-50'} onClick={onClick}>
+    <button className={baseClassName + 'cursor-pointer z-50'} onClick={onClick}>
       <Image alt={`Logo ${title}`} {...imageProps} />
-    </div>
+    </button>
   );
 };
 

@@ -10,7 +10,6 @@ export interface Posts {
 export type TypeProject = {
   title: string;
   slug: Slug;
-  projectIndex: number;
   publishedAt: string;
   websiteUrl: string;
   repoUrl: string;

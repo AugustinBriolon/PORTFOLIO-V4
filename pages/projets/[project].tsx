@@ -78,6 +78,7 @@ export default function Page({
       {
         yPercent: 0,
         duration: 1,
+        stagger: 0.08,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: infoRef.current,
@@ -135,9 +136,9 @@ export default function Page({
         </div>
 
         <div className='w-full'>
-          <div className='project-info-container h-[35vh] min-h-96 w-full flex flex-col md:flex-row justify-end md:justify-between items-end gap-8 z-10 bg-white dark:bg-black'>
-            <div className='overflow-hidden md:w-full'>
-              <h2 className='text-4xl md:text-6xl font-bold uppercase text-right  md:text-left dark:text-white'>
+          <div className='project-info-container h-[35vh] min-h-96 w-full flex flex-row justify-between items-end gap-2 md:gap-8 bg-white dark:bg-black'>
+            <div className='overflow-hidden w-fit md:w-full'>
+              <h2 className='text-4xl md:text-6xl font-bold uppercase text-left dark:text-white'>
                 {words.map((word, wordIndex) => (
                   <span
                     key={wordIndex}
@@ -156,14 +157,14 @@ export default function Page({
                 ))}
               </h2>
             </div>
-            <div className='overflow-hidden md:w-fit mb-2'>
+            <div className='overflow-hidden w-14 md:w-fit mb-2'>
               <a
                 href={project.websiteUrl}
                 rel='noopener noreferrer'
                 target='_blank'
-                className='project-url-anim group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
+                className='project-url-anim group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black aspect-square md:aspect-auto md:px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
               >
-                Visiter
+                <span className='hidden md:block '>Visiter</span>
                 <Image
                   src='/icons/arrow-up-right.svg'
                   className='light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105'
@@ -203,14 +204,14 @@ export default function Page({
             </div>
             <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
               <p className='self-end'>Langages</p>
-              <div className='flex flex-wrap justify-end gap-1 justify-self-end project-info-anim'>
+              <div className='flex flex-wrap justify-end gap-1 justify-self-end'>
                 {project.language.map((language, index) => (
                   <a
                     key={index}
                     href={language.url}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='font-bold capitalize text-lg relative group'
+                    className='font-bold capitalize text-lg relative group project-info-anim'
                   >
                     <span className='relative z-10 group-hover:text-white'>
                       {language.title}
@@ -222,30 +223,43 @@ export default function Page({
               </div>
             </div>
 
-            <div className='grid grid-cols-project-info items-end md:items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
-              {project.authors && project.authors.length > 1 && (
-                <>
-                  <p className='self-end'>Réalisé par</p>
-                  <div className='flex flex-wrap gap-1 justify-end justify-self-end project-info-anim'>
-                    {project.authors.map((author, index) => (
-                      <a
-                        key={index}
-                        href={author.websiteUrl}
-                        target='_blank'
-                        rel='noopener'
-                        className='font-bold capitalize text-lg relative group'
-                      >
-                        <span className='relative z-10 group-hover:text-white'>
-                          {author.name}
-                          {index < project.authors.length - 1 && ','}
-                        </span>
-                        <span className='absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full'></span>
-                      </a>
-                    ))}
-                  </div>
-                </>
-              )}
+            <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
+              <p className='self-end'>Contribution</p>
+              <div className='flex flex-wrap justify-end gap-1 justify-self-end'>
+                {project.types.map((type, index) => (
+                  <p
+                    key={index}
+                    className='font-bold capitalize text-lg justify-self-end project-info-anim'
+                  >
+                    {type.title}
+                    {index < project.types.length - 1 && ','}
+                  </p>
+                ))}
+              </div>
             </div>
+
+            {project.authors && project.authors.length > 1 && (
+              <div className='grid grid-cols-project-info items-end md:items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
+                <p className='self-end'>Réalisé par</p>
+                <div className='flex flex-wrap gap-1 justify-end justify-self-end'>
+                  {project.authors.map((author, index) => (
+                    <a
+                      key={index}
+                      href={author.websiteUrl}
+                      target='_blank'
+                      rel='noopener'
+                      className='font-bold capitalize text-lg relative group project-info-anim'
+                    >
+                      <span className='relative z-10 group-hover:text-white'>
+                        {author.name}
+                        {index < project.authors.length - 1 && ','}
+                      </span>
+                      <span className='absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full'></span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {project.testimonial && (
               <div className='grid grid-cols-project-info items-center gap-12  border-b border-black dark:border-white overflow-hidden'>
@@ -309,20 +323,22 @@ export default function Page({
         <InfiniteScrollTitle title={project.title} />
 
         <div className='w-full flex flex-col md:flex-row justify-between items-center gap-2'>
-          <h4 className='text-left w-full font-bold'>Voir aussi</h4>
           {projects.map((filteredProject, index) => (
             <Link
               key={index}
               href={`/projets/` + filteredProject.slug.current}
-              className='flex flex-col group w-fit border border-black/20 dark:border-white/20'
+              className='group flex flex-col group w-fit border border-black/20 dark:border-white/20'
             >
-              <Image
-                src={urlFor(filteredProject.mainImage).toString()}
-                alt={`Image du projet ${filteredProject.title}`}
-                priority
-                width={5760}
-                height={4320}
-              />
+              <div className='overflow-hidden'>
+                <Image
+                  src={urlFor(filteredProject.mainImage).toString()}
+                  className='group-hover:scale-105 transition-transform ease-out duration-300'
+                  alt={`Image du projet ${filteredProject.title}`}
+                  priority
+                  width={5760}
+                  height={4320}
+                />
+              </div>
               <div className='flex flex-col justify-between'>
                 <div className='flex justify-between items-center gap-2 p-2'>
                   <p className='text-xl font-bold truncate'>
@@ -355,16 +371,12 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const projectIndex = projects.findIndex(
     (p: TypeProject) => p.slug.current === project.slug.current
   );
-  const filteredProjects = [
-    projects[(projectIndex + 1) % projects.length],
-    projects[(projectIndex - 1 + projects.length) % projects.length],
-  ];
 
   return {
     props: {
       paths,
       project: project || null,
-      projects: filteredProjects,
+      projects: projectIndex,
     },
   };
 };

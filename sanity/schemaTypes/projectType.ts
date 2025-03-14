@@ -1,12 +1,15 @@
 import { ProjectsIcon } from '@sanity/icons';
 import { defineField, defineType } from 'sanity';
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list';
 
 export const projectType = defineType({
   name: 'projects',
   title: 'Project',
   type: 'document',
   icon: ProjectsIcon,
+  orderings: [orderRankOrdering],
   fields: [
+    orderRankField({ type: 'projects' }),
     defineField({
       name: 'title',
       type: 'string',
@@ -30,12 +33,6 @@ export const projectType = defineType({
             .replace(/[^\w-]+/g, ''),
       },
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'projectIndex',
-      title: 'Project Index',
-      type: 'number',
-      validation: (Rule) => Rule.required().integer().positive(),
     }),
     defineField({
       name: 'publishedAt',
