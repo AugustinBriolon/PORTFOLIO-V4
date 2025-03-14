@@ -372,11 +372,16 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     (p: TypeProject) => p.slug.current === project.slug.current
   );
 
+  const filteredProjects = [
+    projects[(projectIndex + 1) % projects.length],
+    projects[(projectIndex - 1 + projects.length) % projects.length],
+  ];
+
   return {
     props: {
       paths,
       project: project || null,
-      projects: projectIndex,
+      projects: filteredProjects,
     },
   };
 };
