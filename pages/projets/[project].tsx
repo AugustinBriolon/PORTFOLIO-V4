@@ -195,7 +195,7 @@ export default function Page({
             />
           </div>
           <div className='w-full flex flex-col gap-8' ref={infoRef}>
-          <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
+            <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
               <p className='self-end'>Date</p>
               <p className='font-bold capitalize text-lg justify-self-end project-info-anim'>
                 {formatDate(project.publishedAt)}
@@ -223,24 +223,28 @@ export default function Page({
             </div>
 
             <div className='grid grid-cols-project-info items-end md:items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
-              <p className='self-end'>Réalisé par</p>
-              <div className='flex flex-wrap gap-1 justify-end justify-self-end project-info-anim'>
-                {project.authors.map((author, index) => (
-                  <a
-                    key={index}
-                    href={author.websiteUrl}
-                    target='_blank'
-                    rel='noopener'
-                    className='font-bold capitalize text-lg relative group'
-                  >
-                    <span className='relative z-10 group-hover:text-white'>
-                      {author.name}
-                      {index < project.authors.length - 1 && ','}
-                    </span>
-                    <span className='absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full'></span>
-                  </a>
-                ))}
-              </div>
+              {project.authors && project.authors.length > 1 && (
+                <>
+                  <p className='self-end'>Réalisé par</p>
+                  <div className='flex flex-wrap gap-1 justify-end justify-self-end project-info-anim'>
+                    {project.authors.map((author, index) => (
+                      <a
+                        key={index}
+                        href={author.websiteUrl}
+                        target='_blank'
+                        rel='noopener'
+                        className='font-bold capitalize text-lg relative group'
+                      >
+                        <span className='relative z-10 group-hover:text-white'>
+                          {author.name}
+                          {index < project.authors.length - 1 && ','}
+                        </span>
+                        <span className='absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full'></span>
+                      </a>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             {project.testimonial && (
