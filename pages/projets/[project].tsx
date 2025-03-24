@@ -262,7 +262,7 @@ export default function Page({
             )}
 
             {project.testimonial && (
-              <div className='grid grid-cols-project-info items-center gap-12  border-b border-black dark:border-white overflow-hidden'>
+              <div className='grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden'>
                 <p className='self-end'>Client</p>
                 <p className='font-bold text-lg text-right justify-self-end project-info-anim'>
                   {project.title}
@@ -273,23 +273,30 @@ export default function Page({
         </div>
 
         {project.video && (
-          <a
-            href={project.websiteUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='w-full select-none'
-          >
-            <video
-              className='w-full h-auto z-10 relative min-h-[150px] sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]'
-              autoPlay
-              playsInline
-              loop
-              muted
-            >
-              <source src={project.video.webmUrl} type='video/webm' />
-              <source src={project.video.mp4Url} type='video/mp4' />
-            </video>
-          </a>
+          <div className='w-full select-none relative px-4 md:px-8'>
+            <Image
+              src='/macbook-mockup.png'
+              alt='macbook mockup'
+              width={1920}
+              height={1080}
+              layout='responsive'
+              className='abs-center h-full w-full px-4 md:px-8 z-40'
+            />
+            <div className='px-[8.5%]'>
+              <div className='bg-[#000] pb-[8%] pt-[4%]'>
+              <video
+                className='w-full h-auto z-10 relative min-h-[150px] sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]'
+                autoPlay
+                playsInline
+                loop
+                muted
+              >
+                <source src={project.video.webmUrl} type='video/webm' />
+                <source src={project.video.mp4Url} type='video/mp4' />
+              </video>
+              </div>
+            </div>
+          </div>
         )}
 
         {project.testimonial && (

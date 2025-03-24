@@ -73,7 +73,7 @@ const InfiniteScrollTitle = ({ title }: InfiniteScrollTitleProps) => {
 
   return (
     <section className="h-28 w-full relative">
-      <div className="bg-black dark:bg-white w-screen h-20 md:h-28 overflow-hidden flex items-center absolute abs-center top-1/2 before:absolute before:top-0 before:left-0 before:h-full before:w-10 before:bg-gradient-to-r before:from-black dark:before:from-white before:to-transparent before:content-[''] before:z-10 after:absolute after:top-0 after:right-0 after:h-full after:w-10 after:bg-gradient-to-l after:from-black dark:after:from-white after:to-transparent after:content-[''] after:z-10">
+      <div className="bg-black dark:bg-white w-screen h-20 md:h-28 overflow-hidden flex items-center abs-center before:absolute before:top-0 before:left-0 before:h-full before:w-10 before:bg-gradient-to-r before:from-black dark:before:from-white before:to-transparent before:content-[''] before:z-10 after:absolute after:top-0 after:right-0 after:h-full after:w-10 after:bg-gradient-to-l after:from-black dark:after:from-white after:to-transparent after:content-[''] after:z-10">
         <div ref={contentRef} className="flex gap-2 whitespace-nowrap will-change-transform">
           <h2 className="title-container-anim text-white dark:text-black text-3xl md:text-5xl text-nowrap uppercase font-bold align-middle">
             {title + " * " + title + " * " }

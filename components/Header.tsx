@@ -64,7 +64,7 @@ export default function Header(
           <div  
             className={clsx(
               path?.split('/').pop() === 'projets' && '!w-5',
-              'abs-center h-[3px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
+              'left-center h-[3px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
             )}
           ></div>
         </Link>
