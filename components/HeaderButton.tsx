@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { FC } from 'react';
+import Image from "next/image";
+import { FC } from "react";
 
 interface HeaderButtonProps {
   href?: string;
@@ -16,16 +16,16 @@ const HeaderButton: FC<HeaderButtonProps> = ({
   onClick,
   icon,
   title,
-  className = '',
+  className = "",
   showOnMobile = true,
 }) => {
   const baseClassName = `${
-    showOnMobile ? 'block' : 'hidden md:block'
+    showOnMobile ? "block" : "hidden md:block"
   } p-4 hover:backdrop-blur-xs hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square ${className}`;
 
   const imageProps = {
     src: icon,
-    className: 'dark-fill w-5 h-5 select-none text-header-anim',
+    className: "dark-fill w-5 h-5 select-none text-header-anim",
     width: 20,
     height: 20,
   };
@@ -33,11 +33,11 @@ const HeaderButton: FC<HeaderButtonProps> = ({
   if (href) {
     return (
       <a
+        className={baseClassName + " cursor-arrow z-20"}
         href={href}
-        target='_blank'
-        rel='noopener noreferrer'
+        rel="noopener noreferrer"
+        target="_blank"
         title={title}
-        className={baseClassName + ' cursor-arrow z-20'}
       >
         <Image alt={`Logo ${title}`} {...imageProps} />
       </a>
@@ -45,7 +45,7 @@ const HeaderButton: FC<HeaderButtonProps> = ({
   }
 
   return (
-    <button className={baseClassName + 'cursor-pointer z-50'} onClick={onClick}>
+    <button className={baseClassName + "z-50 cursor-pointer"} onClick={onClick}>
       <Image alt={`Logo ${title}`} {...imageProps} />
     </button>
   );

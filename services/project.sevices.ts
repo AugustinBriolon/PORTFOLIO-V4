@@ -1,5 +1,5 @@
-import { client } from '@/sanity/lib/client';
-import { ParsedUrlQuery } from 'querystring';
+import { client } from "@/sanity/lib/client";
+import { ParsedUrlQuery } from "querystring";
 
 export const fetchProject = async (params: ParsedUrlQuery | undefined) => {
   const query = `

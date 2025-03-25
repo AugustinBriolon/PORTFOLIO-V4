@@ -164,21 +164,21 @@ const CursorImages = ({ images }: CursorImagesProps) => {
   return (
     <div
       ref={cardRef}
-      className="w-[200px] h-[150px] rounded-[2%] overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 hidden md:block pointer-events-none"
+      className="pointer-events-none absolute top-1/2 left-1/2 z-10 hidden h-[150px] w-[200px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2%] opacity-0 md:block"
     >
       <div
         ref={clipPathRef}
-        className="w-full h-full"
+        className="h-full w-full"
         style={{
           clipPath: "circle(100% at center)",
           WebkitClipPath: "circle(100% at center)",
         }}
       >
-        <div ref={mediasRef} className="w-full h-full">
+        <div ref={mediasRef} className="h-full w-full">
           {images.map((src, index) => (
             <div
               key={index}
-              className={`w-full h-full absolute top-0 left-0 ${
+              className={`absolute top-0 left-0 h-full w-full ${
                 index === activeIndex ? "visible" : "invisible"
               }`}
             >

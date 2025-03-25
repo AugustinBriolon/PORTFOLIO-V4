@@ -20,14 +20,13 @@ const eslintConfig = [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier",
   ),
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
 
     rules: {
+      "prettier/prettier": "warn",
       "@typescript-eslint/no-explicit-any": "warn",
-
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {

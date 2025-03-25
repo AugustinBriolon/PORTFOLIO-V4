@@ -72,23 +72,19 @@ export default function Home({ projects }: { projects: TypeProject[] }) {
     <main>
       <SEO />
       <Section className="h-[90dvh] justify-between">
-        <div className="w-full flex flex-col items-center justify-start md:h-1/2 z-20">
+        <div className="z-20 flex w-full flex-col items-center justify-start md:h-1/2">
           <div className="overflow-hidden">
-            <h1 className="title-anim uppercase text-center font-extrabold h1">
-              DÉVELOPPEUR
-            </h1>
+            <h1 className="title-anim h1 text-center font-extrabold uppercase">DÉVELOPPEUR</h1>
           </div>
           <div className="overflow-hidden">
-            <h1 className="title-anim uppercase text-center font-extrabold h1">
-              CRÉATIF©
-            </h1>
+            <h1 className="title-anim h1 text-center font-extrabold uppercase">CRÉATIF©</h1>
           </div>
           <div className="overflow-hidden">
             <p className="anim-opacity font-semibold">Depuis 2019</p>
           </div>
         </div>
 
-        <div className="w-full flex flex-col gap-8 justify-between  z-20">
+        <div className="z-20 flex w-full flex-col justify-between gap-8">
           <p className="about-text overflow-hidden">
             {aboutText.map((word, index) => (
               <span key={index} className="inline-block overflow-hidden">
@@ -99,32 +95,29 @@ export default function Home({ projects }: { projects: TypeProject[] }) {
               </span>
             ))}
           </p>
-          <div className="w-full flex items-start justify-between gap-4">
+          <div className="flex w-full items-start justify-between gap-4">
             <div>
-              <div className="overflow-hidden flex items-center gap-2">
-                <p className="text-sm bottom-anim">Status</p>
-                <span className="relative flex h-2 w-2 ping-point">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-pulse opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-pulse"></span>
+              <div className="flex items-center gap-2 overflow-hidden">
+                <p className="bottom-anim text-sm">Status</p>
+                <span className="ping-point relative flex h-2 w-2">
+                  <span className="bg-green-pulse absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+                  <span className="bg-green-pulse relative inline-flex h-2 w-2 rounded-full"></span>
                 </span>
               </div>
               <div className="overflow-hidden">
-                <p className="uppercase font-medium bottom-anim flex items-center gap-2">
+                <p className="bottom-anim flex items-center gap-2 font-medium uppercase">
                   Disponible
                 </p>
               </div>
             </div>
             <div>
               <div className="overflow-hidden">
-                <p className="about- text-sm bottom-anim">Contact</p>
+                <p className="about- bottom-anim text-sm">Contact</p>
               </div>
               <div className="flex gap-2 overflow-hidden">
-                <p className="uppercase font-medium bottom-anim">
+                <p className="bottom-anim font-medium uppercase">
                   Envoyez un{" "}
-                  <a
-                    className="underline"
-                    href="mailto:augustin.briolon@gmail.com"
-                  >
+                  <a className="underline" href="mailto:augustin.briolon@gmail.com">
                     mail
                   </a>{" "}
                   ou prenez{" "}

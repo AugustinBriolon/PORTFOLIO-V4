@@ -10,7 +10,7 @@
   --grid-template-columns-header: 250px 1fr 250px;
   --grid-template-columns-project-info: 100px 1fr;
 
-  --cursor-arrow: url('/icons/arrow-cursor.svg'), auto;
+  --cursor-arrow: url("/icons/arrow-cursor.svg"), auto;
 }
 
 @layer base {
@@ -81,11 +81,11 @@ html.dark {
 * Satoshi Variable (Variable font)
 */
 @font-face {
-  font-family: 'Satoshi';
-  src: url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2');
-  font-weight: 300 900;
-  font-display: swap;
   font-style: normal;
+  font-weight: 300 900;
+  src: url("/fonts/satoshi/Satoshi-Variable.woff2") format("woff2");
+  font-family: "Satoshi";
+  font-display: swap;
 }
 
 .satoshi {
@@ -99,8 +99,8 @@ html.dark {
   font-size: clamp(1rem, 1vw, 1rem);
 }
 .h3 {
-  font-size: clamp(2rem, 2vw, 2rem);
   font-weight: 700;
+  font-size: clamp(2rem, 2vw, 2rem);
 }
 .h4 {
   font-size: clamp(1.5rem, 3vw, 2rem);
@@ -125,4 +125,3 @@ html.dark {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-

@@ -25,12 +25,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     if (!targetRef.current || !triggerRef.current) return;
     const lineAnim = triggerRef.current.querySelectorAll(".line-bottom-anim");
     const imageAnim = triggerRef.current.querySelectorAll(".project-img-anim");
-    const titleAnim = triggerRef.current.querySelectorAll(
-      ".project-title-anim",
-    );
-    const indexAnim = triggerRef.current.querySelectorAll(
-      ".project-index-anim",
-    );
+    const titleAnim = triggerRef.current.querySelectorAll(".project-title-anim");
+    const indexAnim = triggerRef.current.querySelectorAll(".project-index-anim");
     const textAnim = targetRef.current.querySelectorAll(".project-text-anim");
     const tagsAnim = triggerRef.current.querySelectorAll(".project-tags-anim");
 
@@ -125,17 +121,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <div key={project.slug.current} ref={triggerRef}>
-      <Link
-        className="group"
-        href={`/projets/${project.slug.current}`}
-        scroll={true}
-      >
-        <div className="w-full h-fit flex flex-col md:flex-row gap-4 items-start md:items-center justify-center px-2 pb-4 md:pb-8">
-          <div className="w-full md:w-fit min-w-fit overflow-hidden">
-            <div className="w-full min-w-fit relative">
+      <Link className="group" href={`/projets/${project.slug.current}`} scroll={true}>
+        <div className="flex h-fit w-full flex-col items-start justify-center gap-4 px-2 pb-4 md:flex-row md:items-center md:pb-8">
+          <div className="w-full min-w-fit overflow-hidden md:w-fit">
+            <div className="relative w-full min-w-fit">
               <Image
                 alt="project"
-                className="md:max-w-72 select-none group-hover:scale-105 transition-transform ease-out duration-300"
+                className="transition-transform duration-300 ease-out select-none group-hover:scale-105 md:max-w-72"
                 height={4320}
                 src={urlFor(project.mainImage).toString()}
                 width={5760}
@@ -143,19 +135,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               />
               <div
                 ref={imageRef}
-                className="project-img-anim origin-top absolute w-full h-full inset-0 bg-white"
+                className="project-img-anim absolute inset-0 h-full w-full origin-top bg-white"
               ></div>
             </div>
           </div>
-          <div className="w-full h-full flex flex-col gap-4">
-            <div className="flex items-center justify-between w-full">
-              <div className="overflow-hidden py-1 flex justify-between w-3/4 md:w-fit">
-                <h2 className="font-bold text-4xl project-title-anim">
-                  {project.title}
-                </h2>
+          <div className="flex h-full w-full flex-col gap-4">
+            <div className="flex w-full items-center justify-between">
+              <div className="flex w-3/4 justify-between overflow-hidden py-1 md:w-fit">
+                <h2 className="project-title-anim text-4xl font-bold">{project.title}</h2>
               </div>
               <div className="overflow-hidden">
-                <p className="font-bold project-index-anim">
+                <p className="project-index-anim font-bold">
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}/
                 </p>
               </div>
@@ -174,7 +164,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               {project.types.map((type, index) => (
                 <span
                   key={index}
-                  className="project-tags-anim inline-block mr-2 dark:text-white text-lg font-medium uppercase border border-black/20 dark:border-white/20 rounded-full px-4 py-1"
+                  className="project-tags-anim mr-2 inline-block rounded-full border border-black/20 px-4 py-1 text-lg font-medium uppercase dark:border-white/20 dark:text-white"
                 >
                   {type.title}
                 </span>
@@ -183,7 +173,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
 
-        <div className="line-bottom-anim h-[2px] w-full bg-black dark:bg-white rounded-full origin-left"></div>
+        <div className="line-bottom-anim h-[2px] w-full origin-left rounded-full bg-black dark:bg-white"></div>
       </Link>
     </div>
   );

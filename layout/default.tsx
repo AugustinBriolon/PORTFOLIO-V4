@@ -7,13 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { TypeProject } from "@/data/types";
 
-const Layout = ({
-  projects,
-  children,
-}: {
-  projects: TypeProject[];
-  children: ReactNode;
-}) => {
+const Layout = ({ projects, children }: { projects: TypeProject[]; children: ReactNode }) => {
   const pathname = usePathname();
 
   return (

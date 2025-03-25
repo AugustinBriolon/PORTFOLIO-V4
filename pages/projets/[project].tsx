@@ -130,25 +130,19 @@ export default function Page({
         title={`${project.title} • Augustin Briolon • Portfolio Développeur Web Front-End 🚀`}
         url={`https://august1.dev/projets/${project.slug}`}
       />
-      <Section className="progress-container gap-20 pb-16 px-4 md:px-0">
-        <div className="fixed z-30 right-2 top-1/2 h-32 w-[5px] rounded-full bg-white dark:bg-black border border-black dark:border-white overflow-hidden fill-anim">
-          <div className="w-full bg-black dark:bg-white fill-bar"></div>
+      <Section className="progress-container gap-20 px-4 pb-16 md:px-0">
+        <div className="fill-anim fixed top-1/2 right-2 z-30 h-32 w-[5px] overflow-hidden rounded-full border border-black bg-white dark:border-white dark:bg-black">
+          <div className="fill-bar w-full bg-black dark:bg-white"></div>
         </div>
 
         <div className="w-full">
-          <div className="project-info-container h-[35vh] min-h-96 w-full flex justify-between items-end gap-2 md:gap-8 bg-white dark:bg-black">
-            <div className="overflow-hidden w-4/5">
-              <h2 className="text-4xl md:text-6xl font-bold uppercase text-left dark:text-white">
+          <div className="project-info-container flex h-[35vh] min-h-96 w-full items-end justify-between gap-2 bg-white md:gap-8 dark:bg-black">
+            <div className="w-4/5 overflow-hidden">
+              <h2 className="text-left text-4xl font-bold uppercase md:text-6xl dark:text-white">
                 {words.map((word, wordIndex) => (
-                  <span
-                    key={wordIndex}
-                    className="inline-block overflow-hidden"
-                  >
+                  <span key={wordIndex} className="inline-block overflow-hidden">
                     {Array.from(word).map((letter, letterIndex) => (
-                      <span
-                        key={letterIndex}
-                        className="anim-text inline-block"
-                      >
+                      <span key={letterIndex} className="anim-text inline-block">
                         {letter}
                       </span>
                     ))}
@@ -157,19 +151,17 @@ export default function Page({
                 ))}
               </h2>
             </div>
-            <div className="overflow-hidden mb-2">
+            <div className="mb-2 overflow-hidden">
               <a
-                className="project-url-anim group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black aspect-square md:aspect-auto md:px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                className="project-url-anim group flex aspect-square h-12 w-fit items-center justify-center gap-2 justify-self-end rounded-full bg-black font-medium text-white transition select-none hover:bg-neutral-800 md:aspect-auto md:px-7 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                 href={project.websiteUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className="hidden md:block uppercase text-sm">
-                  VISITER
-                </span>
+                <span className="hidden text-sm uppercase md:block">VISITER</span>
                 <Image
                   alt="arrow"
-                  className="light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105 grow-0 shrink-0"
+                  className="light-fill shrink-0 grow-0 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-105"
                   height={20}
                   src="/icons/arrow-up-right.svg"
                   width={20}
@@ -188,29 +180,27 @@ export default function Page({
           />
         </div>
 
-        <div className="w-full flex flex-col md:flex-row justify-between items-start px-4 md:px-8 gap-8">
-          <div
-            className={`${project.story ? "block" : "hidden"} overflow-hidden w-full`}
-          >
+        <div className="flex w-full flex-col items-start justify-between gap-8 px-4 md:flex-row md:px-8">
+          <div className={`${project.story ? "block" : "hidden"} w-full overflow-hidden`}>
             <RichText
-              className="w-full text-black dark:text-white project-description-anim"
+              className="project-description-anim w-full text-black dark:text-white"
               value={project.story}
             />
           </div>
-          <div ref={infoRef} className="w-full flex flex-col gap-8">
-            <div className="grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden">
+          <div ref={infoRef} className="flex w-full flex-col gap-8">
+            <div className="grid-cols-project-info grid items-center gap-12 overflow-hidden border-b border-black dark:border-white">
               <p className="self-end">Date</p>
-              <p className="font-bold capitalize text-lg justify-self-end project-info-anim">
+              <p className="project-info-anim justify-self-end text-lg font-bold capitalize">
                 {formatDate(project.publishedAt)}
               </p>
             </div>
-            <div className="grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden">
+            <div className="grid-cols-project-info grid items-center gap-12 overflow-hidden border-b border-black dark:border-white">
               <p className="self-end">Langages</p>
               <div className="flex flex-wrap justify-end gap-1 justify-self-end">
                 {project.language.map((language, index) => (
                   <a
                     key={index}
-                    className="font-bold capitalize text-lg relative group project-info-anim"
+                    className="group project-info-anim relative text-lg font-bold capitalize"
                     href={language.url}
                     rel="noopener noreferrer"
                     target="_blank"
@@ -219,19 +209,19 @@ export default function Page({
                       {language.title}
                       {index < project.language.length - 1 && ","}
                     </span>
-                    <span className="absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full"></span>
+                    <span className="absolute bottom-0 left-0 -z-10 h-0 w-full bg-black transition-all duration-200 group-hover:h-full dark:bg-white"></span>
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden">
+            <div className="grid-cols-project-info grid items-center gap-12 overflow-hidden border-b border-black dark:border-white">
               <p className="self-end">Contribution</p>
               <div className="flex flex-wrap justify-end gap-1 justify-self-end">
                 {project.types.map((type, index) => (
                   <p
                     key={index}
-                    className="font-bold capitalize text-lg justify-self-end project-info-anim"
+                    className="project-info-anim justify-self-end text-lg font-bold capitalize"
                   >
                     {type.title}
                     {index < project.types.length - 1 && ","}
@@ -241,13 +231,13 @@ export default function Page({
             </div>
 
             {project.authors && project.authors.length > 1 && (
-              <div className="grid grid-cols-project-info items-end md:items-center gap-12 border-b border-black dark:border-white overflow-hidden">
+              <div className="grid-cols-project-info grid items-end gap-12 overflow-hidden border-b border-black md:items-center dark:border-white">
                 <p className="self-end">Réalisé par</p>
-                <div className="flex flex-wrap gap-1 justify-end justify-self-end">
+                <div className="flex flex-wrap justify-end gap-1 justify-self-end">
                   {project.authors.map((author, index) => (
                     <a
                       key={index}
-                      className="font-bold capitalize text-lg relative group project-info-anim"
+                      className="group project-info-anim relative text-lg font-bold capitalize"
                       href={author.websiteUrl}
                       rel="noopener"
                       target="_blank"
@@ -256,7 +246,7 @@ export default function Page({
                         {author.name}
                         {index < project.authors.length - 1 && ","}
                       </span>
-                      <span className="absolute left-0 bottom-0 w-full h-0 bg-black dark:bg-white -z-10 transition-all duration-200 group-hover:h-full"></span>
+                      <span className="absolute bottom-0 left-0 -z-10 h-0 w-full bg-black transition-all duration-200 group-hover:h-full dark:bg-white"></span>
                     </a>
                   ))}
                 </div>
@@ -264,9 +254,9 @@ export default function Page({
             )}
 
             {project.testimonial && (
-              <div className="grid grid-cols-project-info items-center gap-12 border-b border-black dark:border-white overflow-hidden">
+              <div className="grid-cols-project-info grid items-center gap-12 overflow-hidden border-b border-black dark:border-white">
                 <p className="self-end">Client</p>
-                <p className="font-bold text-lg text-right justify-self-end project-info-anim">
+                <p className="project-info-anim justify-self-end text-right text-lg font-bold">
                   {project.title}
                 </p>
               </div>
@@ -274,17 +264,15 @@ export default function Page({
 
             <div className="flex items-center justify-end overflow-hidden">
               <a
-                className="project-url-anim group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black aspect-square md:aspect-auto md:px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                className="project-url-anim group flex aspect-square h-12 w-fit items-center justify-center gap-2 justify-self-end rounded-full bg-black font-medium text-white transition select-none hover:bg-neutral-800 md:aspect-auto md:px-7 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                 href={project.websiteUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className="hidden md:block uppercase text-sm">
-                  VISITER
-                </span>
+                <span className="hidden text-sm uppercase md:block">VISITER</span>
                 <Image
                   alt="arrow"
-                  className="light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105 grow-0 shrink-0"
+                  className="light-fill shrink-0 grow-0 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-105"
                   height={20}
                   src="/icons/arrow-up-right.svg"
                   width={20}
@@ -295,19 +283,19 @@ export default function Page({
         </div>
 
         {project.video && (
-          <div className="w-full select-none relative px-4 md:px-8">
+          <div className="relative w-full px-4 select-none md:px-8">
             <Image
               alt="macbook mockup"
-              className="abs-center h-full w-full px-4 md:px-8 z-40"
+              className="abs-center z-40 h-full w-full px-4 md:px-8"
               height={1080}
               layout="responsive"
               src="/macbook-mockup.png"
               width={1920}
             />
             <div className="px-[8.5%]">
-              <div className="bg-[#000] pb-[8%] pt-[4%]">
+              <div className="bg-[#000] pt-[4%] pb-[8%]">
                 <video
-                  className="w-full h-auto z-10 relative min-h-[150px] sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]"
+                  className="relative z-10 h-auto min-h-[150px] w-full sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]"
                   autoPlay
                   loop
                   muted
@@ -322,22 +310,20 @@ export default function Page({
         )}
 
         {project.testimonial && (
-          <div className="w-full flex flex-col gap-8">
-            <h3 className="text-2xl font-bold uppercase dark:text-white">
-              Témoignage
-            </h3>
-            <div className="md:w-3/4 flex flex-col gap-4">
+          <div className="flex w-full flex-col gap-8">
+            <h3 className="text-2xl font-bold uppercase dark:text-white">Témoignage</h3>
+            <div className="flex flex-col gap-4 md:w-3/4">
               {project.testimonial.map((testimonial, index) => (
                 <div key={index} className="">
                   <Image
                     alt="quote"
-                    className="dark-fill float-left w-10 h-10 mr-4 select-none"
+                    className="dark-fill float-left mr-4 h-10 w-10 select-none"
                     height={64}
                     src="/icons/quote.svg"
                     width={64}
                   />
                   <p className="text-lg text-balance">{testimonial.quote}</p>
-                  <div className="pt-4 flex items-center justify-start gap-2">
+                  <div className="flex items-center justify-start gap-2 pt-4">
                     <div className="h-px w-20 bg-black dark:bg-white"></div>
                     <p>
                       <strong>{testimonial.author}</strong>, {testimonial.role}
@@ -351,17 +337,17 @@ export default function Page({
 
         <InfiniteScrollTitle title={project.title} />
 
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-2">
+        <div className="flex w-full flex-col items-center justify-between gap-2 md:flex-row">
           {projects.map((filteredProject, index) => (
             <Link
               key={index}
-              className="group flex flex-col group w-fit border border-black/20 dark:border-white/20"
+              className="group group flex w-fit flex-col border border-black/20 dark:border-white/20"
               href={`/projets/` + filteredProject.slug.current}
             >
               <div className="overflow-hidden">
                 <Image
                   alt={`Image du projet ${filteredProject.title}`}
-                  className="group-hover:scale-105 transition-transform ease-out duration-300"
+                  className="transition-transform duration-300 ease-out group-hover:scale-105"
                   height={4320}
                   src={urlFor(filteredProject.mainImage).toString()}
                   width={5760}
@@ -369,13 +355,11 @@ export default function Page({
                 />
               </div>
               <div className="flex flex-col justify-between">
-                <div className="flex justify-between items-center gap-2 p-2">
-                  <p className="text-xl font-bold truncate">
-                    {filteredProject.title}
-                  </p>
+                <div className="flex items-center justify-between gap-2 p-2">
+                  <p className="truncate text-xl font-bold">{filteredProject.title}</p>
                   <Image
                     alt="arrow"
-                    className="dark-fill group-hover:-translate-y-1 group-hover:translate-x-1 transition-all"
+                    className="dark-fill transition-all group-hover:translate-x-1 group-hover:-translate-y-1"
                     height={24}
                     src="/icons/arrow-up-right.svg"
                     width={24}

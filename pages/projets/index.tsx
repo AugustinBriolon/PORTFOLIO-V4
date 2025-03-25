@@ -49,17 +49,17 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
         title="Projets • Augustin Briolon • Portfolio Développeur Web Front-End 🚀"
         url="https://august1.dev/projets"
       />
-      <Section className="min-h-[50vh]! md:gap-12 flex-row! items-center justify-between">
-        <div className="overflow-hidden w-full">
-          <h1 className="title-anim uppercase text-start font-extrabold dark:text-white h1">
+      <Section className="min-h-[50vh]! flex-row! items-center justify-between md:gap-12">
+        <div className="w-full overflow-hidden">
+          <h1 className="title-anim h1 text-start font-extrabold uppercase dark:text-white">
             MES PROJETS
           </h1>
         </div>
-        <div className="w-fit flex items-center justify-end">
+        <div className="flex w-fit items-center justify-end">
           <div>
             <div className="overflow-hidden">
               <NumberFlow
-                className="font-bold text-5xl text-end project-lenght"
+                className="project-lenght text-end text-5xl font-bold"
                 format={{ notation: "compact" }}
                 locales="fr-FR"
                 value={length}
@@ -69,14 +69,14 @@ export default function Projects({ projects }: { projects: TypeProject[] }) {
                 }}
               />
             </div>
-            <div className="overflow-hidden hidden md:block">
+            <div className="hidden overflow-hidden md:block">
               <p className="title-anim">Projects</p>
             </div>
           </div>
         </div>
       </Section>
       <Section className="gap-8">
-        <div className="w-full flex flex-col gap-8">
+        <div className="flex w-full flex-col gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={index} index={index} project={project} />
           ))}

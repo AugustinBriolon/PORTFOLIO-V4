@@ -1,5 +1,5 @@
-import { TypeProject } from '@/data/types';
-import { client } from '@/sanity/lib/client';
+import { TypeProject } from "@/data/types";
+import { client } from "@/sanity/lib/client";
 
 export const fetchPaths = async () => {
   const query = `

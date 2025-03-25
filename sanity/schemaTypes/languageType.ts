@@ -1,20 +1,20 @@
-import {TagIcon} from '@sanity/icons'
-import {defineField, defineType} from 'sanity'
+import { TagIcon } from "@sanity/icons";
+import { defineField, defineType } from "sanity";
 
 export const languageType = defineType({
-  name: 'language',
-  title: 'Language',
-  type: 'document',
+  name: "language",
+  title: "Language",
+  type: "document",
   icon: TagIcon,
   fields: [
     defineField({
-      name: 'title',
-      type: 'string',
+      name: "title",
+      type: "string",
     }),
     defineField({
-      name: 'url',
-      type: 'url',
-      validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }),
+      name: "url",
+      type: "url",
+      validation: (Rule) => Rule.uri({ scheme: ["http", "https"] }),
     }),
   ],
-})
+});

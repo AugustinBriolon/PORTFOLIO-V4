@@ -3,17 +3,21 @@ import Section from "./Section";
 
 export default function Footer() {
   return (
-    <Section className="min-h-24! justify-end mt-12">
-      <footer role="contentinfo" className="w-full flex flex-col items-center justify-center gap-2">
-        <div className="w-full flex flex-col md:flex-row justify-between md:items-center gap-2">
+    <Section className="mt-12 min-h-24! justify-end">
+      <footer className="flex w-full flex-col items-center justify-center gap-2" role="contentinfo">
+        <div className="flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
           <div>
             <p className="text-black/80 dark:text-white/80">Sitemap</p>
             <ul className="flex flex-wrap gap-1">
               <li>
-                <Link href="/" className="uppercase font-semibold hover:underline">Index,</Link>
+                <Link className="font-semibold uppercase hover:underline" href="/">
+                  Index,
+                </Link>
               </li>
               <li>
-                <Link href="/projets" className="uppercase font-semibold hover:underline">Projets</Link>
+                <Link className="font-semibold uppercase hover:underline" href="/projets">
+                  Projets
+                </Link>
               </li>
             </ul>
           </div>
@@ -21,19 +25,44 @@ export default function Footer() {
             <p className="text-black/80 dark:text-white/80">Social</p>
             <ul className="flex flex-wrap gap-1">
               <li>
-                <a href="https://www.linkedin.com/in/augustin-briolon/" target="_blank" className="uppercase font-semibold hover:underline">Linkedin,</a>
+                <a
+                  className="font-semibold uppercase hover:underline"
+                  href="https://www.linkedin.com/in/augustin-briolon/"
+                  target="_blank"
+                >
+                  Linkedin,
+                </a>
               </li>
               <li>
-                <a href="https://www.github.com/AugustinBriolon/" target="_blank" className="uppercase font-semibold hover:underline">Github,</a>
+                <a
+                  className="font-semibold uppercase hover:underline"
+                  href="https://www.github.com/AugustinBriolon/"
+                  target="_blank"
+                >
+                  Github,
+                </a>
               </li>
               <li>
-                <a href="https://www.twitter.com/AugustinBriolon/" target="_blank" className="uppercase font-semibold hover:underline">Twitter,</a>
+                <a
+                  className="font-semibold uppercase hover:underline"
+                  href="https://www.twitter.com/AugustinBriolon/"
+                  target="_blank"
+                >
+                  Twitter,
+                </a>
               </li>
               <li>
-                <a href="mailto:augustin.briolon@gmail.com" className="uppercase font-semibold hover:underline">Email,</a>
+                <a
+                  className="font-semibold uppercase hover:underline"
+                  href="mailto:augustin.briolon@gmail.com"
+                >
+                  Email,
+                </a>
               </li>
               <li>
-                <a href="/CV.pdf" className="uppercase font-semibold hover:underline">Cv</a>
+                <a className="font-semibold uppercase hover:underline" href="/CV.pdf">
+                  Cv
+                </a>
               </li>
             </ul>
           </div>
@@ -41,5 +70,5 @@ export default function Footer() {
         <p className="text-sm text-black/80 dark:text-white/80">©2024 - All rights reserved</p>
       </footer>
     </Section>
-  )
+  );
 }

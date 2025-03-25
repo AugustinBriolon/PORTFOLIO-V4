@@ -1,11 +1,4 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
 
 type AppContextType = {
   isDarkMode: boolean;
@@ -26,9 +19,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       if (storedPreference !== null) {
         setIsDarkMode(storedPreference === "true");
       } else {
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         setIsDarkMode(prefersDark);
         localStorage.setItem("isDarkMode", prefersDark.toString());
       }
@@ -61,9 +52,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     [isDarkMode],
   );
 
-  return (
-    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
-  );
+  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 };
 
 export const useAppContext = (): AppContextType => {

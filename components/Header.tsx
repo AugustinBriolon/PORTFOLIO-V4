@@ -103,17 +103,17 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
 
   return (
     <header
-      className="h-[10dvh] relative w-full md:w-11/12 mx-auto flex md:grid md:grid-cols-header justify-between items-center gap-4 px-2 md:px-0 text-black dark:text-white"
+      className="md:grid-cols-header relative mx-auto flex h-[10dvh] w-full items-center justify-between gap-4 px-2 text-black md:grid md:w-11/12 md:px-0 dark:text-white"
       role="banner"
     >
-      <Link className="overflow-hidden z-20" href="/">
+      <Link className="z-20 overflow-hidden" href="/">
         <h1 className="text-header-anim text-xl font-bold">AUGUSTIN BRIOLON</h1>
       </Link>
 
-      <div className="hidden md:flex gap-8 z-20">
+      <div className="z-20 hidden gap-8 md:flex">
         <Link
           ref={linkRef}
-          className="overflow-hidden relative"
+          className="relative overflow-hidden"
           href="/projets"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -121,10 +121,7 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
           <p className="text-header-anim text-center font-medium">
             PROJETS <sup>{projects.length}</sup>
           </p>
-          <div
-            ref={indicatorRef}
-            className="left-center h-[3px] bg-black dark:bg-white"
-          ></div>
+          <div ref={indicatorRef} className="left-center h-[3px] bg-black dark:bg-white"></div>
         </Link>
       </div>
 
@@ -136,25 +133,25 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
           onClick={toggleDarkMode}
         />
         <div
-          className="text-header-anim relative z-50 cursor-pointer md:hidden p-4 bg-black/5 dark:bg-white/20 md:bg-transparent rounded-full aspect-square grid justify-items-center items-center"
+          className="text-header-anim relative z-50 grid aspect-square cursor-pointer items-center justify-items-center rounded-full bg-black/5 p-4 md:hidden md:bg-transparent dark:bg-white/20"
           onClick={handleMenuBurger}
         >
           <span
             className={clsx(
-              isMenuOpen && "rotate-45 translate-y-[0.45rem]",
-              "h-[2px] w-5 rounded-full bg-black dark:bg-white transition ",
+              isMenuOpen && "translate-y-[0.45rem] rotate-45",
+              "h-[2px] w-5 rounded-full bg-black transition dark:bg-white",
             )}
           ></span>
           <span
             className={clsx(
               isMenuOpen && "scale-0 opacity-0",
-              "h-[2px] w-5 rounded-full bg-black dark:bg-white transition",
+              "h-[2px] w-5 rounded-full bg-black transition dark:bg-white",
             )}
           ></span>
           <span
             className={clsx(
-              isMenuOpen && "-rotate-45 -translate-y-[0.4rem]",
-              "h-[2px] w-5 rounded-full bg-black dark:bg-white transition",
+              isMenuOpen && "-translate-y-[0.4rem] -rotate-45",
+              "h-[2px] w-5 rounded-full bg-black transition dark:bg-white",
             )}
           ></span>
         </div>
@@ -181,25 +178,19 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
         />
       </div>
 
-      <div className="menu-burger md:hidden absolute w-screen h-[100dvh] -right-full top-0 z-40 bg-white dark:bg-black flex flex-col items-center justify-center gap-8">
-        <div className="flex flex-col items-center justify-center gap-4 h-full">
-          <Link
-            className="overflow-hidden group relative"
-            href="/"
-            onClick={handleMenuBurger}
-          >
-            <p className="text-header-anim text-center font-bold text-4xl">
-              HOME
-            </p>
+      <div className="menu-burger absolute top-0 -right-full z-40 flex h-[100dvh] w-screen flex-col items-center justify-center gap-8 bg-white md:hidden dark:bg-black">
+        <div className="flex h-full flex-col items-center justify-center gap-4">
+          <Link className="group relative overflow-hidden" href="/" onClick={handleMenuBurger}>
+            <p className="text-header-anim text-center text-4xl font-bold">HOME</p>
           </Link>
           <Link
-            className="overflow-hidden group relative"
+            className="group relative overflow-hidden"
             href="/projets"
             onClick={handleMenuBurger}
           >
-            <p className="text-header-anim text-center font-bold text-4xl">
+            <p className="text-header-anim text-center text-4xl font-bold">
               PROJETS
-              <sup className="font-light text-sm -top-6">{projects.length}</sup>
+              <sup className="-top-6 text-sm font-light">{projects.length}</sup>
             </p>
           </Link>
           {/* <Link
@@ -213,7 +204,7 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
             </p>
           </Link> */}
         </div>
-        <div className="flex overflow-hidden min-h-20">
+        <div className="flex min-h-20 overflow-hidden">
           <HeaderButton
             alt="Logo Linkedin"
             href="https://www.linkedin.com/in/augustin-briolon/"

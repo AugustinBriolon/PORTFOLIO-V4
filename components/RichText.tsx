@@ -1,13 +1,7 @@
 import { PortableText } from "next-sanity";
 import { TypedObject } from "sanity";
 
-const RichText = ({
-  value,
-  className,
-}: {
-  value: TypedObject[];
-  className?: string;
-}) => {
+const RichText = ({ value, className }: { value: TypedObject[]; className?: string }) => {
   return (
     <div className={className}>
       <PortableText

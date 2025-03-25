@@ -17,15 +17,9 @@ const SEO = ({
       <meta content={title} name="apple-mobile-web-app-title" />
       <meta content="yes" name="mobile-web-app-capable" />
       <meta content="yes" name="apple-mobile-web-app-capable" />
-      <meta
-        content="black-translucent"
-        name="apple-mobile-web-app-status-bar-style"
-      />
+      <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
       <meta content={description} name="description" />
-      <meta
-        content="augustin, briolon, portfolio, développeur, web, front-end"
-        name="keyword"
-      />
+      <meta content="augustin, briolon, portfolio, développeur, web, front-end" name="keyword" />
       <meta content="notranslate" name="google" />
 
       {/* OGTAGS */}
@@ -64,19 +58,10 @@ const SEO = ({
       />
 
       {/* FAVICON */}
-      <link
-        href="/favicon/favicon-96x96.png"
-        rel="icon"
-        sizes="96x96"
-        type="image/png"
-      />
+      <link href="/favicon/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
       <link href="/favicon/favicon.svg" rel="icon" type="image/svg+xml" />
       <link href="/favicon/favicon.ico" rel="shortcut icon" />
-      <link
-        href="/favicon/apple-touch-icon.png"
-        rel="apple-touch-icon"
-        sizes="180x180"
-      />
+      <link href="/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
       <link href="/favicon/site.webmanifest" rel="manifest" />
 
       {/* SEO */}

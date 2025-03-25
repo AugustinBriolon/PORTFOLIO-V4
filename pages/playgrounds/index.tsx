@@ -5,5 +5,5 @@ export default function Playgrounds() {
     <Section>
       <h1>PLAYGROUNDS</h1>
     </Section>
-  )
+  );
 }
