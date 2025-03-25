@@ -1,2 +1,3 @@
 yarn run format
+yarn prettier --write .
 yarn run check

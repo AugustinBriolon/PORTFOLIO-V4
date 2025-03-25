@@ -25,7 +25,16 @@ const eslintConfig = [
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
 
     rules: {
-      "prettier/prettier": "warn",
+      "prettier/prettier": [
+        "warn",
+        {
+          printWidth: 100,
+          semi: true,
+          singleQuote: false,
+          tabWidth: 2,
+          useTabs: false,
+        },
+      ],
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": [
         "warn",

@@ -135,7 +135,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               />
               <div
                 ref={imageRef}
-                className="project-img-anim absolute inset-0 h-full w-full origin-top bg-white"
+                className="project-img-anim absolute inset-0 h-full w-full origin-top bg-white dark:bg-black"
               ></div>
             </div>
           </div>

@@ -17,9 +17,7 @@ const InfiniteScrollTitle = ({ title }: InfiniteScrollTitleProps) => {
     const initScroll = () => {
       if (!contentRef.current) return;
 
-      const titleElement = contentRef.current.querySelector(
-        ".title-container-anim",
-      );
+      const titleElement = contentRef.current.querySelector(".title-container-anim");
       if (!titleElement) return;
 
       const half = titleElement.clientWidth;
@@ -76,10 +74,7 @@ const InfiniteScrollTitle = ({ title }: InfiniteScrollTitleProps) => {
   return (
     <section className="relative h-28 w-full">
       <div className="abs-center flex h-20 w-screen items-center overflow-hidden bg-black before:absolute before:top-0 before:left-0 before:z-10 before:h-full before:w-10 before:bg-linear-to-r before:from-black before:to-transparent before:content-[''] after:absolute after:top-0 after:right-0 after:z-10 after:h-full after:w-10 after:bg-linear-to-l after:from-black after:to-transparent after:content-[''] md:h-28 dark:bg-white dark:before:from-white dark:after:from-white">
-        <div
-          ref={contentRef}
-          className="flex gap-2 whitespace-nowrap will-change-transform"
-        >
+        <div ref={contentRef} className="flex gap-2 whitespace-nowrap will-change-transform">
           <h2 className="title-container-anim align-middle text-3xl font-bold text-nowrap text-white uppercase md:text-5xl dark:text-black">
             <span className="mr-2">{title}</span>
             <span className="mr-2 italic">{title}</span>
