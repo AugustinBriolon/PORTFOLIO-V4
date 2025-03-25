@@ -1,6 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-white: #f1f1f1;
+  --color-black: #1a1a1a;
+  --color-green-pulse: #629460;
+
+  --grid-template-columns-header: 250px 1fr 250px;
+  --grid-template-columns-project-info: 100px 1fr;
+
+  --cursor-arrow: url('/icons/arrow-cursor.svg'), auto;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 *,
 *::before,
@@ -9,13 +30,13 @@
 }
 
 *::selection {
-  background-color: theme('colors.black');
-  color: theme('colors.white');
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .dark *::selection {
-  background-color: theme('colors.white');
-  color: theme('colors.black');
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 
 *::-webkit-scrollbar {
@@ -23,16 +44,16 @@
 }
 
 body {
-  background-color: theme('colors.white');
+  background-color: var(--color-white);
   font-family: Satoshi;
 }
 
 .dark body {
-  background-color: theme('colors.black');
+  background-color: var(--color-black);
 }
 
 html.dark {
-  background-color: theme('colors.black');
+  background-color: var(--color-black);
 }
 
 .dark .dark-fill {
@@ -71,18 +92,17 @@ html.dark {
   font-family: Satoshi;
 }
 
-h1 {
+.h1 {
   font-size: clamp(2.5rem, 5vw, 6rem);
-  font-weight: bold;
 }
-h2 {
+.h2 {
   font-size: clamp(1rem, 1vw, 1rem);
 }
-h3 {
+.h3 {
   font-size: clamp(2rem, 2vw, 2rem);
   font-weight: 700;
 }
-h4 {
+.h4 {
   font-size: clamp(1.5rem, 3vw, 2rem);
 }
 

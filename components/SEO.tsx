@@ -1,86 +1,86 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 const SEO = ({
-  title = 'Augustin Briolon • Portfolio Développeur Web Front-End 🚀',
+  title = "Augustin Briolon • Portfolio Développeur Web Front-End 🚀",
   description = "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants.",
-  image = '/ogimage.webp',
-  url = 'https://august1.dev/',
+  image = "/ogimage.webp",
+  url = "https://august1.dev/",
 }) => {
   return (
     <Head>
-      <meta charSet='utf-8' />
-      <meta name='viewport' content='width=device-width, initial-scale=1' />
-      <meta name='msapplication-TileColor' content='#1a1a1a' />
-      <meta name='theme-color' content='#f1f1f1' />
+      <meta charSet="utf-8" />
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta content="#1a1a1a" name="msapplication-TileColor" />
+      <meta content="#f1f1f1" name="theme-color" />
       <title>{title}</title>
 
-      <meta name='apple-mobile-web-app-title' content={title} />
-      <meta name='mobile-web-app-capable' content='yes' />
-      <meta name='apple-mobile-web-app-capable' content='yes' />
+      <meta content={title} name="apple-mobile-web-app-title" />
+      <meta content="yes" name="mobile-web-app-capable" />
+      <meta content="yes" name="apple-mobile-web-app-capable" />
       <meta
-        name='apple-mobile-web-app-status-bar-style'
-        content='black-translucent'
+        content="black-translucent"
+        name="apple-mobile-web-app-status-bar-style"
       />
-      <meta name='description' content={description} />
+      <meta content={description} name="description" />
       <meta
-        name='keyword'
-        content='augustin, briolon, portfolio, développeur, web, front-end'
+        content="augustin, briolon, portfolio, développeur, web, front-end"
+        name="keyword"
       />
-      <meta name='google' content='notranslate' />
+      <meta content="notranslate" name="google" />
 
       {/* OGTAGS */}
       <meta
-        property='og:site_name'
-        content='Augustin Briolon - Portfolio Développeur Web Front-End'
+        content="Augustin Briolon - Portfolio Développeur Web Front-End"
+        property="og:site_name"
       />
-      <meta property='og:title' content={title} />
-      <meta property='og:locale' content='fr_FR' />
-      <meta property='og:description' content={description} />
-      <meta property='og:image' content={image} />
-      <meta property='og:url' content={url} />
-      <meta property='og:bsite' />
+      <meta content={title} property="og:title" />
+      <meta content="fr_FR" property="og:locale" />
+      <meta content={description} property="og:description" />
+      <meta content={image} property="og:image" />
+      <meta content={url} property="og:url" />
+      <meta property="og:bsite" />
 
       {/* TWITTER CARDS  */}
-      <meta property='twitter:card' content='summary_large_image' />
-      <meta property='twitter:creator' content='@AugustinBriolon' />
+      <meta content="summary_large_image" property="twitter:card" />
+      <meta content="@AugustinBriolon" property="twitter:creator" />
       <meta
-        property='twitter:title'
-        content='Augustin Briolon - Portfolio Développeur Web Front-End'
+        content="Augustin Briolon - Portfolio Développeur Web Front-End"
+        property="twitter:title"
       />
-      <meta property='twitter:description' content={description} />
-      <meta property='twitter:image' content={image} />
-      <meta property='twitter:url' content={url} />
-      <meta property='twitter:site' content='@AugustinBriolon' />
-      <meta property='twitter:domain' content='august1.dev' />
+      <meta content={description} property="twitter:description" />
+      <meta content={image} property="twitter:image" />
+      <meta content={url} property="twitter:url" />
+      <meta content="@AugustinBriolon" property="twitter:site" />
+      <meta content="august1.dev" property="twitter:domain" />
 
       {/* FONT */}
       <link
-        rel='preload'
-        as='font'
-        href='/fonts/satoshi/Satoshi-Variable.woff2'
-        type='font/woff2'
-        crossOrigin='anonymous'
-        fetchPriority='high'
+        as="font"
+        crossOrigin="anonymous"
+        fetchPriority="high"
+        href="/fonts/satoshi/Satoshi-Variable.woff2"
+        rel="preload"
+        type="font/woff2"
       />
 
       {/* FAVICON */}
       <link
-        rel='icon'
-        type='image/png'
-        href='/favicon/favicon-96x96.png'
-        sizes='96x96'
+        href="/favicon/favicon-96x96.png"
+        rel="icon"
+        sizes="96x96"
+        type="image/png"
       />
-      <link rel='icon' type='image/svg+xml' href='/favicon/favicon.svg' />
-      <link rel='shortcut icon' href='/favicon/favicon.ico' />
+      <link href="/favicon/favicon.svg" rel="icon" type="image/svg+xml" />
+      <link href="/favicon/favicon.ico" rel="shortcut icon" />
       <link
-        rel='apple-touch-icon'
-        sizes='180x180'
-        href='/favicon/apple-touch-icon.png'
+        href="/favicon/apple-touch-icon.png"
+        rel="apple-touch-icon"
+        sizes="180x180"
       />
-      <link rel='manifest' href='/favicon/site.webmanifest' />
+      <link href="/favicon/site.webmanifest" rel="manifest" />
 
       {/* SEO */}
-      <link rel='canonical' href={url} />
+      <link href={url} rel="canonical" />
     </Head>
   );
 };

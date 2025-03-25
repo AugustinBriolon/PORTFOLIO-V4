@@ -3,7 +3,7 @@ import Section from "./Section";
 
 export default function Footer() {
   return (
-    <Section className="!min-h-24 justify-end mt-12">
+    <Section className="min-h-24! justify-end mt-12">
       <footer role="contentinfo" className="w-full flex flex-col items-center justify-center gap-2">
         <div className="w-full flex flex-col md:flex-row justify-between md:items-center gap-2">
           <div>

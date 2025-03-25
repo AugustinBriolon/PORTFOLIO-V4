@@ -72,14 +72,14 @@ export default function Home({ projects }: { projects: TypeProject[] }) {
     <main>
       <SEO />
       <Section className="h-[90dvh] justify-between">
-        <div className="w-full flex flex-col items-center justify-start md:h-1/2  z-20">
+        <div className="w-full flex flex-col items-center justify-start md:h-1/2 z-20">
           <div className="overflow-hidden">
-            <h1 className="title-anim uppercase text-center font-extrabold">
+            <h1 className="title-anim uppercase text-center font-extrabold h1">
               DÉVELOPPEUR
             </h1>
           </div>
           <div className="overflow-hidden">
-            <h1 className="title-anim uppercase text-center font-extrabold">
+            <h1 className="title-anim uppercase text-center font-extrabold h1">
               CRÉATIF©
             </h1>
           </div>

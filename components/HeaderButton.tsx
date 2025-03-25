@@ -21,7 +21,7 @@ const HeaderButton: FC<HeaderButtonProps> = ({
 }) => {
   const baseClassName = `${
     showOnMobile ? 'block' : 'hidden md:block'
-  } p-4 hover:backdrop-blur-sm hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square ${className}`;
+  } p-4 hover:backdrop-blur-xs hover:bg-black/5 dark:hover:bg-white/20 md:bg-transparent rounded-full aspect-square ${className}`;
 
   const imageProps = {
     src: icon,
