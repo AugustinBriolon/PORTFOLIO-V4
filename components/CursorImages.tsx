@@ -1,8 +1,8 @@
-import { urlFor } from '@/sanity/lib/image';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { urlFor } from "@/sanity/lib/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 interface CursorImagesProps {
   images: object[];
@@ -12,10 +12,10 @@ const CursorImages = ({ images }: CursorImagesProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const mediasRef = useRef<HTMLDivElement>(null);
   const clipPathRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hoverStateRef = useRef(false);
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const handleMouseEnter = () => {
@@ -23,9 +23,9 @@ const CursorImages = ({ images }: CursorImagesProps) => {
 
       if (clipPathRef.current) {
         gsap.to(clipPathRef.current, {
-          clipPath: 'circle(0% at center)',
+          clipPath: "circle(0% at center)",
           duration: 0.5,
-          ease: 'power3.inOut',
+          ease: "power3.inOut",
         });
       }
 
@@ -45,24 +45,24 @@ const CursorImages = ({ images }: CursorImagesProps) => {
 
       if (clipPathRef.current) {
         gsap.to(clipPathRef.current, {
-          clipPath: 'circle(100% at center)',
+          clipPath: "circle(100% at center)",
           duration: 0.5,
-          ease: 'power3.inOut',
+          ease: "power3.inOut",
         });
       }
     };
 
-    const interactiveElements = document.querySelectorAll('button, a');
+    const interactiveElements = document.querySelectorAll("button, a");
 
     interactiveElements.forEach((element) => {
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
+      element.addEventListener("mouseenter", handleMouseEnter);
+      element.addEventListener("mouseleave", handleMouseLeave);
     });
 
     return () => {
       interactiveElements.forEach((element) => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
+        element.removeEventListener("mouseenter", handleMouseEnter);
+        element.removeEventListener("mouseleave", handleMouseLeave);
       });
 
       if (timeoutRef.current) {
@@ -88,27 +88,27 @@ const CursorImages = ({ images }: CursorImagesProps) => {
         delay: 1,
         opacity: 1,
         duration: 1,
-        ease: 'power3.out',
-      }
+        ease: "power3.out",
+      },
     );
 
     gsap.set(clipPathEl, {
-      clipPath: 'circle(100% at center)',
+      clipPath: "circle(100% at center)",
     });
 
-    const xTo = gsap.quickTo(card, 'x', { duration: 1, ease: 'power4' });
-    const yTo = gsap.quickTo(card, 'y', { duration: 1, ease: 'power4' });
-    const rotationTo = gsap.quickTo(card, 'rotation', {
+    const xTo = gsap.quickTo(card, "x", { duration: 1, ease: "power4" });
+    const yTo = gsap.quickTo(card, "y", { duration: 1, ease: "power4" });
+    const rotationTo = gsap.quickTo(card, "rotation", {
       duration: 1,
-      ease: 'power4',
+      ease: "power4",
     });
-    const xToMedias = gsap.quickTo(medias, 'xPercent', {
+    const xToMedias = gsap.quickTo(medias, "xPercent", {
       duration: 0.6,
-      ease: 'power2',
+      ease: "power2",
     });
-    const yToMedias = gsap.quickTo(medias, 'yPercent', {
+    const yToMedias = gsap.quickTo(medias, "yPercent", {
       duration: 0.7,
-      ease: 'power2',
+      ease: "power2",
     });
 
     let isMoving: NodeJS.Timeout;
@@ -153,10 +153,10 @@ const CursorImages = ({ images }: CursorImagesProps) => {
       }, 66);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
       clearTimeout(isMoving);
     };
   }, [images.length]);
@@ -164,31 +164,31 @@ const CursorImages = ({ images }: CursorImagesProps) => {
   return (
     <div
       ref={cardRef}
-      className='w-[200px] h-[150px] rounded-[2%] overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 hidden md:block pointer-events-none'
+      className="w-[200px] h-[150px] rounded-[2%] overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-0 hidden md:block pointer-events-none"
     >
       <div
         ref={clipPathRef}
-        className='w-full h-full'
+        className="w-full h-full"
         style={{
-          clipPath: 'circle(100% at center)',
-          WebkitClipPath: 'circle(100% at center)',
+          clipPath: "circle(100% at center)",
+          WebkitClipPath: "circle(100% at center)",
         }}
       >
-        <div ref={mediasRef} className='w-full h-full'>
+        <div ref={mediasRef} className="w-full h-full">
           {images.map((src, index) => (
             <div
               key={index}
               className={`w-full h-full absolute top-0 left-0 ${
-                index === activeIndex ? 'visible' : 'invisible'
+                index === activeIndex ? "visible" : "invisible"
               }`}
             >
               <Image
-                src={urlFor(src).toString()}
                 alt={`Image ${index + 1}`}
-                className='object-cover'
-                priority={index === 0}
-                width={5760}
+                className="object-cover"
                 height={4320}
+                priority={index === 0}
+                src={urlFor(src).toString()}
+                width={5760}
               />
             </div>
           ))}

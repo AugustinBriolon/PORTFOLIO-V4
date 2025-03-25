@@ -1,33 +1,33 @@
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { useState } from 'react';
-import gsap from 'gsap';
+import { TypeProject } from '@/data/types';
+import { useAppContext } from '@/utils/contexts';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
-import { useAppContext } from '@/utils/contexts';
+import gsap from 'gsap';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useRef, useState } from 'react';
 import HeaderButton from './HeaderButton';
-import { TypeProject } from '@/data/types';
 
-export default function Header(
-  { projects }: { projects: TypeProject[] }
-) {
+export default function Header({ projects }: { projects: TypeProject[] }) {
   const path = usePathname();
-
+  const indicatorRef = useRef<HTMLDivElement>(null);
   const { isDarkMode, toggleDarkMode } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const tl = gsap.timeline();
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const isProjectPage = path?.split('/').pop() === 'projets';
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   const handleMenuBurger = () => {
+    const menuTl = gsap.timeline();
     setIsMenuOpen(!isMenuOpen);
     if (!isMenuOpen) {
-      tl.to('.menu-burger', {
+      menuTl.to('.menu-burger', {
         right: '0',
         duration: 0.5,
         ease: 'power2.out',
       });
     } else {
-      tl.to('.menu-burger', {
+      menuTl.to('.menu-burger', {
         right: '-100%',
         duration: 0.5,
         ease: 'power2.out',
@@ -35,7 +35,7 @@ export default function Header(
     }
   };
 
-  const animateIn = () => {
+  useGSAP(() => {
     gsap.from('.text-header-anim', {
       y: 25,
       opacity: 0,
@@ -43,11 +43,63 @@ export default function Header(
       duration: 0.5,
       ease: 'power1.out',
     });
-  };
+  }, []);
 
   useGSAP(() => {
-    animateIn();
-  }, []);
+    if (isFirstLoad && !isProjectPage) {
+      setIsFirstLoad(false);
+      return;
+    }
+
+    if (indicatorRef.current) {
+      if (isProjectPage) {
+        gsap.fromTo(
+          indicatorRef.current,
+          {
+            width: '0',
+            opacity: 0,
+          },
+          {
+            width: '1.25rem',
+            opacity: 1,
+            duration: 0.5,
+            ease: 'elastic.out(1, 0.5)',
+          }
+        );
+      } else {
+        gsap.to(indicatorRef.current, {
+          width: '0',
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in',
+        });
+      }
+    }
+
+    setIsFirstLoad(false);
+  }, [isProjectPage, isFirstLoad]);
+
+  const handleMouseEnter = () => {
+    if (!isProjectPage && indicatorRef.current) {
+      gsap.to(indicatorRef.current, {
+        width: '1.25rem',
+        opacity: 1,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isProjectPage && indicatorRef.current) {
+      gsap.to(indicatorRef.current, {
+        width: '0',
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in',
+      });
+    }
+  };
 
   return (
     <header
@@ -59,13 +111,19 @@ export default function Header(
       </Link>
 
       <div className='hidden md:flex gap-8 z-20'>
-        <Link href='/projets' className='overflow-hidden group relative'>
-          <p className='text-header-anim text-center font-medium'>PROJETS <sup>{projects.length}</sup></p>
-          <div  
-            className={clsx(
-              path?.split('/').pop() === 'projets' && '!w-5',
-              'left-center h-[3px] w-0 bg-black dark:bg-white group-hover:w-5 transition-all ease-out duration-500'
-            )}
+        <Link 
+          href='/projets' 
+          ref={linkRef}
+          className='overflow-hidden relative'
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <p className='text-header-anim text-center font-medium'>
+            PROJETS <sup>{projects.length}</sup>
+          </p>
+          <div
+            ref={indicatorRef}
+            className='left-center h-[3px] bg-black dark:bg-white'
           ></div>
         </Link>
       </div>
@@ -84,19 +142,19 @@ export default function Header(
           <span
             className={clsx(
               isMenuOpen && 'rotate-45 translate-y-[0.45rem]',
-              'h-[2px] w-5 rounded-full bg-black transition '
+              'h-[2px] w-5 rounded-full bg-black dark:bg-white transition '
             )}
           ></span>
           <span
             className={clsx(
               isMenuOpen && 'scale-0 opacity-0',
-              'h-[2px] w-5 rounded-full bg-black  transition'
+              'h-[2px] w-5 rounded-full bg-black dark:bg-white transition'
             )}
           ></span>
           <span
             className={clsx(
               isMenuOpen && '-rotate-45 -translate-y-[0.4rem]',
-              'h-[2px] w-5 rounded-full bg-black transition'
+              'h-[2px] w-5 rounded-full bg-black dark:bg-white transition'
             )}
           ></span>
         </div>
@@ -141,6 +199,7 @@ export default function Header(
           >
             <p className='text-header-anim text-center font-bold text-4xl'>
               PROJETS
+              <sup className='font-light text-sm -top-6'>{projects.length}</sup>
             </p>
           </Link>
           {/* <Link

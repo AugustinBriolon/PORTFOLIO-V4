@@ -12,30 +12,42 @@ const AppContext = createContext<AppContextType>({
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  // Synchronisation initiale avec localStorage
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedDarkMode = localStorage.getItem('isDarkMode') === 'true';
-      setIsDarkMode(storedDarkMode);
-
-      // Ajoute ou retire la classe 'dark' à <html>
-      document.documentElement.classList.toggle('dark', storedDarkMode);
+      const storedPreference = localStorage.getItem('isDarkMode');
+      if (storedPreference !== null) {
+        setIsDarkMode(storedPreference === 'true');
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setIsDarkMode(prefersDark);
+        localStorage.setItem('isDarkMode', prefersDark.toString());
+      }
+      
+      setIsInitialized(true);
     }
   }, []);
 
-  // Met à jour localStorage et la classe `dark` sur <html>
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && isInitialized) {
       localStorage.setItem('isDarkMode', isDarkMode.toString());
-      document.documentElement.classList.toggle('dark', isDarkMode);
+      
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, isInitialized]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(prev => !prev);
+  };
 
   const contextValue = useMemo(
     () => ({
       isDarkMode,
-      toggleDarkMode: () => setIsDarkMode((prev) => !prev),
+      toggleDarkMode,
     }),
     [isDarkMode]
   );
@@ -49,7 +61,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
 export const useAppContext = (): AppContextType => {
   const context = useContext(AppContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useAppContext must be used within an AppProvider');
   }
   return context;

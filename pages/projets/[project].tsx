@@ -136,8 +136,8 @@ export default function Page({
         </div>
 
         <div className='w-full'>
-          <div className='project-info-container h-[35vh] min-h-96 w-full flex flex-row justify-between items-end gap-2 md:gap-8 bg-white dark:bg-black'>
-            <div className='overflow-hidden w-fit md:w-full'>
+          <div className='project-info-container h-[35vh] min-h-96 w-full flex justify-between items-end gap-2 md:gap-8 bg-white dark:bg-black'>
+            <div className='overflow-hidden w-4/5'>
               <h2 className='text-4xl md:text-6xl font-bold uppercase text-left dark:text-white'>
                 {words.map((word, wordIndex) => (
                   <span
@@ -157,20 +157,22 @@ export default function Page({
                 ))}
               </h2>
             </div>
-            <div className='overflow-hidden w-14 md:w-fit mb-2'>
+            <div className='overflow-hidden mb-2'>
               <a
                 href={project.websiteUrl}
                 rel='noopener noreferrer'
                 target='_blank'
                 className='project-url-anim group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black aspect-square md:aspect-auto md:px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
               >
-                <span className='hidden md:block '>Visiter</span>
+                <span className='hidden md:block uppercase text-sm'>
+                  VISITER
+                </span>
                 <Image
                   src='/icons/arrow-up-right.svg'
-                  className='light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105'
+                  className='light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105 grow-0 shrink-0'
                   alt='arrow'
-                  width={24}
-                  height={24}
+                  width={20}
+                  height={20}
                 />
               </a>
             </div>
@@ -269,6 +271,24 @@ export default function Page({
                 </p>
               </div>
             )}
+
+            <div className='flex items-center justify-end overflow-hidden'>
+              <a
+                href={project.websiteUrl}
+                rel='noopener noreferrer'
+                target='_blank'
+                className='project-url-anim group justify-self-end w-fit flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black aspect-square md:aspect-auto md:px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200'
+              >
+                <span className='hidden md:block uppercase text-sm'>VISITER</span>
+                <Image
+                  src='/icons/arrow-up-right.svg'
+                  className='light-fill transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105 grow-0 shrink-0'
+                  alt='arrow'
+                  width={20}
+                  height={20}
+                />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -284,16 +304,16 @@ export default function Page({
             />
             <div className='px-[8.5%]'>
               <div className='bg-[#000] pb-[8%] pt-[4%]'>
-              <video
-                className='w-full h-auto z-10 relative min-h-[150px] sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]'
-                autoPlay
-                playsInline
-                loop
-                muted
-              >
-                <source src={project.video.webmUrl} type='video/webm' />
-                <source src={project.video.mp4Url} type='video/mp4' />
-              </video>
+                <video
+                  className='w-full h-auto z-10 relative min-h-[150px] sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]'
+                  autoPlay
+                  playsInline
+                  loop
+                  muted
+                >
+                  <source src={project.video.webmUrl} type='video/webm' />
+                  <source src={project.video.mp4Url} type='video/mp4' />
+                </video>
               </div>
             </div>
           </div>
@@ -312,7 +332,7 @@ export default function Page({
                     alt='quote'
                     width={64}
                     height={64}
-                    className='dark-fill float-left w-10 h-10 mr-4'
+                    className='dark-fill float-left w-10 h-10 mr-4 select-none'
                   />
                   <p className='text-lg text-balance'>{testimonial.quote}</p>
                   <div className='pt-4 flex items-center justify-start gap-2'>
