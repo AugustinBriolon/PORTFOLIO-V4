@@ -128,9 +128,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               <Image
                 alt="project"
                 className="transition-transform duration-300 ease-out select-none group-hover:scale-105 md:max-w-72"
-                height={4320}
+                height={150}
+                quality={50}
                 src={urlFor(project.mainImage).toString()}
-                width={5760}
+                width={200}
                 priority
               />
               <div

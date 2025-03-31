@@ -173,9 +173,9 @@ export default function Page({
           <Image
             alt={`Image principale du projet ${project.title}`}
             className="w-full"
-            height={4320}
+            height={1080}
             src={urlFor(project.mainImage).toString()}
-            width={5760}
+            width={1920}
             priority
           />
         </div>
@@ -292,7 +292,7 @@ export default function Page({
               src="/macbook-mockup.png"
               width={1920}
             />
-            <div className="px-[8.5%]">
+            <div className="px-[8.9%]">
               <div className="bg-[#000] pt-[4%] pb-[8%]">
                 <video
                   className="relative z-10 h-auto min-h-[150px] w-full sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]"
@@ -348,9 +348,9 @@ export default function Page({
                 <Image
                   alt={`Image du projet ${filteredProject.title}`}
                   className="transition-transform duration-300 ease-out group-hover:scale-105"
-                  height={4320}
+                  height={1080}
                   src={urlFor(filteredProject.mainImage).toString()}
-                  width={5760}
+                  width={1920}
                   priority
                 />
               </div>

@@ -179,16 +179,17 @@ const CursorImages = ({ images }: CursorImagesProps) => {
             <div
               key={index}
               className={`absolute top-0 left-0 h-full w-full ${
-                index === activeIndex ? "visible" : "invisible"
+                index === activeIndex ? "opacity-100" : "opacity-0"
               }`}
             >
               <Image
                 alt={`Image ${index + 1}`}
                 className="object-cover"
-                height={4320}
+                height={150}
                 priority={index === 0}
+                quality={50}
                 src={urlFor(src).toString()}
-                width={5760}
+                width={200}
               />
             </div>
           ))}
