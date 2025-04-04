@@ -179,7 +179,7 @@ const CursorImages = ({ images }: CursorImagesProps) => {
             <div
               key={index}
               className={`absolute top-0 left-0 h-full w-full ${
-                index === activeIndex ? "opacity-100" : "opacity-0"
+                index === activeIndex ? "visible" : "invisible"
               }`}
             >
               <Image

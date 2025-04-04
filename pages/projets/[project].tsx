@@ -293,7 +293,7 @@ export default function Page({
               width={1920}
             />
             <div className="px-[8.9%]">
-              <div className="bg-[#000] pt-[4%] pb-[8%]">
+              <div className="bg-[#000] pt-[3%] pb-[8%]">
                 <video
                   className="relative z-10 h-auto min-h-[150px] w-full sm:min-h-[300px] md:min-h-[300px] lg:min-h-[500px]"
                   autoPlay
