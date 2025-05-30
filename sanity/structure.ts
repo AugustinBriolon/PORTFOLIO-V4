@@ -1,4 +1,4 @@
-import { ProjectsIcon } from "@sanity/icons";
+import { PresentationIcon, ProjectsIcon } from "@sanity/icons";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import type { StructureResolver } from "sanity/structure";
 
@@ -17,6 +17,13 @@ export const structure: StructureResolver = (S, context) =>
         type: "projects",
         title: "Project",
         icon: ProjectsIcon,
+        S,
+        context,
+      }),
+      orderableDocumentListDeskItem({
+        type: "playgrounds",
+        title: "Playground",
+        icon: PresentationIcon,
         S,
         context,
       }),

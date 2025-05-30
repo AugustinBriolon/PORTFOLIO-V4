@@ -140,7 +140,7 @@ export default function Page({
             <div className="w-4/5 overflow-hidden">
               <h2 className="text-left text-4xl font-bold uppercase md:text-6xl dark:text-white">
                 {words.map((word, wordIndex) => (
-                  <span key={wordIndex} className="inline-block overflow-hidden">
+                  <span key={wordIndex} className="inline-block overflow-hidden py-1">
                     {Array.from(word).map((letter, letterIndex) => (
                       <span key={letterIndex} className="anim-text inline-block">
                         {letter}
@@ -151,7 +151,7 @@ export default function Page({
                 ))}
               </h2>
             </div>
-            <div className="mb-2 overflow-hidden">
+            <div className="mb-4 overflow-hidden">
               <a
                 className="project-url-anim group flex aspect-square h-12 w-fit items-center justify-center gap-2 justify-self-end rounded-full bg-black font-medium text-white transition select-none hover:bg-neutral-800 md:aspect-auto md:px-7 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                 href={project.websiteUrl}
@@ -283,7 +283,7 @@ export default function Page({
         </div>
 
         {project.video && (
-          <div className="relative w-full px-4 select-none md:px-8">
+          <div className="relative w-full overflow-hidden px-4 select-none md:px-8">
             <Image
               alt="macbook mockup"
               className="abs-center z-40 h-full w-full px-4 md:px-8"

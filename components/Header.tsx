@@ -8,13 +8,15 @@ import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import HeaderButton from "./HeaderButton";
 
-export default function Header({ projects }: { projects: TypeProject[] }) {
+export default function Header({ projects, playgrounds }: { projects: TypeProject[]; playgrounds: TypeProject[] }) {
   const path = usePathname();
   const indicatorRef = useRef<HTMLDivElement>(null);
+  const indicatorPlaygroundRef = useRef<HTMLDivElement>(null);
   const { isDarkMode, toggleDarkMode } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const isProjectPage = path?.split("/").pop() === "projets";
+  const isPlaygroundPage = path?.split("/").pop() === "playgrounds";
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const handleMenuBurger = () => {
@@ -46,7 +48,7 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
   }, []);
 
   useGSAP(() => {
-    if (isFirstLoad && !isProjectPage) {
+    if (isFirstLoad && !isProjectPage && !isPlaygroundPage) {
       setIsFirstLoad(false);
       return;
     }
@@ -76,12 +78,33 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
       }
     }
 
-    setIsFirstLoad(false);
-  }, [isProjectPage, isFirstLoad]);
+    if (indicatorPlaygroundRef.current) {
+      if (isPlaygroundPage) { 
+        gsap.to(indicatorPlaygroundRef.current, {
+          width: "1.25rem",
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(indicatorPlaygroundRef.current, {
+          width: "0",
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+      }
+    }
 
-  const handleMouseEnter = () => {
-    if (!isProjectPage && indicatorRef.current) {
-      gsap.to(indicatorRef.current, {
+    setIsFirstLoad(false);
+  }, [isProjectPage, isPlaygroundPage, isFirstLoad]);
+
+  const handleMouseEnter = (isPlayground: boolean) => {
+    const currentRef = isPlayground ? indicatorPlaygroundRef : indicatorRef;
+    const isCurrentPage = isPlayground ? isPlaygroundPage : isProjectPage;
+  
+    if (!isCurrentPage && currentRef.current) {
+      gsap.to(currentRef.current, {
         width: "1.25rem",
         opacity: 1,
         duration: 0.3,
@@ -89,10 +112,13 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
       });
     }
   };
-
-  const handleMouseLeave = () => {
-    if (!isProjectPage && indicatorRef.current) {
-      gsap.to(indicatorRef.current, {
+  
+  const handleMouseLeave = (isPlayground: boolean) => {
+    const currentRef = isPlayground ? indicatorPlaygroundRef : indicatorRef;
+    const isCurrentPage = isPlayground ? isPlaygroundPage : isProjectPage;
+  
+    if (!isCurrentPage && currentRef.current) {
+      gsap.to(currentRef.current, {
         width: "0",
         opacity: 0,
         duration: 0.3,
@@ -115,13 +141,25 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
           ref={linkRef}
           className="relative overflow-hidden"
           href="/projets"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={() => handleMouseEnter(false)}
+          onMouseLeave={() => handleMouseLeave(false)}
         >
           <p className="text-header-anim text-center font-medium">
             PROJETS <sup>{projects.length}</sup>
           </p>
           <div ref={indicatorRef} className="left-center h-[3px] bg-black dark:bg-white"></div>
+        </Link>
+        <Link
+          ref={linkRef}
+          className="relative overflow-hidden"
+          href="/playgrounds"
+          onMouseEnter={() => handleMouseEnter(true)}
+          onMouseLeave={() => handleMouseLeave(true)}
+        >
+          <p className="text-header-anim text-center font-medium">
+            PLAYGROUNDS <sup>{playgrounds.length}</sup>
+          </p>
+          <div ref={indicatorPlaygroundRef} className="left-center h-[3px] bg-black dark:bg-white"></div>
         </Link>
       </div>
 
@@ -193,7 +231,7 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
               <sup className="-top-6 text-sm font-light">{projects.length}</sup>
             </p>
           </Link>
-          {/* <Link
+          <Link
             href='/playgrounds'
             onClick={handleMenuBurger}
             scroll={false}
@@ -202,7 +240,7 @@ export default function Header({ projects }: { projects: TypeProject[] }) {
             <p className='text-header-anim text-center font-bold text-4xl'>
               PLAYGROUNDS
             </p>
-          </Link> */}
+          </Link>
         </div>
         <div className="flex min-h-20 overflow-hidden">
           <HeaderButton

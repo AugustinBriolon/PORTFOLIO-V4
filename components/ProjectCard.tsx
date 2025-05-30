@@ -142,7 +142,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
           <div className="flex h-full w-full flex-col gap-4">
             <div className="flex w-full items-center justify-between">
-              <div className="flex w-3/4 justify-between overflow-hidden py-1 md:w-fit">
+              <div className="flex w-3/4 justify-between overflow-hidden md:w-fit">
                 <h2 className="project-title-anim text-4xl font-bold">{project.title}</h2>
               </div>
               <div className="overflow-hidden">
