@@ -8,7 +8,13 @@ import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import HeaderButton from "./HeaderButton";
 
-export default function Header({ projects, playgrounds }: { projects: TypeProject[]; playgrounds: TypeProject[] }) {
+export default function Header({
+  projects,
+  playgrounds,
+}: {
+  projects: TypeProject[];
+  playgrounds: TypeProject[];
+}) {
   const path = usePathname();
   const indicatorRef = useRef<HTMLDivElement>(null);
   const indicatorPlaygroundRef = useRef<HTMLDivElement>(null);
@@ -79,7 +85,7 @@ export default function Header({ projects, playgrounds }: { projects: TypeProjec
     }
 
     if (indicatorPlaygroundRef.current) {
-      if (isPlaygroundPage) { 
+      if (isPlaygroundPage) {
         gsap.to(indicatorPlaygroundRef.current, {
           width: "1.25rem",
           opacity: 1,
@@ -102,7 +108,7 @@ export default function Header({ projects, playgrounds }: { projects: TypeProjec
   const handleMouseEnter = (isPlayground: boolean) => {
     const currentRef = isPlayground ? indicatorPlaygroundRef : indicatorRef;
     const isCurrentPage = isPlayground ? isPlaygroundPage : isProjectPage;
-  
+
     if (!isCurrentPage && currentRef.current) {
       gsap.to(currentRef.current, {
         width: "1.25rem",
@@ -112,11 +118,11 @@ export default function Header({ projects, playgrounds }: { projects: TypeProjec
       });
     }
   };
-  
+
   const handleMouseLeave = (isPlayground: boolean) => {
     const currentRef = isPlayground ? indicatorPlaygroundRef : indicatorRef;
     const isCurrentPage = isPlayground ? isPlaygroundPage : isProjectPage;
-  
+
     if (!isCurrentPage && currentRef.current) {
       gsap.to(currentRef.current, {
         width: "0",
@@ -159,7 +165,10 @@ export default function Header({ projects, playgrounds }: { projects: TypeProjec
           <p className="text-header-anim text-center font-medium">
             PLAYGROUNDS <sup>{playgrounds.length}</sup>
           </p>
-          <div ref={indicatorPlaygroundRef} className="left-center h-[3px] bg-black dark:bg-white"></div>
+          <div
+            ref={indicatorPlaygroundRef}
+            className="left-center h-[3px] bg-black dark:bg-white"
+          ></div>
         </Link>
       </div>
 
@@ -232,14 +241,12 @@ export default function Header({ projects, playgrounds }: { projects: TypeProjec
             </p>
           </Link>
           <Link
-            href='/playgrounds'
-            onClick={handleMenuBurger}
+            className="group relative overflow-hidden"
+            href="/playgrounds"
             scroll={false}
-            className='overflow-hidden group relative'
+            onClick={handleMenuBurger}
           >
-            <p className='text-header-anim text-center font-bold text-4xl'>
-              PLAYGROUNDS
-            </p>
+            <p className="text-header-anim text-center text-4xl font-bold">PLAYGROUNDS</p>
           </Link>
         </div>
         <div className="flex min-h-20 overflow-hidden">

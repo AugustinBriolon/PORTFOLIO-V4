@@ -26,7 +26,7 @@ function App({ Component, pageProps, globalProps }: CustomAppProps) {
         <Component {...pageProps} />
       ) : (
         <AppProvider>
-          <Layout projects={globalProps.projects} playgrounds={globalProps.playgrounds}>
+          <Layout playgrounds={globalProps.playgrounds} projects={globalProps.projects}>
             <SmoothScrolling>
               <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
                 <PageTransition key={pathname}>
