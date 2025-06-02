@@ -1,3 +1,5 @@
+yarn run generate-sitemap
 yarn run format
 yarn prettier --write .
 yarn run check
+yarn run build

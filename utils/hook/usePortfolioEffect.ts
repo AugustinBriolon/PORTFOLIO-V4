@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { useRef, useState } from "react";
 
 export const usePortfolioEffect = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -30,19 +30,26 @@ export const usePortfolioEffect = () => {
     if (!mediaContainerRef.current) return;
 
     const mediaWrapper = document.createElement("div");
-    const image = document.createElement("img");
-
     mediaWrapper.className = "absolute inset-0 overflow-hidden";
     mediaWrapper.style.transform = "translate(0, -100%)";
 
+    // Créer un conteneur pour l'image Next.js
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "w-full h-full relative";
+    imageContainer.style.transform = "translate(0, 90%)";
+
+    // Créer l'élément image avec les attributs nécessaires
+    const image = document.createElement("img");
     image.src = imageSrc;
     image.className = "w-full h-full object-cover absolute inset-0";
-    image.style.transform = "translate(0, 90%)";
+    image.loading = "eager";
+    image.decoding = "async";
 
-    mediaWrapper.appendChild(image);
+    imageContainer.appendChild(image);
+    mediaWrapper.appendChild(imageContainer);
     mediaContainerRef.current.appendChild(mediaWrapper);
 
-    gsap.to([mediaWrapper, image], {
+    gsap.to([mediaWrapper, imageContainer], {
       y: 0,
       duration: 0.6,
       ease: "expo.inOut",

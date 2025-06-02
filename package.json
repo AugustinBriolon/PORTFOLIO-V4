@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "generate-sitemap": "npx tsx scripts/generate-sitemap.ts",
     "yarn:upgrade-latest": "yarn upgrade-interactive --latest",
     "lint": "next lint",
     "format": "eslint --fix \"**/*.{ts,tsx,js,jsx}\"",
@@ -23,6 +24,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
+    "dotenv": "^16.5.0",
     "framer-motion": "^12.6.0",
     "gsap": "^3.12.7",
     "lenis": "^1.2.3",
@@ -37,7 +39,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.0.0",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22.15.29",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
@@ -53,6 +55,6 @@
     "prettier-eslint": "^16.1.2",
     "prettier-plugin-css-order": "^2.1.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "typescript": "^5.3.3"
+    "typescript": "^5.8.3"
   }
 }
