@@ -41,7 +41,6 @@ export async function generateSitemap() {
 
     // Write sitemap to file
     fs.writeFileSync(path.join(publicDir, "sitemap.xml"), sitemapXml);
-    console.log("✅ Sitemap généré avec succès dans public/sitemap.xml");
   } catch (error) {
     console.error("❌ Erreur lors de la génération du sitemap :", error);
     process.exit(1);
@@ -52,6 +51,7 @@ export async function generateSitemap() {
 async function fetchDataFromSanity() {
   const query = `*[_type in $docTypes] {
     "slug": slug.current,
+    "type": _type,
     "lastmod": _updatedAt
   }`;
 
@@ -59,7 +59,7 @@ async function fetchDataFromSanity() {
 }
 
 // Generate sitemap XML from fetched data
-const createSitemapXml = (sanityData: Array<{ slug: string; lastmod: string }>) => {
+const createSitemapXml = (sanityData: Array<{ slug: string; lastmod: string; type: string }>) => {
   let sitemapXml =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
@@ -73,7 +73,7 @@ const createSitemapXml = (sanityData: Array<{ slug: string; lastmod: string }>) 
   sanityData.forEach((doc) => {
     if (!doc.slug) return;
     sitemapXml += ` <url>\n`;
-    sitemapXml += `  <loc>${baseUrl}${doc.slug}</loc>\n`;
+    sitemapXml += `  <loc>${baseUrl}${doc.type}/${doc.slug}</loc>\n`;
     if (doc.lastmod) {
       sitemapXml += `  <lastmod>${new Date(doc.lastmod).toISOString()}</lastmod>\n`;
     }

@@ -1,11 +1,11 @@
-import * as dotenv from "dotenv";
-import { existsSync } from "fs";
-import { join } from "path";
+// import * as dotenv from "dotenv";
+// import { existsSync } from "fs";
+// import { join } from "path";
 
-const envPath = join(process.cwd(), ".env.local");
-if (existsSync(envPath)) {
-  dotenv.config({ path: envPath });
-}
+// const envPath = join(process.cwd(), ".env.local");
+// if (existsSync(envPath)) {
+//   dotenv.config({ path: envPath });
+// }
 
 export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-10-29";
 
