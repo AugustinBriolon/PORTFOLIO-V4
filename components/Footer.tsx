@@ -19,6 +19,11 @@ export default function Footer() {
                   Projets
                 </Link>
               </li>
+              <li>
+                <Link className="font-semibold uppercase hover:underline" href="/playgrounds">
+                  Playgrounds
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -27,28 +32,10 @@ export default function Footer() {
               <li>
                 <a
                   className="font-semibold uppercase hover:underline"
-                  href="https://www.linkedin.com/in/augustin-briolon/"
+                  href="https://cal.com/augustin-briolon/30min"
                   target="_blank"
                 >
-                  Linkedin,
-                </a>
-              </li>
-              <li>
-                <a
-                  className="font-semibold uppercase hover:underline"
-                  href="https://www.github.com/AugustinBriolon/"
-                  target="_blank"
-                >
-                  Github,
-                </a>
-              </li>
-              <li>
-                <a
-                  className="font-semibold uppercase hover:underline"
-                  href="https://www.twitter.com/AugustinBriolon/"
-                  target="_blank"
-                >
-                  Twitter,
+                  RDV,
                 </a>
               </li>
               <li>

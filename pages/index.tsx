@@ -123,7 +123,7 @@ export default function Home({ projects }: { projects: TypeProject[] }) {
                   ou prenez{" "}
                   <a
                     className="underline"
-                    href="https://calendly.com/augustin-briolon/presentation-de-votre-projet"
+                    href="https://cal.com/augustin-briolon/30min?overlayCalendar=true"
                     target="_blank"
                   >
                     rendez-vous
