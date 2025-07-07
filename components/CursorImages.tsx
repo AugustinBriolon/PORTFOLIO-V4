@@ -190,6 +190,10 @@ const CursorImages = ({ images }: CursorImagesProps) => {
                 quality={50}
                 src={urlFor(src).toString()}
                 width={200}
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                }}
               />
             </div>
           ))}

@@ -133,7 +133,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 src={urlFor(project.mainImage).toString()}
                 width={200}
                 priority
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
               <div
                 ref={imageRef}
                 className="project-img-anim absolute inset-0 h-full w-full origin-top bg-white dark:bg-black"

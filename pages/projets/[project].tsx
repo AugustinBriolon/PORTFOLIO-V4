@@ -161,7 +161,7 @@ export default function Page({
                 <span className="hidden text-sm uppercase md:block">VISITER</span>
                 <Image
                   alt="arrow"
-                  className="light-fill shrink-0 grow-0 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-105"
+                  className="light-fill h-auto max-h-full shrink-0 grow-0 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-105"
                   height={20}
                   src="/icons/arrow-up-right.svg"
                   width={20}
@@ -176,6 +176,10 @@ export default function Page({
             height={1080}
             src={urlFor(project.mainImage).toString()}
             width={1920}
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
             priority
           />
         </div>
@@ -276,6 +280,10 @@ export default function Page({
                   height={20}
                   src="/icons/arrow-up-right.svg"
                   width={20}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
                 />
               </a>
             </div>
@@ -288,9 +296,13 @@ export default function Page({
               alt="macbook mockup"
               className="abs-center z-40 h-full w-full px-4 md:px-8"
               height={1080}
-              layout="responsive"
+              sizes="100vw"
               src="/macbook-mockup.png"
               width={1920}
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
             />
             <div className="px-[8.9%]">
               <div className="bg-[#000] pt-[3%] pb-[8%]">
@@ -321,6 +333,10 @@ export default function Page({
                     height={64}
                     src="/icons/quote.svg"
                     width={64}
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
                   />
                   <p className="text-lg text-balance">{testimonial.quote}</p>
                   <div className="flex items-center justify-start gap-2 pt-4">
@@ -351,6 +367,10 @@ export default function Page({
                   height={1080}
                   src={urlFor(filteredProject.mainImage).toString()}
                   width={1920}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
                   priority
                 />
               </div>
@@ -363,6 +383,10 @@ export default function Page({
                     height={24}
                     src="/icons/arrow-up-right.svg"
                     width={24}
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
                   />
                 </div>
               </div>

@@ -39,14 +39,26 @@ const HeaderButton: FC<HeaderButtonProps> = ({
         target="_blank"
         title={title}
       >
-        <Image alt={`Logo ${title}`} {...imageProps} />
+        <Image
+          alt={`Logo ${title}`}
+          {...imageProps}
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       </a>
     );
   }
 
   return (
     <button className={baseClassName + "z-50 cursor-pointer"} onClick={onClick}>
-      <Image alt={`Logo ${title}`} {...imageProps} />
+      <Image
+        alt={`Logo ${title}`}
+        {...imageProps}
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
     </button>
   );
 };

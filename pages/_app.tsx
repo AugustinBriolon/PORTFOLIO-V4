@@ -6,7 +6,6 @@ import { fetchPlaygrounds } from "@/services/playgrounds.sevices";
 import { fetchProjects } from "@/services/projects.sevices";
 import "@/styles/globals.css";
 import { AppProvider } from "@/utils/contexts";
-import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 import { usePathname } from "next/navigation";
 
@@ -22,17 +21,15 @@ function App({ Component, pageProps, globalProps }: CustomAppProps) {
 
   return (
     <>
-      {pathname?.includes("studio") ? (
+      {pathname === "/studio" ? (
         <Component {...pageProps} />
       ) : (
         <AppProvider>
           <Layout playgrounds={globalProps.playgrounds} projects={globalProps.projects}>
             <SmoothScrolling>
-              <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
-                <PageTransition key={pathname}>
-                  <Component {...pageProps} />
-                </PageTransition>
-              </AnimatePresence>
+              <PageTransition key={pathname}>
+                <Component {...pageProps} />
+              </PageTransition>
             </SmoothScrolling>
           </Layout>
         </AppProvider>

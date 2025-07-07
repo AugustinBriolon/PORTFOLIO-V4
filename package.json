@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "generate-sitemap": "npx tsx scripts/generate-sitemap.ts",
-    "yarn:upgrade-latest": "yarn upgrade-interactive --latest",
     "lint": "next lint",
     "format": "eslint --fix \"**/*.{ts,tsx,js,jsx}\"",
     "check": "eslint \"**/*.{ts,tsx,js,jsx}\"",

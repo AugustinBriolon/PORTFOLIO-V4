@@ -18,7 +18,10 @@ export const PreloadImages: React.FC<PreloadImagesProps> = ({ playgrounds }) => 
           quality={50}
           src={urlFor(playground.mainImage).toString()}
           width={200}
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       ))}
     </div>
   );
