@@ -44,8 +44,9 @@ const HeaderButton: FC<HeaderButtonProps> = ({
           {...imageProps}
           style={{
             maxWidth: "100%",
-            height: "auto"
-          }} />
+            height: "auto",
+          }}
+        />
       </a>
     );
   }
@@ -57,8 +58,9 @@ const HeaderButton: FC<HeaderButtonProps> = ({
         {...imageProps}
         style={{
           maxWidth: "100%",
-          height: "auto"
-        }} />
+          height: "auto",
+        }}
+      />
     </button>
   );
 };

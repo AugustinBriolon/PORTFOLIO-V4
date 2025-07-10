@@ -66,18 +66,20 @@ const createSitemapXml = (sanityData: Array<{ slug: string; lastmod: string; typ
 
   // Add static routes
   sitemapXml += ` <url>\n  <loc>${baseUrl}</loc>\n </url>\n`;
-  sitemapXml += ` <url>\n  <loc>${baseUrl}projects</loc>\n </url>\n`;
+  sitemapXml += ` <url>\n  <loc>${baseUrl}projets</loc>\n </url>\n`;
   sitemapXml += ` <url>\n  <loc>${baseUrl}playgrounds</loc>\n </url>\n`;
 
-  // Add dynamic routes from Sanity
+  // Add dynamic routes for projects only
   sanityData.forEach((doc) => {
-    if (!doc.slug) return;
-    sitemapXml += ` <url>\n`;
-    sitemapXml += `  <loc>${baseUrl}${doc.type}/${doc.slug}</loc>\n`;
-    if (doc.lastmod) {
-      sitemapXml += `  <lastmod>${new Date(doc.lastmod).toISOString()}</lastmod>\n`;
+    if (doc.type === "projects" && doc.slug) {
+      sitemapXml += ` <url>\n`;
+      sitemapXml += `  <loc>${baseUrl}projets/${doc.slug}</loc>\n`;
+      if (doc.lastmod) {
+        sitemapXml += `  <lastmod>${new Date(doc.lastmod).toISOString()}</lastmod>\n`;
+      }
+      sitemapXml += ` </url>\n`;
     }
-    sitemapXml += ` </url>\n`;
+    // On ignore les playgrounds dynamiques
   });
 
   sitemapXml += `</urlset>`;

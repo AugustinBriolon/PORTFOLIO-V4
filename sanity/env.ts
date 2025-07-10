@@ -1,3 +1,5 @@
+// Décommenter pour utiliser generate-sitemap.ts
+
 // import * as dotenv from "dotenv";
 // import { existsSync } from "fs";
 // import { join } from "path";
