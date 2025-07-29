@@ -8,6 +8,8 @@
     "start": "next start",
     "generate-sitemap": "npx tsx scripts/generate-sitemap.ts",
     "lint": "next lint",
+    "prebuild": "echo 'Building Sanity to public/studio' && cd studio && yarn && npx @sanity/cli build ../public/studio -y && echo 'Done'",
+	  "sanity": "cd studio && sanity start",
     "format": "eslint --fix \"**/*.{ts,tsx,js,jsx}\"",
     "check": "eslint \"**/*.{ts,tsx,js,jsx}\"",
     "prepare": "husky"

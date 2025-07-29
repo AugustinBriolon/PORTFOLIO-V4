@@ -1,1 +1,3 @@
 yarn run lint
+yarn run prebuild
+yarn run sanity
